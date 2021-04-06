@@ -1,0 +1,229 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://Tiles074_2K_Color.jpg" type="Texture" id=1]
+
+[sub_resource type="QuadMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -0.502708, -0.502732, -0.00273224, -0.502708, 0.502732, -0.00273224, 0.502729, -0.502732, -0.00273224, 0.502729, 0.502732, -0.00273224 )
+
+[sub_resource type="QuadMesh" id=4]
+
+[sub_resource type="ConvexPolygonShape" id=5]
+points = PoolVector3Array( -0.502708, -0.502732, -0.00273224, -0.502708, 0.502732, -0.00273224, 0.502729, -0.502732, -0.00273224, 0.502729, 0.502732, -0.00273224 )
+
+[sub_resource type="QuadMesh" id=6]
+
+[sub_resource type="ConvexPolygonShape" id=7]
+points = PoolVector3Array( -0.502708, -0.502732, -0.00273224, -0.502708, 0.502732, -0.00273224, 0.502729, -0.502732, -0.00273224, 0.502729, 0.502732, -0.00273224 )
+
+[sub_resource type="QuadMesh" id=8]
+
+[sub_resource type="QuadMesh" id=9]
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="ConvexPolygonShape" id=11]
+points = PoolVector3Array( -0.502708, -0.502732, -0.00273224, -0.502708, 0.502732, -0.00273224, 0.502729, -0.502732, -0.00273224, 0.502729, 0.502732, -0.00273224 )
+
+[sub_resource type="QuadMesh" id=12]
+
+[sub_resource type="ConvexPolygonShape" id=13]
+points = PoolVector3Array( -0.502708, -0.502732, -0.00273224, -0.502708, 0.502732, -0.00273224, 0.502729, -0.502732, -0.00273224, 0.502729, 0.502732, -0.00273224 )
+
+[sub_resource type="QuadMesh" id=14]
+
+[sub_resource type="ConvexPolygonShape" id=15]
+points = PoolVector3Array( -0.502708, -0.502732, -0.00273224, -0.502708, 0.502732, -0.00273224, 0.502729, -0.502732, -0.00273224, 0.502729, 0.502732, -0.00273224 )
+
+[sub_resource type="QuadMesh" id=16]
+
+[sub_resource type="QuadMesh" id=17]
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="ConvexPolygonShape" id=19]
+points = PoolVector3Array( -0.502708, -0.502732, -0.00273224, -0.502708, 0.502732, -0.00273224, 0.502729, -0.502732, -0.00273224, 0.502729, 0.502732, -0.00273224 )
+
+[sub_resource type="QuadMesh" id=20]
+
+[sub_resource type="ConvexPolygonShape" id=21]
+points = PoolVector3Array( -0.502708, -0.502732, -0.00273224, -0.502708, 0.502732, -0.00273224, 0.502729, -0.502732, -0.00273224, 0.502729, 0.502732, -0.00273224 )
+
+[sub_resource type="QuadMesh" id=22]
+
+[sub_resource type="QuadMesh" id=23]
+
+[sub_resource type="SpatialMaterial" id=24]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="ConvexPolygonShape" id=25]
+points = PoolVector3Array( -0.502708, -0.502732, -0.00273224, -0.502708, 0.502732, -0.00273224, 0.502729, -0.502732, -0.00273224, 0.502729, 0.502732, -0.00273224 )
+
+[sub_resource type="QuadMesh" id=26]
+
+[sub_resource type="ConvexPolygonShape" id=27]
+points = PoolVector3Array( -0.502708, -0.502732, -0.00273224, -0.502708, 0.502732, -0.00273224, 0.502729, -0.502732, -0.00273224, 0.502729, 0.502732, -0.00273224 )
+
+[sub_resource type="QuadMesh" id=28]
+
+[sub_resource type="ConvexPolygonShape" id=29]
+points = PoolVector3Array( -0.502708, -0.502732, -0.00273224, -0.502708, 0.502732, -0.00273224, 0.502729, -0.502732, -0.00273224, 0.502729, 0.502732, -0.00273224 )
+
+[sub_resource type="QuadMesh" id=30]
+
+[sub_resource type="ConvexPolygonShape" id=31]
+points = PoolVector3Array( -0.502708, -0.502732, -0.00273224, -0.502708, 0.502732, -0.00273224, 0.502729, -0.502732, -0.00273224, 0.502729, 0.502732, -0.00273224 )
+
+[sub_resource type="QuadMesh" id=32]
+
+[node name="Mapa" type="Spatial"]
+
+[node name="Pared_1" type="StaticBody" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+visible = false
+
+[node name="MeshInstance" type="MeshInstance" parent="Pared_1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Pared_1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Pared_1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Pared_1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5 )
+shape = SubResource( 5 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Pared_1"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 0.5, 0.5 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="Pared_1"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 0.5, 0.5 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Pared_1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="Pared_2" type="StaticBody" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+visible = false
+
+[node name="MeshInstance" type="MeshInstance" parent="Pared_2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Pared_2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Pared_2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5 )
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Pared_2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5 )
+shape = SubResource( 13 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Pared_2"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.5, 0.5, 0 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="Pared_2"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.5, 0.5, 0 )
+shape = SubResource( 15 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Pared_2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1, 0 )
+mesh = SubResource( 16 )
+material/0 = null
+
+[node name="Pared_3" type="StaticBody" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+visible = false
+
+[node name="MeshInstance" type="MeshInstance" parent="Pared_3"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 17 )
+material/0 = SubResource( 18 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Pared_3"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 19 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Pared_3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5 )
+mesh = SubResource( 20 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Pared_3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5 )
+shape = SubResource( 21 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Pared_3"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1, 0 )
+mesh = SubResource( 22 )
+material/0 = null
+
+[node name="Pared_4" type="StaticBody" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+visible = false
+
+[node name="MeshInstance" type="MeshInstance" parent="Pared_4"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 23 )
+material/0 = SubResource( 24 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Pared_4"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 25 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Pared_4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5 )
+mesh = SubResource( 26 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Pared_4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5 )
+shape = SubResource( 27 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Pared_4"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.5, 0.5, 0 )
+mesh = SubResource( 28 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="Pared_4"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.5, 0.5, 0 )
+shape = SubResource( 29 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Pared_4"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0.5, 0.5 )
+mesh = SubResource( 30 )
+material/0 = null
+
+[node name="CollisionShape4" type="CollisionShape" parent="Pared_4"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0.5, 0.5 )
+shape = SubResource( 31 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="Pared_4"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1, 0 )
+mesh = SubResource( 32 )
+material/0 = null
