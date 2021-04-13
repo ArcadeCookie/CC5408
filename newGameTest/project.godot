@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="newGameTest"
-run/main_scene="res://Scenes/Spatial.tscn"
+run/main_scene="res://Scenes/GameScenes/Spatial.tscn"
 config/icon="res://icon.png"
 
 [input]
