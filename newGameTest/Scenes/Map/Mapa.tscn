@@ -306,7 +306,7 @@ material/0 = SubResource( 50 )
 
 [node name="SpotLight" type="SpotLight" parent="LuzPasillo"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 3.46063, 0 )
-spot_range = 4.48379
+spot_range = 8.0
 spot_angle = 28.34
 
 [node name="Laboratorio" type="StaticBody" parent="."]

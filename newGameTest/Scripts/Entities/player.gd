@@ -1,28 +1,35 @@
 extends KinematicBody
 
+# child nodes references
 onready var camera = get_node("Camera")
 
-var speed = 3
+# enviroment variables
 var gravity = -9.8
-var mouse_sensitivity = 0.2
-var sprinting = false
-var sprinting_speed = 10
 
-# amount of stamina, expresed in seconds
+# entity variables
+var mouse_sensitivity = 0.2
+var speed = 3
+var sprinting_speed = 10
 var stamina = 3
 var max_stamina = 3
-var resting = true
 var rest_timer = 0
 var rest_time_threshold = 2
+var rest_factor = 0.5
 
+var sprinting = false
+var resting = true
 var crouching = false
 
 var direction = Vector3()
 var velocity = Vector3()
 
+
+# This functions holds mouse coursor in the middle
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+	Input.set_default_cursor_shape(3)
+
+
 # This standard function manages events 
 # V0.0.1: its managing mouse rotation
 # :return null:
@@ -60,6 +67,7 @@ func get_input():
 	cam_direction = cam_direction.normalized()
 	return cam_direction
 
+
 # Standard function that executes fixed amount of times per frame
 # :param delta: float time since last frame
 # :return null:
@@ -68,7 +76,6 @@ func _physics_process(delta):
 	
 	# gravity force
 	velocity.y += gravity * delta
-	print (stamina)
 	# instant velocity to desired direction
 	if sprinting:
 		objective_velocity = get_input() * sprinting_speed
@@ -77,11 +84,12 @@ func _physics_process(delta):
 			sprinting = false
 	else:
 		objective_velocity = get_input() * speed
-		rest_timer += delta
 		if resting:
-			stamina = clamp(stamina + delta/2, 0, max_stamina)
-		elif rest_timer >= 3:
+			stamina = clamp(stamina + delta * rest_factor, 0, max_stamina)
+		elif rest_timer >= rest_time_threshold:
 			resting = true
+		else:
+			rest_timer += delta
 		
 	velocity.x = objective_velocity.x
 	velocity.z = objective_velocity.z
