@@ -2,11 +2,22 @@ extends KinematicBody
 
 # child nodes references
 onready var camera = get_node("Camera")
+onready var raycast = camera.get_node("RayCast")
+
+# parent nodes reference
+onready var world = get_parent()
+
+# Signal Manager references
+var SignalManager
+var Events
 
 # enviroment variables
 var gravity = -9.8
 
 # entity variables
+signal enable_interaction(object)
+signal grab(node)
+
 var mouse_sensitivity = 0.2
 var speed = 3
 var sprinting_speed = 10
@@ -24,27 +35,19 @@ var direction = Vector3()
 var velocity = Vector3()
 
 
-# This functions holds mouse coursor in the middle
+# This method set up the node
 func _ready():
+	SignalManager = world.get_node("SignalManager")
+	Events = SignalManager.Events
+	SignalManager._add_emitter(Events.ENABLE_INTERACTION, self, "enable_interaction")
+	SignalManager._add_emitter(Events.GRAB_OBJECT, self, "grab")
+	# Center and hide mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	Input.set_default_cursor_shape(3)
+	set_process(true)
 
 
-# This standard function manages events 
-# V0.0.1: its managing mouse rotation
-# :return null:
-func _input(event):
-	if event is InputEventMouseMotion:
-		rotation_degrees.y -= event.relative.x * mouse_sensitivity
-		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x - event.relative.y * mouse_sensitivity, -90, 90)
-	direction = Vector3()
-	direction = direction.normalized().rotated(Vector3.UP, rotation.y)
-
-
-# This funtion will return the movement vector based on the camera horizontal angle
-# and will manage the input_map
-# :return: Vector3
-func get_input():
+# This method will return the movement vector based on the camera horizontal angle
+func get_input() -> Vector3:
 	var cam_direction = Vector3()
 	if Input.is_action_pressed("move_forward"):
 		cam_direction += -camera.global_transform.basis.z
@@ -54,6 +57,21 @@ func get_input():
 		cam_direction += -camera.global_transform.basis.x
 	if Input.is_action_pressed("move_right"):
 		cam_direction += camera.global_transform.basis.x
+	cam_direction = cam_direction.normalized()
+	return cam_direction
+
+
+# Standard method for handling events
+func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		rotation_degrees.y -= event.relative.x * mouse_sensitivity
+		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x - event.relative.y * mouse_sensitivity, -90, 90)
+	direction = Vector3()
+	direction = direction.normalized().rotated(Vector3.UP, rotation.y)
+
+
+# Standard method for handling key events
+func _unhandled_key_input(event):
 	if Input.is_action_just_pressed("sprint"):
 		sprinting = true
 		resting = false
@@ -64,13 +82,12 @@ func get_input():
 		crouching = true
 	if Input.is_action_just_released("crouch"):
 		crouching = false
-	cam_direction = cam_direction.normalized()
-	return cam_direction
-
+	if Input.is_action_just_pressed("right_action"):
+		emit_signal("grab",self)
+	if Input.is_action_just_pressed("left_action"):
+		emit_signal("grab",self)
 
 # Standard function that executes fixed amount of times per frame
-# :param delta: float time since last frame
-# :return null:
 func _physics_process(delta):
 	var objective_velocity = Vector3()
 	
@@ -94,3 +111,10 @@ func _physics_process(delta):
 	velocity.x = objective_velocity.x
 	velocity.z = objective_velocity.z
 	velocity = move_and_slide(velocity, Vector3.UP, true)
+
+
+# Standard function that executes fixed amount of times per frame
+func _process(_delta):
+	if raycast.is_colliding():
+		var obj = raycast.get_collider()
+		emit_signal("enable_interaction", obj)

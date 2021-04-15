@@ -1,19 +1,30 @@
 extends RigidBody
 
 # entity variables
-var interaction_timer = 0
+var nteraction_timer = 0
 var interaction_threshold = 0.5
 
 var interaction_available = false
 
-var availability_timer
-var highlight
+var availability_timer : Timer
+var highlight : MeshInstance
 
+
+# This function set up the node
 func _ready():
+	var SignalManager = get_parent().get_node("SignalManager")
+	var Events = SignalManager.Events
+	SignalManager._add_receiver(Events.ENABLE_INTERACTION, self, "_on_enable_interaction")
+	SignalManager._add_receiver(Events.GRAB_OBJECT, self, "_on_grab")
+	
+	var og_mesh_instance = get_node("MeshInstance")
+	var og_mesh = og_mesh_instance.mesh
+	
 	highlight = MeshInstance.new()
 	add_child(highlight)
-	var mesh = SphereMesh.new()
+	var mesh = og_mesh
 	mesh.flip_faces = true
+	
 	var mat = SpatialMaterial.new()
 	mat.albedo_color = Color(1,1,0,0.6)
 	mat.flags_transparent = true
@@ -30,17 +41,29 @@ func _ready():
 	availability_timer.set_wait_time(0.1)
 
 
-func _on_timer_timeout():
+# response funtion for enable interacion
+func _on_enable_interaction(object : Node) -> void:
+	if object == self:
+		entered()
+
+
+func _on_grab(object : Node) -> void:
+	if interaction_available:
+		pass
+
+
+# response function for timer duration
+func _on_timer_timeout() -> void:
 	exited()
 
 
-func entered():
+func entered() -> void:
 	highlight.visible = true
 	interaction_available = true
 	availability_timer.start()
 
 
-func exited():
+func exited() -> void:
 	highlight.visible = false
 	interaction_available = false
 	availability_timer.stop()
