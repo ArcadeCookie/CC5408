@@ -3,8 +3,8 @@ extends KinematicBody
 # child nodes references
 onready var camera = get_node("Camera")
 onready var raycast = camera.get_node("RayCast")
-onready var right_hand = get_node("RightHand")
-onready var left_hand = get_node("LeftHand")
+onready var right_hand = camera.get_node("RightHand")
+onready var left_hand = camera.get_node("LeftHand")
 
 # parent nodes reference
 onready var world = get_parent()
@@ -19,7 +19,7 @@ var gravity = -9.8
 # entity variables
 signal enable_interaction(object)
 signal grab(node)
-signal drop
+signal drop(object)
 
 var mouse_sensitivity = 0.2
 var speed = 3
@@ -62,6 +62,7 @@ func get_input() -> Vector3:
 		cam_direction += -camera.global_transform.basis.x
 	if Input.is_action_pressed("move_right"):
 		cam_direction += camera.global_transform.basis.x
+	cam_direction.y = 0
 	cam_direction = cam_direction.normalized()
 	return cam_direction
 
@@ -70,7 +71,7 @@ func get_input() -> Vector3:
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x * mouse_sensitivity
-		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x - event.relative.y * mouse_sensitivity, -90, 90)
+		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x - event.relative.y * mouse_sensitivity, -80, 80)
 	direction = Vector3()
 	direction = direction.normalized().rotated(Vector3.UP, rotation.y)
 
@@ -135,7 +136,12 @@ func grab_with(hand : Node) -> void:
 		emit_signal("grab",hand)
 	else:
 		var object = hand.get_child(0)
-		object.set_translation(hand.get_translation() + self.get_translation())
+		var position = \
+		  camera.to_global(right_hand.get_translation())*0.5 \
+		+ camera.to_global(left_hand.get_translation())*0.5
+		object.set_linear_velocity(Vector3())
+		object.set_angular_velocity(Vector3())
+		object.set_translation(position)
 		hand.remove_child(object)
 		world.add_child(object)
-		emit_signal("drop")
+		emit_signal("drop", object)

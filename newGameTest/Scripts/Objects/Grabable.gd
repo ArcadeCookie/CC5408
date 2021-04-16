@@ -7,7 +7,7 @@ onready var collision_shape = get_node("CollisionShape")
 signal grabed(node1, node2)
 
 var nteraction_timer = 0
-var interaction_threshold = 0.5
+var interaction_threshold = 0.001
 
 var interaction_available = false
 var grabed = false
@@ -57,6 +57,7 @@ func _on_enable_interaction(object : Node) -> void:
 # response method for being grabed
 func _on_grab(object : Node) -> void:
 	if interaction_available:
+		highlight.visible = false
 		collision_shape.disabled = true
 		sleeping = true
 		self.set_translation(Vector3(0,0,0))
@@ -65,11 +66,13 @@ func _on_grab(object : Node) -> void:
 
 
 # response method for being droped
-func _on_drop() -> void:
-	if grabed:
+func _on_drop(object : Node) -> void:
+	if grabed and object == self:
 		collision_shape.disabled = false
 		sleeping = false
 		grabed = false
+		#self.set_linear_velocity(Vector3(0,0,0))
+		#self.set_angular_velocity(Vector3(0,0,0))
 
 
 # response function for timer duration
