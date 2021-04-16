@@ -22,3 +22,9 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0.80
 transform = Transform( 1, 0, 0, 0, -3.25841e-07, -1, 0, 2, -1.62921e-07, 0, 0, 0 )
 enabled = true
 collide_with_areas = true
+
+[node name="RightHand" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.2 )
+
+[node name="LeftHand" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0.2 )

@@ -1,21 +1,28 @@
 extends RigidBody
 
-# entity variables
+# Child nodes references
+onready var collision_shape = get_node("CollisionShape")
+
+# Entity variables
+signal grabed(node1, node2)
+
 var nteraction_timer = 0
 var interaction_threshold = 0.5
 
 var interaction_available = false
+var grabed = false
 
 var availability_timer : Timer
 var highlight : MeshInstance
-
 
 # This function set up the node
 func _ready():
 	var SignalManager = get_parent().get_node("SignalManager")
 	var Events = SignalManager.Events
+	SignalManager._add_emitter(Events.OBJECT_GRABED, self, "grabed")
 	SignalManager._add_receiver(Events.ENABLE_INTERACTION, self, "_on_enable_interaction")
 	SignalManager._add_receiver(Events.GRAB_OBJECT, self, "_on_grab")
+	SignalManager._add_receiver(Events.DROP_OBJECT, self, "_on_drop")
 	
 	var og_mesh_instance = get_node("MeshInstance")
 	var og_mesh = og_mesh_instance.mesh
@@ -47,9 +54,22 @@ func _on_enable_interaction(object : Node) -> void:
 		entered()
 
 
+# response method for being grabed
 func _on_grab(object : Node) -> void:
 	if interaction_available:
-		pass
+		collision_shape.disabled = true
+		sleeping = true
+		self.set_translation(Vector3(0,0,0))
+		grabed = true
+		emit_signal("grabed", object, self)
+
+
+# response method for being droped
+func _on_drop() -> void:
+	if grabed:
+		collision_shape.disabled = false
+		sleeping = false
+		grabed = false
 
 
 # response function for timer duration

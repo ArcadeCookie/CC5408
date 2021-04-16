@@ -57,12 +57,12 @@ albedo_color = Color( 0.717647, 0.145098, 0.145098, 1 )
 
 [sub_resource type="SphereShape" id=13]
 
-[sub_resource type="SphereMesh" id=20]
+[sub_resource type="SphereMesh" id=14]
 
-[sub_resource type="SpatialMaterial" id=21]
+[sub_resource type="SpatialMaterial" id=15]
 albedo_color = Color( 0.219608, 0.980392, 0.831373, 1 )
 
-[sub_resource type="SphereShape" id=22]
+[sub_resource type="SphereShape" id=16]
 
 [sub_resource type="SphereMesh" id=17]
 
@@ -71,12 +71,12 @@ albedo_color = Color( 0.501961, 0.0901961, 0.478431, 1 )
 
 [sub_resource type="SphereShape" id=19]
 
-[sub_resource type="CubeMesh" id=23]
+[sub_resource type="CubeMesh" id=20]
 
-[sub_resource type="SpatialMaterial" id=24]
+[sub_resource type="SpatialMaterial" id=21]
 albedo_color = Color( 1, 0, 0.866667, 1 )
 
-[sub_resource type="BoxShape" id=25]
+[sub_resource type="BoxShape" id=22]
 
 [node name="Spatial" type="Spatial"]
 
@@ -143,11 +143,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01618, 1.56391, 3.10972 )
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody4"]
-mesh = SubResource( 20 )
-material/0 = SubResource( 21 )
+mesh = SubResource( 14 )
+material/0 = SubResource( 15 )
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody4"]
-shape = SubResource( 22 )
+shape = SubResource( 16 )
 
 [node name="RigidBody5" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08855, 1.53615, -2.318 )
@@ -161,12 +161,12 @@ material/0 = SubResource( 18 )
 shape = SubResource( 19 )
 
 [node name="RigidBody6" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.50517, -12.2491 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18004, -12.2491 )
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody6"]
-mesh = SubResource( 23 )
-material/0 = SubResource( 24 )
+mesh = SubResource( 20 )
+material/0 = SubResource( 21 )
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody6"]
-shape = SubResource( 25 )
+shape = SubResource( 22 )

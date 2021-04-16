@@ -3,6 +3,8 @@ extends KinematicBody
 # child nodes references
 onready var camera = get_node("Camera")
 onready var raycast = camera.get_node("RayCast")
+onready var right_hand = get_node("RightHand")
+onready var left_hand = get_node("LeftHand")
 
 # parent nodes reference
 onready var world = get_parent()
@@ -17,6 +19,7 @@ var gravity = -9.8
 # entity variables
 signal enable_interaction(object)
 signal grab(node)
+signal drop
 
 var mouse_sensitivity = 0.2
 var speed = 3
@@ -41,6 +44,8 @@ func _ready():
 	Events = SignalManager.Events
 	SignalManager._add_emitter(Events.ENABLE_INTERACTION, self, "enable_interaction")
 	SignalManager._add_emitter(Events.GRAB_OBJECT, self, "grab")
+	SignalManager._add_emitter(Events.DROP_OBJECT, self, "drop")
+	SignalManager._add_receiver(Events.OBJECT_GRABED, self, "_on_grabed_object")
 	# Center and hide mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	set_process(true)
@@ -83,9 +88,9 @@ func _unhandled_key_input(event):
 	if Input.is_action_just_released("crouch"):
 		crouching = false
 	if Input.is_action_just_pressed("right_action"):
-		emit_signal("grab",self)
+		grab_with(right_hand)
 	if Input.is_action_just_pressed("left_action"):
-		emit_signal("grab",self)
+		grab_with(left_hand)
 
 # Standard function that executes fixed amount of times per frame
 func _physics_process(delta):
@@ -118,3 +123,19 @@ func _process(_delta):
 	if raycast.is_colliding():
 		var obj = raycast.get_collider()
 		emit_signal("enable_interaction", obj)
+
+# response method to a grabed object
+func _on_grabed_object(hand : Node, object : Node) -> void:
+	world.remove_child(object)
+	hand.add_child(object)
+
+# Manages grabing an object
+func grab_with(hand : Node) -> void:
+	if hand.get_child_count() == 0:
+		emit_signal("grab",hand)
+	else:
+		var object = hand.get_child(0)
+		object.set_translation(hand.get_translation() + self.get_translation())
+		hand.remove_child(object)
+		world.add_child(object)
+		emit_signal("drop")

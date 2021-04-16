@@ -4,6 +4,8 @@ extends Node
 enum Events {
 			ENABLE_INTERACTION
 			GRAB_OBJECT
+			DROP_OBJECT
+			OBJECT_GRABED
 			}
 
 var emitters = {}
