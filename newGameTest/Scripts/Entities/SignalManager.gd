@@ -6,10 +6,20 @@ enum Events {
 			GRAB_OBJECT
 			DROP_OBJECT
 			OBJECT_GRABED
+			TERMINAL_INTERACTION
+			TERMINAL_INTERACTION_AVAILABLE
 			}
+
+enum Terminals {
+				DOOR_0
+				}
 
 var emitters = {}
 var receivers = {}
+
+var terminals = {}
+var required_objects = {}
+
 
 # This function will register a new emitter for an event
 # with its respective signal and connects with any receiver
@@ -24,6 +34,7 @@ func _add_emitter(Event : int, emitter : Node, signal_name : String) -> void:
 			var receiver_method_name = receiver_info[1]
 			emitter.connect(signal_name, receiver, receiver_method_name)
 
+
 # This function will register a new receiver for an event
 # with its respective response method and connects with any emitter
 # already registered to the same Event
@@ -36,3 +47,13 @@ func _add_receiver(Event : int, receiver : Node, response_method : String) -> vo
 			var emitter = emitter_info[0]
 			var signal_name = emitter_info[1]
 			emitter.connect(signal_name, receiver, response_method)
+
+
+#
+func _register_terminal(Terminal : int, terminal_node : Node) -> void:
+	terminals[Terminal] = terminal_node
+
+
+#
+func _register_required_object(Terminal : int, object : Node) -> void:
+	required_objects[Terminal] = object

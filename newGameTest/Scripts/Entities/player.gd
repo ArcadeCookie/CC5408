@@ -18,8 +18,9 @@ var gravity = -9.8
 
 # entity variables
 signal enable_interaction(object)
-signal grab(node)
-signal drop(object)
+signal grab_object(node)
+signal drop_object(object)
+signal terminal_interaction(node, object)
 
 var mouse_sensitivity = 0.2
 var speed = 3
@@ -33,20 +34,32 @@ var rest_factor = 0.5
 var sprinting = false
 var resting = true
 var crouching = false
+var interaction_available = false
 
+var availability_timer : Timer
 var direction = Vector3()
 var velocity = Vector3()
+var related_terminal = null
 
 
 # This method set up the node
 func _ready():
 	SignalManager = world.get_node("SignalManager")
 	Events = SignalManager.Events
+	
 	SignalManager._add_emitter(Events.ENABLE_INTERACTION, self, "enable_interaction")
-	SignalManager._add_emitter(Events.GRAB_OBJECT, self, "grab")
-	SignalManager._add_emitter(Events.DROP_OBJECT, self, "drop")
+	SignalManager._add_emitter(Events.GRAB_OBJECT, self, "grab_object")
+	SignalManager._add_emitter(Events.DROP_OBJECT, self, "drop_object")
+	SignalManager._add_emitter(Events.TERMINAL_INTERACTION, self, "terminal_interaction")
 	SignalManager._add_receiver(Events.OBJECT_GRABED, self, "_on_grabed_object")
-	# Center and hide mouse
+	SignalManager._add_receiver(Events.TERMINAL_INTERACTION_AVAILABLE, self, "_on_interaction_available")
+	
+	availability_timer = Timer.new()
+	availability_timer.connect("timeout",self,"_on_timer_timeout") 
+	add_child(availability_timer)
+	availability_timer.set_wait_time(0.01)
+	
+	# Center and hide the cursor
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	set_process(true)
 
@@ -89,9 +102,10 @@ func _unhandled_key_input(event):
 	if Input.is_action_just_released("crouch"):
 		crouching = false
 	if Input.is_action_just_pressed("right_action"):
-		grab_with(right_hand)
+		hand_action(right_hand)
 	if Input.is_action_just_pressed("left_action"):
-		grab_with(left_hand)
+		hand_action(left_hand)
+
 
 # Standard function that executes fixed amount of times per frame
 func _physics_process(delta):
@@ -122,18 +136,18 @@ func _physics_process(delta):
 # Standard function that executes fixed amount of times per frame
 func _process(_delta):
 	if raycast.is_colliding():
-		var obj = raycast.get_collider()
-		emit_signal("enable_interaction", obj)
+		var collision = raycast.get_collider()
+		emit_signal("enable_interaction", collision)
 
 # response method to a grabed object
 func _on_grabed_object(hand : Node, object : Node) -> void:
 	world.remove_child(object)
 	hand.add_child(object)
 
-# Manages grabing an object
+# Manages grabing an object REVIEWING DELETION
 func grab_with(hand : Node) -> void:
 	if hand.get_child_count() == 0:
-		emit_signal("grab",hand)
+		emit_signal("grab_object",hand)
 	else:
 		var object = hand.get_child(0)
 		var position = \
@@ -144,4 +158,40 @@ func grab_with(hand : Node) -> void:
 		object.set_translation(position)
 		hand.remove_child(object)
 		world.add_child(object)
-		emit_signal("drop", object)
+		emit_signal("drop_object", object)
+
+#
+func drop_object(hand : Node) -> void:
+	var object = hand.get_child(0)
+	var position = \
+			camera.to_global(right_hand.get_translation())*0.5 \
+			+ camera.to_global(left_hand.get_translation())*0.5
+	object.set_linear_velocity(Vector3())
+	object.set_angular_velocity(Vector3())
+	object.set_translation(position)
+	hand.remove_child(object)
+	world.add_child(object)
+	emit_signal("drop_object", object)
+
+#
+func hand_action(hand : Node) -> void:
+	if hand.get_child_count() == 0:
+		emit_signal("grab_object",hand)
+	else:
+		if interaction_available:
+			var object = hand.get_child(0)
+			emit_signal("terminal_interaction", related_terminal, object)
+		else:
+			drop_object(hand)
+
+#
+func _on_interaction_available(terminal : Node) -> void:
+	interaction_available = true
+	availability_timer.start()
+	related_terminal = terminal.get_node("Terminal")
+
+#
+func _on_timer_timeout() -> void:
+	interaction_available = false
+	availability_timer.stop()
+	related_terminal = null

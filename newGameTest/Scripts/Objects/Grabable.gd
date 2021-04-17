@@ -6,19 +6,19 @@ onready var collision_shape = get_node("CollisionShape")
 # Entity variables
 signal grabed(node1, node2)
 
-var nteraction_timer = 0
-var interaction_threshold = 0.001
-
 var interaction_available = false
 var grabed = false
 
 var availability_timer : Timer
 var highlight : MeshInstance
 
+
 # This function set up the node
 func _ready():
 	var SignalManager = get_parent().get_node("SignalManager")
 	var Events = SignalManager.Events
+	var SM_terminal = SignalManager.Terminals.DOOR_0
+	
 	SignalManager._add_emitter(Events.OBJECT_GRABED, self, "grabed")
 	SignalManager._add_receiver(Events.ENABLE_INTERACTION, self, "_on_enable_interaction")
 	SignalManager._add_receiver(Events.GRAB_OBJECT, self, "_on_grab")
@@ -45,7 +45,7 @@ func _ready():
 	availability_timer = Timer.new()
 	availability_timer.connect("timeout",self,"_on_timer_timeout") 
 	add_child(availability_timer)
-	availability_timer.set_wait_time(0.1)
+	availability_timer.set_wait_time(0.01)
 
 
 # response funtion for enable interacion
@@ -71,8 +71,6 @@ func _on_drop(object : Node) -> void:
 		collision_shape.disabled = false
 		sleeping = false
 		grabed = false
-		#self.set_linear_velocity(Vector3(0,0,0))
-		#self.set_angular_velocity(Vector3(0,0,0))
 
 
 # response function for timer duration
@@ -80,12 +78,14 @@ func _on_timer_timeout() -> void:
 	exited()
 
 
+#
 func entered() -> void:
 	highlight.visible = true
 	interaction_available = true
 	availability_timer.start()
 
 
+#
 func exited() -> void:
 	highlight.visible = false
 	interaction_available = false
