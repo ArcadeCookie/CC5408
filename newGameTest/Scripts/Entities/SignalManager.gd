@@ -14,6 +14,12 @@ enum Terminals {
 				DOOR_0
 				}
 
+var scene_names = [
+	"res://Scenes/Demo/DemoMap1.tscn",
+	"res://Scenes/Demo/DemoMap2.tscn",
+	"res://Scenes/Demo/DemoMap3.tscn"
+]
+
 var emitters = {}
 var receivers = {}
 

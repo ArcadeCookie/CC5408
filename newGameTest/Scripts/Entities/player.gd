@@ -23,8 +23,8 @@ signal drop_object(object)
 signal terminal_interaction(node, object)
 
 var mouse_sensitivity = 0.2
-var speed = 3
-var sprinting_speed = 10
+var speed = 7
+var sprinting_speed = 12
 var stamina = 3
 var max_stamina = 3
 var rest_timer = 0
@@ -105,6 +105,11 @@ func _unhandled_key_input(event):
 		hand_action(right_hand)
 	if Input.is_action_just_pressed("left_action"):
 		hand_action(left_hand)
+	if Input.is_action_just_pressed("ChangeScene"):
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var random_number = rng.randi_range(0,2)
+		get_tree().change_scene(SignalManager.scene_names[random_number])
 
 
 # Standard function that executes fixed amount of times per frame
