@@ -5,6 +5,7 @@ onready var camera = get_node("Camera")
 onready var raycast = camera.get_node("RayCast")
 onready var right_hand = camera.get_node("RightHand")
 onready var left_hand = camera.get_node("LeftHand")
+onready var cap = camera.get_node("Cap")
 
 # parent nodes reference
 onready var world = get_parent()
@@ -30,11 +31,15 @@ var max_stamina = 3
 var rest_timer = 0
 var rest_time_threshold = 2
 var rest_factor = 0.5
+var fade = 0
 
 var sprinting = false
 var resting = true
 var crouching = false
 var interaction_available = false
+var og_map = true
+var fading_out = false
+var fading_in = false
 
 var availability_timer : Timer
 var direction = Vector3()
@@ -105,11 +110,12 @@ func _unhandled_key_input(event):
 		hand_action(right_hand)
 	if Input.is_action_just_pressed("left_action"):
 		hand_action(left_hand)
-	if Input.is_action_just_pressed("ChangeScene"):
-		var rng = RandomNumberGenerator.new()
-		rng.randomize()
-		var random_number = rng.randi_range(0,2)
-		get_tree().change_scene(SignalManager.scene_names[random_number])
+	if Input.is_action_just_pressed("scene_change"):
+		if right_hand.get_child_count() > 0:
+			drop_object(right_hand)
+		if left_hand.get_child_count() > 0:
+			drop_object(left_hand)
+		fading_out = true
 
 
 # Standard function that executes fixed amount of times per frame
@@ -136,6 +142,19 @@ func _physics_process(delta):
 	velocity.x = objective_velocity.x
 	velocity.z = objective_velocity.z
 	velocity = move_and_slide(velocity, Vector3.UP, true)
+	
+	if fading_out:
+		fade += delta
+		var token = sin(fade)
+		if token > 1-0.001:
+			fading_in = true
+			change_map()
+		if token < 0 + 0.001:
+			token = 0
+			fade = 0
+			fading_in = false
+			fading_out = false
+		cap.get_surface_material(0).set_albedo(Color(0,0,0,token))
 
 
 # Standard function that executes fixed amount of times per frame
@@ -144,10 +163,12 @@ func _process(_delta):
 		var collision = raycast.get_collider()
 		emit_signal("enable_interaction", collision)
 
+
 # response method to a grabed object
 func _on_grabed_object(hand : Node, object : Node) -> void:
 	world.remove_child(object)
 	hand.add_child(object)
+
 
 # Manages grabing an object REVIEWING DELETION
 func grab_with(hand : Node) -> void:
@@ -165,6 +186,7 @@ func grab_with(hand : Node) -> void:
 		world.add_child(object)
 		emit_signal("drop_object", object)
 
+
 #
 func drop_object(hand : Node) -> void:
 	var object = hand.get_child(0)
@@ -178,6 +200,7 @@ func drop_object(hand : Node) -> void:
 	world.add_child(object)
 	emit_signal("drop_object", object)
 
+
 #
 func hand_action(hand : Node) -> void:
 	if hand.get_child_count() == 0:
@@ -189,14 +212,26 @@ func hand_action(hand : Node) -> void:
 		else:
 			drop_object(hand)
 
+
 #
 func _on_interaction_available(terminal : Node) -> void:
 	interaction_available = true
 	availability_timer.start()
 	related_terminal = terminal.get_node("Terminal")
 
+
 #
 func _on_timer_timeout() -> void:
 	interaction_available = false
 	availability_timer.stop()
 	related_terminal = null
+
+
+#
+func change_map() -> void:
+	if og_map:
+		set_translation(Vector3(80,0,0) + get_translation())
+		og_map = false
+	else:
+		set_translation(Vector3(-80,0,0) + get_translation())
+		og_map = true

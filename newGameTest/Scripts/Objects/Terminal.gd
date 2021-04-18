@@ -10,6 +10,7 @@ var interaction_available = false
 
 var availability_timer : Timer
 var highlight : MeshInstance
+# NECESARIO EN INSTANCIA ESPECIFICA
 var SM_terminal : int
 
 
@@ -17,12 +18,15 @@ var SM_terminal : int
 func _ready():
 	var SignalManager = get_parent().get_node("SignalManager")
 	var Events = SignalManager.Events
+	
+	# NECESARIO EN INSTANCIA ESPECIFICA
 	SM_terminal = SignalManager.Terminals.DOOR_0
 	
 	SignalManager._add_emitter(Events.TERMINAL_INTERACTION_AVAILABLE, self, "interaction_available")
 	SignalManager._add_receiver(Events.ENABLE_INTERACTION, self, "_on_enable_interaction")
 	SignalManager._add_receiver(Events.TERMINAL_INTERACTION, self, "_on_terminal_interaction")
 	
+	# NECESARIO EN INSTANCIA ESPECIFICA
 	SignalManager._register_terminal(SM_terminal, self)
 	
 	var og_mesh_instance = get_node("Terminal").get_node("MeshInstance")
@@ -75,18 +79,10 @@ func exited() -> void:
 	availability_timer.stop()
 
 
-#
+# NECESARIO EN INSTANCIA ESPECIFICA
 func _on_terminal_interaction(terminal_node : Node, object : Node) -> void:
 	if interaction_available and terminal == terminal_node:
 		var SignalManager = get_parent().get_node("SignalManager")
 		var required_object = SignalManager.required_objects[SM_terminal]
 		if object == required_object:
-			open_the_gates()
-
-
-#
-func open_the_gates():
-	var right_gate = get_node("Right")
-	var left_gate = get_node("Left")
-	right_gate.set_translation(Vector3(0,0,2))
-	left_gate.set_translation(Vector3(0,0,-2))
+			print("OMG action")
