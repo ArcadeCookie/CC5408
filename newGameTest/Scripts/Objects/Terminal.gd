@@ -75,8 +75,7 @@ func exited() -> void:
 
 # NECESARIO EN INSTANCIA ESPECIFICA
 func _on_terminal_interaction(terminal_node : Node, object : Node) -> void:
-	if interaction_available and terminal == terminal_node:
-		var SignalManager = get_parent().get_node("SignalManager")
-		var required_object = SignalManager.required_objects[SM_terminal]
-		if object == required_object:
-			print("OMG action")
+	var SignalManager = get_parent().get_node("SignalManager")
+	var required_object = SignalManager.required_objects[SM_terminal]
+	SignalManager._disconnect_receiver(SignalManager.Events.ENABLE_INTERACTION, self, "_on_enable_interaction")
+	SignalManager._disconnect_receiver(SignalManager.Events.TERMINAL_INTERACTION, self, "_on_terminal_interaction")

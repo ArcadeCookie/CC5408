@@ -60,6 +60,14 @@ func _add_receiver(Event : int, receiver : Node, response_method : String) -> vo
 
 
 #
+func _disconnect_receiver(Event : int, receiver : Node, response_method : String):
+	if receivers.has(Event):
+		for emitter_info in emitters[Event]:
+			var emitter = emitter_info[0]
+			var signal_name = emitter_info[1]
+			emitter.disconnect(signal_name, receiver, response_method)
+
+#
 func _register_terminal(Terminal : int, terminal_node : Node) -> void:
 	terminals[Terminal] = terminal_node
 

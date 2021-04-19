@@ -22,3 +22,4 @@ func _on_terminal_interaction(terminal_node : Node, object : Node) -> void:
 			var left2 = get_node("Left2")
 			right2.set_translation(right2.get_translation() + Vector3(0,0,2))
 			left2.set_translation(left2.get_translation() + Vector3(0,0,-2))
+			._on_terminal_interaction(terminal_node, object)
