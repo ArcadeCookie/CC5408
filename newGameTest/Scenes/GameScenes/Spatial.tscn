@@ -1,10 +1,10 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scenes/Entities/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Entities/SignalManager.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Objects/Puerta.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Objects/Grabable.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Objects/Cube.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/Objects/Terminal.gd" type="Script" id=6]
 [ext_resource path="res://Resources/Audio/Map/Music/Music.wav" type="AudioStream" id=7]
 
 [sub_resource type="ProceduralSky" id=1]
@@ -79,30 +79,6 @@ albedo_color = Color( 0.501961, 0.0901961, 0.478431, 1 )
 albedo_color = Color( 1, 0, 0.866667, 1 )
 
 [sub_resource type="BoxShape" id=22]
-
-[sub_resource type="PlaneMesh" id=23]
-
-[sub_resource type="SpatialMaterial" id=24]
-albedo_color = Color( 0, 0, 1, 1 )
-
-[sub_resource type="ConvexPolygonShape" id=25]
-points = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1 )
-
-[sub_resource type="PlaneMesh" id=26]
-
-[sub_resource type="SpatialMaterial" id=27]
-albedo_color = Color( 1, 0, 0, 1 )
-
-[sub_resource type="ConvexPolygonShape" id=28]
-points = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1 )
-
-[sub_resource type="CubeMesh" id=29]
-
-[sub_resource type="SpatialMaterial" id=30]
-albedo_color = Color( 0.0313726, 1, 0, 1 )
-
-[sub_resource type="ConvexPolygonShape" id=31]
-points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
 [sub_resource type="PlaneMesh" id=32]
 
@@ -207,41 +183,7 @@ material/0 = SubResource( 21 )
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody6"]
 shape = SubResource( 22 )
 
-[node name="Puerta" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9266, 0.0301008, 0.043539 )
-script = ExtResource( 6 )
-
-[node name="Right" type="StaticBody" parent="Puerta"]
-
-[node name="MeshInstance" type="MeshInstance" parent="Puerta/Right"]
-transform = Transform( -4.07302e-07, -1, 0, 2.5, -1.62921e-07, 0, 0, 0, 1, 0, 2.5, 1 )
-mesh = SubResource( 23 )
-material/0 = SubResource( 24 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Puerta/Right"]
-transform = Transform( -4.07302e-07, -1, 0, 2.5, -1.62921e-07, 0, 0, 0, 1, 0, 2.5, 1 )
-shape = SubResource( 25 )
-
-[node name="Left" type="StaticBody" parent="Puerta"]
-
-[node name="MeshInstance" type="MeshInstance" parent="Puerta/Left"]
-transform = Transform( -4.07302e-07, -1, 0, 2.5, -1.62921e-07, 0, 0, 0, 1, 0, 2.5, -1 )
-mesh = SubResource( 26 )
-material/0 = SubResource( 27 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Puerta/Left"]
-transform = Transform( -4.07302e-07, -1, 0, 2.5, -1.62921e-07, 0, 0, 0, 1, 0, 2.5, -1 )
-shape = SubResource( 28 )
-
-[node name="Terminal" type="StaticBody" parent="Puerta"]
-transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -0.5, 1, 2.5 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Puerta/Terminal"]
-mesh = SubResource( 29 )
-material/0 = SubResource( 30 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Puerta/Terminal"]
-shape = SubResource( 31 )
+[node name="Puerta" parent="." instance=ExtResource( 3 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

@@ -18,12 +18,14 @@ func _unhandled_key_input(event):
 func _ready():
 	var SignalManager = get_parent().get_node("SignalManager")
 	var Events = SignalManager.Events
-	var SM_terminal = SignalManager.Terminals.DOOR_0
+	var SM_terminal = SignalManager.Terminals.DOOR_3
 	
 	SignalManager._add_emitter(Events.OBJECT_GRABED, self, "grabed")
 	SignalManager._add_receiver(Events.ENABLE_INTERACTION, self, "_on_enable_interaction")
 	SignalManager._add_receiver(Events.GRAB_OBJECT, self, "_on_grab")
 	SignalManager._add_receiver(Events.DROP_OBJECT, self, "_on_drop")
+	
+	SignalManager._register_required_object(SM_terminal, self)
 	
 	var og_mesh_instance = get_node("MeshInstance")
 	var og_mesh = og_mesh_instance.mesh
@@ -38,7 +40,7 @@ func _ready():
 	mat.flags_transparent = true
 	mat.flags_unshaded = true
 	
-	highlight.scale *= 1.1
+	highlight.scale *= 1.2
 	highlight.mesh = mesh
 	highlight.material_override = mat
 	highlight.visible = false
@@ -52,7 +54,7 @@ func _ready():
 #
 func _physics_process(delta):
 	time += delta * 5
-	var dimension = 1.1 + 0.09 * sin(time)
+	var dimension = 1.2 + 0.15 * sin(time)
 	highlight.scale = Vector3(dimension,dimension,dimension)
 	
 	if fading_out:

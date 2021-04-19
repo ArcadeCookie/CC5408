@@ -12,6 +12,10 @@ enum Events {
 
 enum Terminals {
 				DOOR_0
+				DOOR_1
+				DOOR_2
+				DOOR_3
+				DOOR_4
 				}
 
 var scene_names = [

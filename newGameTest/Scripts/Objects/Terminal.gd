@@ -19,15 +19,9 @@ func _ready():
 	var SignalManager = get_parent().get_node("SignalManager")
 	var Events = SignalManager.Events
 	
-	# NECESARIO EN INSTANCIA ESPECIFICA
-	SM_terminal = SignalManager.Terminals.DOOR_0
-	
 	SignalManager._add_emitter(Events.TERMINAL_INTERACTION_AVAILABLE, self, "interaction_available")
 	SignalManager._add_receiver(Events.ENABLE_INTERACTION, self, "_on_enable_interaction")
 	SignalManager._add_receiver(Events.TERMINAL_INTERACTION, self, "_on_terminal_interaction")
-	
-	# NECESARIO EN INSTANCIA ESPECIFICA
-	SignalManager._register_terminal(SM_terminal, self)
 	
 	var og_mesh_instance = get_node("Terminal").get_node("MeshInstance")
 	var og_mesh = og_mesh_instance.mesh
