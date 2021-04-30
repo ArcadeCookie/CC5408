@@ -244,7 +244,6 @@ shadow_enabled = true
 spot_range = 45.6
 spot_attenuation = 0.757858
 spot_angle = 36.9
-spot_angle_attenuation = 1.0
 
 [node name="Map" type="Spatial" parent="."]
 

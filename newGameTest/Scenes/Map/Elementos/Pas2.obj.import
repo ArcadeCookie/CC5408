@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Pas2.obj-f93a99193f94476a9c5aa3e4ffee7a21.mesh"
+
+[deps]
+
+files=[ "res://.import/Pas2.obj-f93a99193f94476a9c5aa3e4ffee7a21.mesh" ]
+
+source_file="res://Scenes/Map/Elementos/Pas2.obj"
+dest_files=[ "res://.import/Pas2.obj-f93a99193f94476a9c5aa3e4ffee7a21.mesh", "res://.import/Pas2.obj-f93a99193f94476a9c5aa3e4ffee7a21.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

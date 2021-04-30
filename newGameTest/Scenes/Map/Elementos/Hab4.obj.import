@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Hab4.obj-fa9d2e45c285f32b6c1a4be9dd6a9921.mesh"
+
+[deps]
+
+files=[ "res://.import/Hab4.obj-fa9d2e45c285f32b6c1a4be9dd6a9921.mesh" ]
+
+source_file="res://Scenes/Map/Elementos/Hab4.obj"
+dest_files=[ "res://.import/Hab4.obj-fa9d2e45c285f32b6c1a4be9dd6a9921.mesh", "res://.import/Hab4.obj-fa9d2e45c285f32b6c1a4be9dd6a9921.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

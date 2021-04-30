@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Luz.obj-8682d0cb66d8e5820c5a3f126c0b1580.mesh"
+
+[deps]
+
+files=[ "res://.import/Luz.obj-8682d0cb66d8e5820c5a3f126c0b1580.mesh" ]
+
+source_file="res://Scenes/Map/Elementos/Luz.obj"
+dest_files=[ "res://.import/Luz.obj-8682d0cb66d8e5820c5a3f126c0b1580.mesh", "res://.import/Luz.obj-8682d0cb66d8e5820c5a3f126c0b1580.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
