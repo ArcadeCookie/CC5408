@@ -28,7 +28,7 @@ func _ready():
 	
 	highlight = MeshInstance.new()
 	terminal.add_child(highlight)
-	var mesh = og_mesh
+	var mesh = og_mesh.duplicate()
 	mesh.flip_faces = true
 	
 	var mat = SpatialMaterial.new()
@@ -76,6 +76,5 @@ func exited() -> void:
 # NECESARIO EN INSTANCIA ESPECIFICA
 func _on_terminal_interaction(terminal_node : Node, object : Node) -> void:
 	var SignalManager = get_parent().get_node("SignalManager")
-	var required_object = SignalManager.required_objects[SM_terminal]
 	SignalManager._disconnect_receiver(SignalManager.Events.ENABLE_INTERACTION, self, "_on_enable_interaction")
 	SignalManager._disconnect_receiver(SignalManager.Events.TERMINAL_INTERACTION, self, "_on_terminal_interaction")

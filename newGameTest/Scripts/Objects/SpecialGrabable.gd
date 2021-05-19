@@ -32,7 +32,7 @@ func _ready():
 	
 	highlight = MeshInstance.new()
 	add_child(highlight)
-	var mesh = og_mesh
+	var mesh = og_mesh.duplicate()
 	mesh.flip_faces = true
 	
 	var mat = SpatialMaterial.new()

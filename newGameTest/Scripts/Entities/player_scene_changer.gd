@@ -22,6 +22,7 @@ signal enable_interaction(object)
 signal grab_object(node)
 signal drop_object(object)
 signal terminal_interaction(node, object)
+signal changing_map
 
 var mouse_sensitivity = 0.2
 var speed = 5
@@ -49,6 +50,10 @@ var related_terminal = null
 
 # This method set up the node
 func _ready():
+	if DataManager.state.player.translation != Vector3():
+		set_translation(DataManager.state.player.translation)
+		set_rotation(DataManager.state.player.rotation)
+	
 	SignalManager = world.get_node("SignalManager")
 	Events = SignalManager.Events
 	
@@ -58,6 +63,8 @@ func _ready():
 	SignalManager._add_emitter(Events.TERMINAL_INTERACTION, self, "terminal_interaction")
 	SignalManager._add_receiver(Events.OBJECT_GRABED, self, "_on_grabed_object")
 	SignalManager._add_receiver(Events.TERMINAL_INTERACTION_AVAILABLE, self, "_on_interaction_available")
+	
+	SignalManager._add_emitter(Events.CHANGING_MAP, self, "changing_map")
 	
 	availability_timer = Timer.new()
 	availability_timer.connect("timeout",self,"_on_timer_timeout") 
@@ -229,9 +236,7 @@ func _on_timer_timeout() -> void:
 
 #
 func change_map() -> void:
-	if og_map:
-		set_translation(Vector3(80,0,0) + get_translation())
-		og_map = false
-	else:
-		set_translation(Vector3(-80,0,0) + get_translation())
-		og_map = true
+	emit_signal("changing_map")
+	DataManager.state.player.translation = get_translation()
+	DataManager.state.player.rotation = get_rotation()
+	get_tree().change_scene("res://Scenes/Demo/DemoMap3.tscn")
