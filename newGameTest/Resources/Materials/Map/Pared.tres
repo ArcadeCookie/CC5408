@@ -6,6 +6,7 @@
 [ext_resource path="res://Resources/Materials/Map/Pared/Plaster002_4K_Roughness.jpg" type="Texture" id=4]
 
 [resource]
+flags_use_point_size = true
 flags_world_triplanar = true
 albedo_texture = ExtResource( 2 )
 roughness_texture = ExtResource( 4 )

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/LabOeste.obj-9eb6f09a67d81efa1c14693f2b801ebf.mesh"
+
+[deps]
+
+files=[ "res://.import/LabOeste.obj-9eb6f09a67d81efa1c14693f2b801ebf.mesh" ]
+
+source_file="res://Scenes/Map/LabOeste.obj"
+dest_files=[ "res://.import/LabOeste.obj-9eb6f09a67d81efa1c14693f2b801ebf.mesh", "res://.import/LabOeste.obj-9eb6f09a67d81efa1c14693f2b801ebf.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
