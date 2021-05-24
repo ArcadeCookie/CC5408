@@ -14,7 +14,11 @@ func _ready():
 func _on_terminal_interaction(terminal_node : Node, object : Node) -> void:
 	if interaction_available and terminal == terminal_node:
 		var SignalManager = get_parent().get_node("SignalManager")
-		var required_object = SignalManager.required_objects[SM_terminal]
+		var required_object
+		if SM_terminal in SignalManager.required_objects:
+			required_object = SignalManager.required_objects[SM_terminal]
+		else:
+			required_object = null
 		if object == required_object:
 			DataManager.state.terminals.test_door = true
 			var right = get_node("Right")
