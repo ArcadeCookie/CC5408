@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Resources/Materials/Map/DemoMaterial3.tres" type="Material" id=1]
 [ext_resource path="res://Scripts/Entities/SignalManager_test.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Entities/player_scene_changer2.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/Objects/Key(1)_test_dim_3.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/Objects/Door_0_test.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Entities/Player_D3.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Objects/Grabable_NSM.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Objects/Terminal_NSM.gd" type="Script" id=5]
 
 [sub_resource type="PlaneMesh" id=1]
 
