@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Casino.obj-5222ee03e33bfd84819e42cfbb82730e.mesh"
+
+[deps]
+
+files=[ "res://.import/Casino.obj-5222ee03e33bfd84819e42cfbb82730e.mesh" ]
+
+source_file="res://Resources/Modelos/Mapa/Casino.obj"
+dest_files=[ "res://.import/Casino.obj-5222ee03e33bfd84819e42cfbb82730e.mesh", "res://.import/Casino.obj-5222ee03e33bfd84819e42cfbb82730e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

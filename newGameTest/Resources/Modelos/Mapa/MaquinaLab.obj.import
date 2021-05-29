@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/MaquinaLab.obj-05186c951e94caa1f20a705f5d0addef.mesh"
+
+[deps]
+
+files=[ "res://.import/MaquinaLab.obj-05186c951e94caa1f20a705f5d0addef.mesh" ]
+
+source_file="res://Resources/Modelos/Mapa/MaquinaLab.obj"
+dest_files=[ "res://.import/MaquinaLab.obj-05186c951e94caa1f20a705f5d0addef.mesh", "res://.import/MaquinaLab.obj-05186c951e94caa1f20a705f5d0addef.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

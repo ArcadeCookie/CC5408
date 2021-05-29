@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/PuertaPequeñaAbierta.obj-6c5dbc3b4564754538e7ee2e8f79a2ce.mesh"
+
+[deps]
+
+files=[ "res://.import/PuertaPequeñaAbierta.obj-6c5dbc3b4564754538e7ee2e8f79a2ce.mesh" ]
+
+source_file="res://Resources/Modelos/Mapa/PuertaPequeñaAbierta.obj"
+dest_files=[ "res://.import/PuertaPequeñaAbierta.obj-6c5dbc3b4564754538e7ee2e8f79a2ce.mesh", "res://.import/PuertaPequeñaAbierta.obj-6c5dbc3b4564754538e7ee2e8f79a2ce.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

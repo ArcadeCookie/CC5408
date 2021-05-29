@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/PuertaGrande.obj-a798eb52955cffd5eff731e78c50a778.mesh"
+
+[deps]
+
+files=[ "res://.import/PuertaGrande.obj-a798eb52955cffd5eff731e78c50a778.mesh" ]
+
+source_file="res://Resources/Modelos/Mapa/PuertaGrande.obj"
+dest_files=[ "res://.import/PuertaGrande.obj-a798eb52955cffd5eff731e78c50a778.mesh", "res://.import/PuertaGrande.obj-a798eb52955cffd5eff731e78c50a778.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

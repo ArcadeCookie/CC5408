@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Recepcion.obj-e53f4e0c0a925c063ecafdd207df3a98.mesh"
+
+[deps]
+
+files=[ "res://.import/Recepcion.obj-e53f4e0c0a925c063ecafdd207df3a98.mesh" ]
+
+source_file="res://Resources/Modelos/Mapa/Recepcion.obj"
+dest_files=[ "res://.import/Recepcion.obj-e53f4e0c0a925c063ecafdd207df3a98.mesh", "res://.import/Recepcion.obj-e53f4e0c0a925c063ecafdd207df3a98.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

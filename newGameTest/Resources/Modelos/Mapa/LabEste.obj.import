@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/LabEste.obj-3fd640833057542b96d3cd4812a77fdb.mesh"
+
+[deps]
+
+files=[ "res://.import/LabEste.obj-3fd640833057542b96d3cd4812a77fdb.mesh" ]
+
+source_file="res://Resources/Modelos/Mapa/LabEste.obj"
+dest_files=[ "res://.import/LabEste.obj-3fd640833057542b96d3cd4812a77fdb.mesh", "res://.import/LabEste.obj-3fd640833057542b96d3cd4812a77fdb.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
