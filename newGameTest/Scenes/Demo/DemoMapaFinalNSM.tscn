@@ -1,13 +1,14 @@
 [gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Scripts/Entities/SignalManager.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Entities/Player_NSM.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Entities/Player.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Materials/Map/DemoMaterial3.tres" type="Material" id=3]
 [ext_resource path="res://Resources/Materials/Map/DemoMaterial1.tres" type="Material" id=4]
-[ext_resource path="res://Scripts/Objects/Grabable_NSM.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/Objects/Terminal_NSM.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Objects/Grabable.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Objects/Terminal.gd" type="Script" id=6]
 [ext_resource path="res://Resources/Music/Music.wav" type="AudioStream" id=7]
 [ext_resource path="res://Scripts/Entities/KinematicBody.gd" type="Script" id=16]
+
 
 [sub_resource type="CapsuleShape" id=1]
 margin = 0.001

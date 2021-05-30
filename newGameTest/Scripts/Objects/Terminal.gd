@@ -1,33 +1,21 @@
 extends Node
 
-# Child nodes references
-onready var terminal = get_node("Terminal")
+onready var terminal_body = get_parent()
 
-# Entity variables
-signal interaction_available(node)
+var id
+var req_object_id
 
-var interaction_available = false
+var is_active = false
 
 var availability_timer : Timer
 var highlight : MeshInstance
-# NECESARIO EN INSTANCIA ESPECIFICA
-var SM_terminal : int
 
-
-# This function set up the node
 func _ready():
-	var SignalManager = get_parent().get_node("SignalManager")
-	var Events = SignalManager.Events
-	
-	SignalManager._add_emitter(Events.TERMINAL_INTERACTION_AVAILABLE, self, "interaction_available")
-	SignalManager._add_receiver(Events.ENABLE_INTERACTION, self, "_on_enable_interaction")
-	SignalManager._add_receiver(Events.TERMINAL_INTERACTION, self, "_on_terminal_interaction")
-	
-	var og_mesh_instance = get_node("Terminal").get_node("MeshInstance")
+	var og_mesh_instance = get_node("MeshInstance")
 	var og_mesh = og_mesh_instance.mesh
 	
 	highlight = MeshInstance.new()
-	terminal.add_child(highlight)
+	add_child(highlight)
 	var mesh = og_mesh.duplicate()
 	mesh.flip_faces = true
 	
@@ -45,36 +33,34 @@ func _ready():
 	availability_timer.connect("timeout",self,"_on_timer_timeout") 
 	add_child(availability_timer)
 	availability_timer.set_wait_time(0.01)
+	
+	var group_name = "terminal" + String(terminal_body.id)
+	add_to_group(group_name)
+	if not DataManager.State.Terminals.has(id):
+		DataManager.State.Terminals[id] = false
+	if DataManager.State.Terminals[id]:
+		force_on_terminal_interaction()
 
 
-# response funtion for enable interacion
-func _on_enable_interaction(object : Node) -> void:
-	if object == terminal:
-		entered()
+func enable_interaction(object : Node) -> void:
+	if object == self and not is_active:
+		highlight.visible = true
+		availability_timer.start()
 
 
-# response function for timer duration
 func _on_timer_timeout() -> void:
-	exited()
-
-
-#
-func entered() -> void:
-	highlight.visible = true
-	interaction_available = true
-	availability_timer.start()
-	emit_signal("interaction_available", self)
-
-
-# 
-func exited() -> void:
 	highlight.visible = false
-	interaction_available = false
 	availability_timer.stop()
 
 
-# NECESARIO EN INSTANCIA ESPECIFICA
-func _on_terminal_interaction(terminal_node : Node, object : Node) -> void:
-	var SignalManager = get_parent().get_node("SignalManager")
-	SignalManager._disconnect_receiver(SignalManager.Events.ENABLE_INTERACTION, self, "_on_enable_interaction")
-	SignalManager._disconnect_receiver(SignalManager.Events.TERMINAL_INTERACTION, self, "_on_terminal_interaction")
+func force_on_terminal_interaction():
+	is_active = true
+	DataManager.State.Terminals[id] = true
+
+
+# OVERRIDE IN SPECIFIC INSTANCE TO CREATE DEDICATED BEHAVIOUR UPON TERMINAL ACTIVATION
+func on_terminal_interaction(terminal_node : Node, object : Node) -> void:
+	if object.id == req_object_id and not is_active:
+		is_active = true
+		DataManager.State.Terminals[id] = true
+		terminal_body.on_terminal_active()

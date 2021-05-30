@@ -10,18 +10,8 @@ onready var cap = camera.get_node("Cap")
 # parent nodes reference
 onready var world = get_parent()
 
-# Signal Manager references
-var SignalManager
-var Events
-
 # enviroment variables
 var gravity = -50
-
-# entity variables
-signal enable_interaction(object)
-signal grab_object(node)
-signal drop_object(object)
-signal terminal_interaction(node, object)
 
 var mouse_sensitivity = 0.2
 var speed = 5
@@ -33,36 +23,21 @@ var rest_time_threshold = 2
 var rest_factor = 0.5
 var fade = 0
 
-var sprinting = false
-var resting = true
-var crouching = false
-var interaction_available = false
-var og_map = true
-var fading_out = false
-var fading_in = false
+var is_sprinting = false
+var is_resting = true
+var is_crouching = false
+var is_fading_out = false
+var is_fading_in = false
 
-var availability_timer : Timer
 var direction = Vector3()
 var velocity = Vector3()
-var related_terminal = null
 
 
 # This method set up the node
 func _ready():
-	SignalManager = world.get_node("SignalManager")
-	Events = SignalManager.Events
-	
-	SignalManager._add_emitter(Events.ENABLE_INTERACTION, self, "enable_interaction")
-	SignalManager._add_emitter(Events.GRAB_OBJECT, self, "grab_object")
-	SignalManager._add_emitter(Events.DROP_OBJECT, self, "drop_object")
-	SignalManager._add_emitter(Events.TERMINAL_INTERACTION, self, "terminal_interaction")
-	SignalManager._add_receiver(Events.OBJECT_GRABED, self, "_on_grabed_object")
-	SignalManager._add_receiver(Events.TERMINAL_INTERACTION_AVAILABLE, self, "_on_interaction_available")
-	
-	availability_timer = Timer.new()
-	availability_timer.connect("timeout",self,"_on_timer_timeout") 
-	add_child(availability_timer)
-	availability_timer.set_wait_time(0.01)
+	if not DataManager.State.Player.empty():
+		set_translation(DataManager.State.Player.translation)
+		set_rotation(DataManager.State.Player.rotation)
 	
 	# Center and hide the cursor
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -97,15 +72,15 @@ func _unhandled_input(event):
 # Standard method for handling key events
 func _unhandled_key_input(event):
 	if Input.is_action_just_pressed("sprint"):
-		sprinting = true
-		resting = false
+		is_sprinting = true
+		is_resting = false
 		rest_timer = 0
 	if Input.is_action_just_released("sprint"):
-		sprinting = false
+		is_sprinting = false
 	if Input.is_action_just_pressed("crouch"):
-		crouching = true
+		is_crouching = true
 	if Input.is_action_just_released("crouch"):
-		crouching = false
+		is_crouching = false
 	if Input.is_action_just_pressed("right_action"):
 		hand_action(right_hand)
 	if Input.is_action_just_pressed("left_action"):
@@ -115,7 +90,7 @@ func _unhandled_key_input(event):
 			drop_object(right_hand)
 		if left_hand.get_child_count() > 0:
 			drop_object(left_hand)
-		fading_out = true
+		is_fading_out = true
 
 
 # Standard function that executes fixed amount of times per frame
@@ -125,17 +100,17 @@ func _physics_process(delta):
 	# gravity force
 	velocity.y += gravity * delta
 	# instant velocity to desired direction
-	if sprinting:
+	if is_sprinting:
 		objective_velocity = get_input() * sprinting_speed
 		stamina -= delta
 		if stamina <= 0:
-			sprinting = false
+			is_sprinting = false
 	else:
 		objective_velocity = get_input() * speed
-		if resting:
+		if is_resting:
 			stamina = clamp(stamina + delta * rest_factor, 0, max_stamina)
 		elif rest_timer >= rest_time_threshold:
-			resting = true
+			is_resting = true
 		else:
 			rest_timer += delta
 		
@@ -143,17 +118,17 @@ func _physics_process(delta):
 	velocity.z = objective_velocity.z
 	velocity = move_and_slide(velocity, Vector3.UP, true)
 	
-	if fading_out:
+	if is_fading_out:
 		fade += delta
 		var token = sin(fade)
 		if token > 1-0.001:
-			fading_in = true
+			is_fading_in = true
 			change_map()
 		if token < 0 + 0.001:
 			token = 0
 			fade = 0
-			fading_in = false
-			fading_out = false
+			is_fading_in = false
+			is_fading_out = false
 		cap.get_surface_material(0).set_albedo(Color(0,0,0,token))
 
 
@@ -161,30 +136,14 @@ func _physics_process(delta):
 func _process(_delta):
 	if raycast.is_colliding():
 		var collision = raycast.get_collider()
-		emit_signal("enable_interaction", collision)
+		if collision.has_method("enable_interaction"):
+			collision.enable_interaction(collision)
 
 
 # response method to a grabed object
-func _on_grabed_object(hand : Node, object : Node) -> void:
+func on_grabed_object(hand : Node, object : Node) -> void:
 	world.remove_child(object)
 	hand.add_child(object)
-
-
-# Manages grabing an object REVIEWING DELETION
-func grab_with(hand : Node) -> void:
-	if hand.get_child_count() == 0:
-		emit_signal("grab_object",hand)
-	else:
-		var object = hand.get_child(0)
-		var position = \
-		  camera.to_global(right_hand.get_translation())*0.5 \
-		+ camera.to_global(left_hand.get_translation())*0.5
-		object.set_linear_velocity(Vector3())
-		object.set_angular_velocity(Vector3())
-		object.set_translation(position)
-		hand.remove_child(object)
-		world.add_child(object)
-		emit_signal("drop_object", object)
 
 
 #
@@ -198,40 +157,28 @@ func drop_object(hand : Node) -> void:
 	object.set_translation(position)
 	hand.remove_child(object)
 	world.add_child(object)
-	emit_signal("drop_object", object)
+	object.on_drop(object)
 
 
 #
 func hand_action(hand : Node) -> void:
 	if hand.get_child_count() == 0:
-		emit_signal("grab_object",hand)
+		if raycast.is_colliding():
+			var collision = raycast.get_collider()
+			if collision.has_method("on_grab"):
+				collision.on_grab(self, hand)
 	else:
-		if interaction_available:
-			var object = hand.get_child(0)
-			emit_signal("terminal_interaction", related_terminal, object)
+		if raycast.is_colliding():
+			var collision = raycast.get_collider()
+			if collision.has_method("on_terminal_interaction"):
+				var object = hand.get_child(0)
+				collision.on_terminal_interaction(collision, object)
+			else:
+				drop_object(hand)
 		else:
-			drop_object(hand)
+				drop_object(hand)
 
 
-#
-func _on_interaction_available(terminal : Node) -> void:
-	interaction_available = true
-	availability_timer.start()
-	related_terminal = terminal.get_node("Terminal")
-
-
-#
-func _on_timer_timeout() -> void:
-	interaction_available = false
-	availability_timer.stop()
-	related_terminal = null
-
-
-#
+# OVERRIDE TO SPECIFIC INSTANCE BEHAVIOUR
 func change_map() -> void:
-	if og_map:
-		set_translation(Vector3(80,0,0) + get_translation())
-		og_map = false
-	else:
-		set_translation(Vector3(-80,0,0) + get_translation())
-		og_map = true
+	get_tree().call_group("object", "on_change_map")

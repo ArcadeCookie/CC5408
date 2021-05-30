@@ -3,8 +3,8 @@ extends RigidBody
 # Child nodes references
 onready var collision_shape = get_node("CollisionShape")
 
-# Entity variables
-signal grabed(node1, node2)
+var id
+var dimension
 
 var interaction_available = false
 var grabed = false
@@ -20,16 +20,9 @@ var reg_angular_velocity = Vector3()
 var vector = Vector3(0.00000001,0.000000001,0.000000001)
 # This function set up the node
 func _ready():
-	set_mode(MODE_STATIC)
+	add_to_group("object")
 	
-	var SignalManager = get_parent().get_node("SignalManager")
-	var Events = SignalManager.Events
-	var SM_terminal = SignalManager.Terminals.DOOR_0
-	
-	SignalManager._add_emitter(Events.OBJECT_GRABED, self, "grabed")
-	SignalManager._add_receiver(Events.ENABLE_INTERACTION, self, "_on_enable_interaction")
-	SignalManager._add_receiver(Events.GRAB_OBJECT, self, "_on_grab")
-	SignalManager._add_receiver(Events.DROP_OBJECT, self, "_on_drop")
+	set_mode(MODE_STATIC) 
 	
 	var og_mesh_instance = get_node("MeshInstance")
 	var og_mesh = og_mesh_instance.mesh
@@ -58,27 +51,34 @@ func _ready():
 	sleep_timer.connect("timeout",self,"_on_sleep_timer_timeout") 
 	add_child(sleep_timer)
 	sleep_timer.set_wait_time(0.5)
+	
+	if not DataManager.State[dimension].has(id):
+		DataManager.State[dimension][id] = {"translation" : get_translation(), "rotation"  : get_rotation()}
+	set_translation(DataManager.State[dimension][id].translation)
+	set_rotation(DataManager.State[dimension][id].rotation)
 
 
 # response funtion for enable interacion
-func _on_enable_interaction(object : Node) -> void:
+func enable_interaction(object : Node) -> void:
 	if object == self:
-		entered()
+		highlight.visible = true
+		interaction_available = true
+		availability_timer.start()
 
 
 # response method for being grabed
-func _on_grab(object : Node) -> void:
+func on_grab(player : Node, hand : Node) -> void:
 	if interaction_available:
 		highlight.visible = false
 		collision_shape.disabled = true
 		sleeping = true
 		self.set_translation(Vector3(0,0,0))
 		grabed = true
-		emit_signal("grabed", object, self)
+		player.on_grabed_object(hand, self)
 
 
 # response method for being droped
-func _on_drop(object : Node) -> void:
+func on_drop(object : Node) -> void:
 	if grabed and object == self:
 		collision_shape.disabled = false
 		sleeping = false
@@ -89,18 +89,6 @@ func _on_drop(object : Node) -> void:
 
 # response function for timer duration
 func _on_timer_timeout() -> void:
-	exited()
-
-
-#
-func entered() -> void:
-	highlight.visible = true
-	interaction_available = true
-	availability_timer.start()
-
-
-#
-func exited() -> void:
 	highlight.visible = false
 	interaction_available = false
 	availability_timer.stop()
@@ -119,18 +107,10 @@ func _physics_process(delta):
 		if test_timer >= 0.5:
 			test_timer = 0
 			if linear_velocity <= vector and angular_velocity <= vector:
-				print("done")
 				set_mode(MODE_STATIC)
 				on_floor = true
-		#test_timer += delta
-		#if test_timer >= 0.2:
-		#	print(linear_velocity, reg_linear_velocity, angular_velocity, reg_angular_velocity)
-		#	test_timer = 0
-		#	if linear_velocity == reg_linear_velocity and angular_velocity == reg_angular_velocity:
-		#		print("done")
-		#		set_mode(MODE_STATIC)
-		#		on_floor = true
-		#	else:
-		#		print("new register")
-		#		reg_linear_velocity = linear_velocity
-		#		reg_angular_velocity = angular_velocity
+
+
+func on_change_map():
+	DataManager.State[dimension][id].translation = get_translation()
+	DataManager.State[dimension][id].rotation = get_rotation()
