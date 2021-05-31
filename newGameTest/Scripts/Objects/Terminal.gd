@@ -2,15 +2,16 @@ extends Node
 
 onready var terminal_body = get_parent()
 
-var id
-var req_object_id
+# Variables to valuate on specific instances
+var id              # Give identity to the instance and help the DataManager to identify it 
+var req_object_id   # Store the required identity of the object necesary to activate the terminal
 
 var is_active = false
 
 var availability_timer : Timer
 var highlight : MeshInstance
 
-func _ready():
+func _ready() -> void:
 	var og_mesh_instance = get_node("MeshInstance")
 	var og_mesh = og_mesh_instance.mesh
 	
@@ -42,23 +43,31 @@ func _ready():
 		force_on_terminal_interaction()
 
 
+# Method to respond to the enable its interaction
 func enable_interaction(object : Node) -> void:
 	if object == self and not is_active:
 		highlight.visible = true
 		availability_timer.start()
 
 
+# Behaviour on expiration timer, will just make the highlight dissapear
 func _on_timer_timeout() -> void:
 	highlight.visible = false
 	availability_timer.stop()
 
 
-func force_on_terminal_interaction():
+# This method is destined to force the activation of the terminal without any kind of
+# of security, only used if the terminal was already activated and its state stored
+# within the game state is true
+func force_on_terminal_interaction() -> void:
 	is_active = true
+	# REVIEWING DELETION (MAYBE NOT A MANDATORY LINE)
 	DataManager.State.Terminals[id] = true
 
 
 # OVERRIDE IN SPECIFIC INSTANCE TO CREATE DEDICATED BEHAVIOUR UPON TERMINAL ACTIVATION
+# only required if you want the specific activation of a terminal do something other than
+# just make itself active
 func on_terminal_interaction(terminal_node : Node, object : Node) -> void:
 	if object.id == req_object_id and not is_active:
 		is_active = true

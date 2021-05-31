@@ -1,11 +1,12 @@
 extends KinematicBody
 
 # child nodes references
+# (posible referenciation: onready var camera = $"Camera")
 onready var camera = get_node("Camera")
 onready var raycast = camera.get_node("RayCast")
 onready var right_hand = camera.get_node("RightHand")
 onready var left_hand = camera.get_node("LeftHand")
-onready var cap = camera.get_node("Cap")
+onready var cap = camera.get_node("Cap")	# REVIEWING DELETION
 
 # parent nodes reference
 onready var world = get_parent()
@@ -34,7 +35,7 @@ var velocity = Vector3()
 
 
 # This method set up the node
-func _ready():
+func _ready() -> void:
 	if not DataManager.State.Player.empty():
 		set_translation(DataManager.State.Player.translation)
 		set_rotation(DataManager.State.Player.rotation)
@@ -61,7 +62,7 @@ func get_input() -> Vector3:
 
 
 # Standard method for handling events
-func _unhandled_input(event):
+func _unhandled_input(event : InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x - event.relative.y * mouse_sensitivity, -80, 80)
@@ -70,7 +71,7 @@ func _unhandled_input(event):
 
 
 # Standard method for handling key events
-func _unhandled_key_input(event):
+func _unhandled_key_input(event : InputEventKey) -> void:
 	if Input.is_action_just_pressed("sprint"):
 		is_sprinting = true
 		is_resting = false
@@ -94,7 +95,7 @@ func _unhandled_key_input(event):
 
 
 # Standard function that executes fixed amount of times per frame
-func _physics_process(delta):
+func _physics_process(delta : float) -> void:
 	var objective_velocity = Vector3()
 	
 	# gravity force
@@ -133,20 +134,20 @@ func _physics_process(delta):
 
 
 # Standard function that executes fixed amount of times per frame
-func _process(_delta):
+func _process(delta : float) -> void:
 	if raycast.is_colliding():
 		var collision = raycast.get_collider()
 		if collision.has_method("enable_interaction"):
 			collision.enable_interaction(collision)
 
 
-# response method to a grabed object
+# Response method to a grabed object
 func on_grabed_object(hand : Node, object : Node) -> void:
 	world.remove_child(object)
 	hand.add_child(object)
 
 
-#
+# Method to drop an object and once again include it in the world
 func drop_object(hand : Node) -> void:
 	var object = hand.get_child(0)
 	var position = \
@@ -160,14 +161,16 @@ func drop_object(hand : Node) -> void:
 	object.on_drop(object)
 
 
-#
+# This method determine what action to make on an action key being pressed
 func hand_action(hand : Node) -> void:
 	if hand.get_child_count() == 0:
+	# Have no object grabed on hand node
 		if raycast.is_colliding():
 			var collision = raycast.get_collider()
 			if collision.has_method("on_grab"):
 				collision.on_grab(self, hand)
 	else:
+	# Have an object grabed on hand node
 		if raycast.is_colliding():
 			var collision = raycast.get_collider()
 			if collision.has_method("on_terminal_interaction"):

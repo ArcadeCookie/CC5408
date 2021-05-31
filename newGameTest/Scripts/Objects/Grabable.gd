@@ -3,8 +3,9 @@ extends RigidBody
 # Child nodes references
 onready var collision_shape = get_node("CollisionShape")
 
-var id
-var dimension
+# Variables to valuate on specific instances
+var id          # Give identity to the instance and help a terminal and the DataManager to identify it 
+var dimension   # Store the dimension in wich it should be, making the DataManager able to locate it
 
 var interaction_available = false
 var grabed = false
@@ -14,12 +15,15 @@ var availability_timer : Timer
 var sleep_timer : Timer
 var highlight : MeshInstance
 
+# REVIEWING DELETION
 var test_timer = 0
 var reg_linear_velocity = Vector3()
 var reg_angular_velocity = Vector3()
 var vector = Vector3(0.00000001,0.000000001,0.000000001)
+
+
 # This function set up the node
-func _ready():
+func _ready() -> void:
 	add_to_group("object")
 	
 	set_mode(MODE_STATIC) 
@@ -94,14 +98,18 @@ func _on_timer_timeout() -> void:
 	availability_timer.stop()
 
 
-func _on_sleep_timer_timeout():
+# After the timer expires, the object will store its current state
+func _on_sleep_timer_timeout() -> void:
 	on_floor = false
 	reg_linear_velocity = linear_velocity
 	reg_angular_velocity = angular_velocity
 	sleep_timer.stop()
 
 
-func _physics_process(delta):
+# Method with a fixed execution
+# in this case it manages when an object can go back to be rigid
+#  REVIEWING DELETION
+func _physics_process(delta) -> void:
 	if not on_floor:
 		test_timer += delta
 		if test_timer >= 0.5:
@@ -111,6 +119,7 @@ func _physics_process(delta):
 				on_floor = true
 
 
-func on_change_map():
+# Method that manages the world change behaviour
+func on_change_map() -> void:
 	DataManager.State[dimension][id].translation = get_translation()
 	DataManager.State[dimension][id].rotation = get_rotation()
