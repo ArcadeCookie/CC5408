@@ -3,6 +3,8 @@ extends Node
 # Variable to store the path in wich the data is stored
 const FILE_NAME = "res://Data/game-data.json"
 
+var random = RandomNumberGenerator.new()
+
 # Structure-like object on which the data is stored
 var State = {
 	# Dictionary for player position
@@ -17,11 +19,16 @@ var State = {
 	# Dictionary to store the information of every object in every dimension
 	"D1" : {},
 	"D2" : {},
-	"D3" : {} 
+	"D3" : {},
 	
 	# At the moment is strictly necesary this structure in order to the correct execution of the game
 	# in scenes DemoMap1, DemoMap2 and DemoMap3.
+	
+	"Available_Dimensions" : ["1", "2"],
+	"Disabled_Dimensions" : [],
+	"Current_Dimension" : "1"
 }
+
 
 
 # This method will store the current state of the game in the specified file
@@ -45,3 +52,27 @@ func load():
 			printerr("Corrupted data!")
 	else:
 		printerr("No saved data!")
+
+
+func change_map() -> void:
+	get_tree().call_group("object", "on_change_map")
+	random.randomize()
+	var dimensions_available = State.Available_Dimensions.duplicate(true)
+	dimensions_available.erase(State.Current_Dimension)
+	var new_dimension_id = random.randi_range(0,dimensions_available.size()-1)
+	var new_dimension = dimensions_available[new_dimension_id]
+	State.Current_Dimension = new_dimension
+	
+	# DONT FORGET TO CHANGE FOR NEW MAPs, CUZ ITS KINDA HARCODED
+	get_tree().change_scene("res://Scenes/Demo/DemoMap" + new_dimension + ".tscn")
+
+
+func enable_dimension(dimension : String) -> void:
+	if not dimension in State.Available_Dimensions and not dimension in State.Disabled_Dimensions:
+		State.Available_Dimensions.append(dimension)
+
+
+func disable_dimension(dimension : String) -> void:
+	State.Available_Dimensions.erase(dimension)
+	if not dimension in State.Disabled_Dimensions:
+		State.Disabled_Dimensions.append(dimension)

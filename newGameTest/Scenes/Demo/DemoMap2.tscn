@@ -1,7 +1,6 @@
-[gd_scene load_steps=121 format=2]
+[gd_scene load_steps=120 format=2]
 
-[ext_resource path="res://Resources/Materials/Map/DemoMaterial2.tres" type="Material" id=1]
-[ext_resource path="res://Scripts/Entities/Player_D2.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Entities/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Objects/terminal_thingy2.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Objects/special_thingy0.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Objects/terminal_body_thingy0.gd" type="Script" id=5]
@@ -332,7 +331,7 @@ albedo_color = Color( 0, 0, 0, 0 )
 [node name="Floor" type="MeshInstance" parent="Hall4E/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = ExtResource( 1 )
+material/0 = null
 
 [node name="FloorCS" type="CollisionShape" parent="Hall4E/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
@@ -550,7 +549,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0 )
 [node name="Floor" type="MeshInstance" parent="Hall3E_1/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = ExtResource( 1 )
+material/0 = null
 
 [node name="FloorCS" type="CollisionShape" parent="Hall3E_1/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
@@ -699,7 +698,7 @@ transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, -
 [node name="Floor" type="MeshInstance" parent="Hall3E_2/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = ExtResource( 1 )
+material/0 = null
 
 [node name="FloorCS" type="CollisionShape" parent="Hall3E_2/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
@@ -848,7 +847,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -30 )
 [node name="Floor" type="MeshInstance" parent="Hall2E_1/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = ExtResource( 1 )
+material/0 = null
 
 [node name="FloorCS" type="CollisionShape" parent="Hall2E_1/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
@@ -928,7 +927,7 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 3
 [node name="Floor" type="MeshInstance" parent="Hall2E_2/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = ExtResource( 1 )
+material/0 = null
 
 [node name="FloorCS" type="CollisionShape" parent="Hall2E_2/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
@@ -1008,7 +1007,7 @@ transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 30, 0, 
 [node name="Floor" type="MeshInstance" parent="Hall2E_3/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = ExtResource( 1 )
+material/0 = null
 
 [node name="FloorCS" type="CollisionShape" parent="Hall2E_3/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
@@ -1088,7 +1087,7 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 30, 0, 
 [node name="Floor" type="MeshInstance" parent="Hall2E_4/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = ExtResource( 1 )
+material/0 = null
 
 [node name="FloorCS" type="CollisionShape" parent="Hall2E_4/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
@@ -1228,7 +1227,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 30 )
 [node name="Floor" type="MeshInstance" parent="Hall1E_1/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = ExtResource( 1 )
+material/0 = null
 
 [node name="FloorCS" type="CollisionShape" parent="Hall1E_1/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
@@ -1299,7 +1298,7 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 30, 0, 
 [node name="Floor" type="MeshInstance" parent="Hall1E_2/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = ExtResource( 1 )
+material/0 = null
 
 [node name="FloorCS" type="CollisionShape" parent="Hall1E_2/Floor"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )

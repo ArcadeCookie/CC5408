@@ -37,8 +37,11 @@ var nodes_relations = {
 
 enum {
 	IDLE
+	PLAYER_SEEN
 	CHASING
 	OBJECTIVE_LOST
+	SEARCH
+	RESET
 }
 
 var state = IDLE
@@ -50,11 +53,12 @@ var timer_lock = 0
 
 var actual_direction = Vector3()
 var facing_direction = Vector3(0,0,1)
-#
-## <>
+
+
 func _ready():
 	pass
-#
+
+
 func _physics_process(delta):
 	if on_chase:
 		timer_lock += delta
@@ -130,7 +134,6 @@ func seeing_player():
 
 func _look_at(direction):
 	while facing_direction.angle_to(direction) > PI - 0.2:
-		print(facing_direction.angle_to(direction))
 		direction = direction.rotated(Vector3(0,1,0),0.1)
 	var interpolated_direction = facing_direction.normalized().linear_interpolate(direction.normalized(), 0.1).normalized()
 	var new_angle = interpolated_direction.angle_to(Vector3(0,0,1))

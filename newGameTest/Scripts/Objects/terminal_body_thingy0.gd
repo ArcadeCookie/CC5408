@@ -16,3 +16,4 @@ func on_activation():
 	var left = get_node("Left")
 	right.set_translation(right.get_translation() + Vector3(0,0,2))
 	left.set_translation(left.get_translation() + Vector3(0,0,-2))
+	DataManager.disable_dimension("1")

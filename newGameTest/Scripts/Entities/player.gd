@@ -15,7 +15,7 @@ onready var world = get_parent()
 var gravity = -50
 
 var mouse_sensitivity = 0.2
-var speed = 5
+var speed = 25
 var sprinting_speed = 10
 var stamina = 3
 var max_stamina = 3
@@ -184,4 +184,7 @@ func hand_action(hand : Node) -> void:
 
 # OVERRIDE TO SPECIFIC INSTANCE BEHAVIOUR
 func change_map() -> void:
-	get_tree().call_group("object", "on_change_map")
+	DataManager.State.Player.translation = get_translation()
+	DataManager.State.Player.rotation = get_rotation()
+	DataManager.change_map()
+
