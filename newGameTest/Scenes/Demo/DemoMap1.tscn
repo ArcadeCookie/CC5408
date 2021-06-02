@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=2]
+[gd_scene load_steps=123 format=2]
 
 [ext_resource path="res://Resources/Materials/Map/DemoMaterial1.tres" type="Material" id=1]
 [ext_resource path="res://Scripts/Objects/special_thingy0.gd" type="Script" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://Scripts/Objects/terminal_thingy7.gd" type="Script" id=18]
 [ext_resource path="res://Scripts/Objects/terminal_thingy8.gd" type="Script" id=19]
 [ext_resource path="res://Scripts/Objects/special_thingy1.gd" type="Script" id=20]
+[ext_resource path="res://Scenes/Map/NewGameIntro.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Resources/Music/Music.wav" type="AudioStream" id=22]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -325,6 +327,8 @@ albedo_color = Color( 0, 0, 0, 1 )
 points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
 [node name="Map" type="Spatial"]
+
+[node name="ColorRect" parent="." instance=ExtResource( 21 )]
 
 [node name="Hall4E" type="Spatial" parent="."]
 
@@ -1706,3 +1710,6 @@ material/0 = SubResource( 99 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Key_1"]
 shape = SubResource( 100 )
+
+[node name="OST" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 22 )

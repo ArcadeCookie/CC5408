@@ -17,7 +17,7 @@ func _ready():
 #	get_tree().change_scene(scene_path_to_load)
 #
 func _on_NewGameButton_pressed():
-	_transition_rect.transition_to("res://Scenes/Demo/DemoMapaFinal.tscn")
+	_transition_rect.transition_to("res://Scenes/Demo/DemoMap1.tscn")
 	#$FadeIn.fade_in()
 	#get_tree().change_scene("res://Scenes/Demo/DemoMapaFinal.tscn")
 	#pass # Replace with function body.
