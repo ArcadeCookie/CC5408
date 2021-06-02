@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Baños.obj-586c3461cec034d1c35020bc61d27f5e.mesh"
+
+[deps]
+
+files=[ "res://.import/Baños.obj-586c3461cec034d1c35020bc61d27f5e.mesh" ]
+
+source_file="res://Resources/Modelos/Amueblado/Baños.obj"
+dest_files=[ "res://.import/Baños.obj-586c3461cec034d1c35020bc61d27f5e.mesh", "res://.import/Baños.obj-586c3461cec034d1c35020bc61d27f5e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

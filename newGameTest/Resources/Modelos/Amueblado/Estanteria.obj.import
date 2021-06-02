@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Estanteria.obj-9d12283e300e308de3ad8264d72d8c2e.mesh"
+
+[deps]
+
+files=[ "res://.import/Estanteria.obj-9d12283e300e308de3ad8264d72d8c2e.mesh" ]
+
+source_file="res://Resources/Modelos/Amueblado/Estanteria.obj"
+dest_files=[ "res://.import/Estanteria.obj-9d12283e300e308de3ad8264d72d8c2e.mesh", "res://.import/Estanteria.obj-9d12283e300e308de3ad8264d72d8c2e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

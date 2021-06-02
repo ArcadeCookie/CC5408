@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/BarandasMaquina.obj-516320faf313ba6d34dafa2509cc1cfe.mesh"
+
+[deps]
+
+files=[ "res://.import/BarandasMaquina.obj-516320faf313ba6d34dafa2509cc1cfe.mesh" ]
+
+source_file="res://Resources/Modelos/Mapa/BarandasMaquina.obj"
+dest_files=[ "res://.import/BarandasMaquina.obj-516320faf313ba6d34dafa2509cc1cfe.mesh", "res://.import/BarandasMaquina.obj-516320faf313ba6d34dafa2509cc1cfe.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

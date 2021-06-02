@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Escritorio.obj-b8eff961d57a233ec51f08bc275d3992.mesh"
+
+[deps]
+
+files=[ "res://.import/Escritorio.obj-b8eff961d57a233ec51f08bc275d3992.mesh" ]
+
+source_file="res://Resources/Modelos/Amueblado/Escritorio.obj"
+dest_files=[ "res://.import/Escritorio.obj-b8eff961d57a233ec51f08bc275d3992.mesh", "res://.import/Escritorio.obj-b8eff961d57a233ec51f08bc275d3992.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
