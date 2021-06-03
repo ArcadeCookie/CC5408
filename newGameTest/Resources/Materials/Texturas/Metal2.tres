@@ -1,0 +1,23 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://Resources/Materials/Archivos/Metal2/Metal037_4K_Color.jpg" type="Texture" id=1]
+[ext_resource path="res://Resources/Materials/Archivos/Metal2/Metal037_4K_Roughness.jpg" type="Texture" id=2]
+[ext_resource path="res://Resources/Materials/Archivos/Metal2/Metal037_4K_Displacement.jpg" type="Texture" id=3]
+[ext_resource path="res://Resources/Materials/Archivos/Metal2/Metal037_4K_Metalness.jpg" type="Texture" id=4]
+[ext_resource path="res://Resources/Materials/Archivos/Metal2/Metal037_4K_Normal.jpg" type="Texture" id=5]
+
+[resource]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 1 )
+metallic_texture = ExtResource( 4 )
+roughness_texture = ExtResource( 2 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 5 )
+depth_enabled = true
+depth_scale = 0.05
+depth_deep_parallax = false
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = ExtResource( 3 )
+uv1_triplanar = true

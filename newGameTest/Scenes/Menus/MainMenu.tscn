@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Menus/Buttons/NewGameButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Menus/fade_in.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Resources/Images/Menus/portada.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Music/testjuego1.wav" type="AudioStream" id=4]
 [ext_resource path="res://Scripts/Menus/TitleScreen.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Map/NewGameIntro.tscn" type="PackedScene" id=6]
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -74,4 +75,9 @@ margin_bottom = 240.0
 visible = false
 mouse_filter = 2
 
+[node name="GameIntro" parent="." instance=ExtResource( 6 )]
+visible = false
+
 [connection signal="pressed" from="Menu/HBoxContainer/Buttons/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="readyFadeIn" from="FadeIn" to="." method="_on_FadeIn_readyFadeIn"]
+[connection signal="readyGameIntro" from="GameIntro" to="." method="_on_GameIntro_readyGameIntro"]
