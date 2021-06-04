@@ -2,15 +2,17 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tiles010_4K_Roughness.jpg-5319608f61c4d872b43efe78030558ec.stex"
+path.s3tc="res://.import/Tiles010_4K_Roughness.jpg-5319608f61c4d872b43efe78030558ec.s3tc.stex"
+path.etc2="res://.import/Tiles010_4K_Roughness.jpg-5319608f61c4d872b43efe78030558ec.etc2.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Resources/Materials/Archivos/ParedBaldosas/Tiles010_4K_Roughness.jpg"
-dest_files=[ "res://.import/Tiles010_4K_Roughness.jpg-5319608f61c4d872b43efe78030558ec.stex" ]
+dest_files=[ "res://.import/Tiles010_4K_Roughness.jpg-5319608f61c4d872b43efe78030558ec.s3tc.stex", "res://.import/Tiles010_4K_Roughness.jpg-5319608f61c4d872b43efe78030558ec.etc2.stex" ]
 
 [params]
 

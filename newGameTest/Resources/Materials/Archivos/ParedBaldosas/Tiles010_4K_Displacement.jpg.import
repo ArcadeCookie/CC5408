@@ -2,15 +2,17 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tiles010_4K_Displacement.jpg-7dbe2b0e9026e5d4eff5d645bf62d25f.stex"
+path.s3tc="res://.import/Tiles010_4K_Displacement.jpg-7dbe2b0e9026e5d4eff5d645bf62d25f.s3tc.stex"
+path.etc2="res://.import/Tiles010_4K_Displacement.jpg-7dbe2b0e9026e5d4eff5d645bf62d25f.etc2.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Resources/Materials/Archivos/ParedBaldosas/Tiles010_4K_Displacement.jpg"
-dest_files=[ "res://.import/Tiles010_4K_Displacement.jpg-7dbe2b0e9026e5d4eff5d645bf62d25f.stex" ]
+dest_files=[ "res://.import/Tiles010_4K_Displacement.jpg-7dbe2b0e9026e5d4eff5d645bf62d25f.s3tc.stex", "res://.import/Tiles010_4K_Displacement.jpg-7dbe2b0e9026e5d4eff5d645bf62d25f.etc2.stex" ]
 
 [params]
 
