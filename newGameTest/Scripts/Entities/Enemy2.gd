@@ -3,8 +3,8 @@ extends KinematicBody
 var path = []
 var path_node = 0
 
-var speed = 0
-var chase_speed = 0
+var speed = 8
+var chase_speed = 15
 
 onready var nav = get_parent()
 onready var player = $"../../Player"
@@ -34,11 +34,12 @@ onready var vision_marker_1_node = $"Vision/Spatial"
 onready var vision_marker_2_node = $"Vision/Spatial2"
 onready var grin_hearing_marker = $"Bar1/MeshInstance"
 onready var penk_hearing_marker = $"Bar2/MeshInstance"
+onready var body = $"MeshInstance"
 ##########################
 
 ## ENVIROnMENTAL VARIABLES ##
-var vision_range = 30
-var vision_angle = PI/8
+var vision_range = 20
+var vision_angle = PI/4
 var vision_dot
 var hearing_range = 10
 var hearing_factor = 1
@@ -71,15 +72,15 @@ var actual_node = 1
 
 var timer_lock_on = 0
 
-var actual_direction = Vector3()
-var facing_direction = Vector3(0,0,1)
+var actual_direction = Vector2()
+var facing_direction = Vector2(0,1)
 
-var before_searching = Vector3()
+var before_searching = Vector2()
 var search_direction = 0
 var look_state = 0
 
 var calm_rotation = 0.05
-var agresive_rotation = 0.12
+var agresive_rotation = 0.15
 var search_depth = 4*PI/5
 
 
@@ -101,12 +102,11 @@ func _ready():
 	grin_hearing_marker.set_translation(Vector3(0,0,hearing_range/2))
 	penk_hearing_marker.get_mesh().mid_height = hearing_range
 	penk_hearing_marker.set_translation(Vector3(0,0,hearing_range/2))
-	vision_dot = facing_direction.dot(facing_direction.rotated(Vector3(0,1,0), vision_angle))
-	print(vision_dot)
+	vision_dot = facing_direction.dot(facing_direction.rotated(vision_angle))
 
 
 func _physics_process(delta):
-	# PROCESS STIMULI
+	# CHECK STIMULI
 	_look_at(actual_direction)
 	if on_chase:
 		timer_lock_on += delta
@@ -126,34 +126,38 @@ func _physics_process(delta):
 	match state:
 		# APARENTLY IDLE IS DONE
 		IDLE:
-			if facing_direction.angle_to(actual_direction) < PI/8:
+			body.get_active_material(0).albedo_color = Color(1,1,1)
+			if abs(facing_direction.angle_to(actual_direction)) < PI/8:
 				if path_node < path.size():
 					var direction = (path[path_node] - global_transform.origin)
-					actual_direction = direction
 					if direction.length() < 1:
 						path_node += 1
 					else:
-						move_and_slide(direction.normalized() * speed, Vector3.UP)
+						direction = direction.normalized()
+						actual_direction = Vector2(direction.x, direction.z).normalized()
+						move_and_slide(Vector3(actual_direction.x, 0, actual_direction.y) * speed, Vector3.UP)
 				else:
 					move_to_node()
 		CHASING:
+			body.get_active_material(0).albedo_color = Color(1,0,0)
 			if path_node < path.size():
 				var direction = (path[path_node] - global_transform.origin)
-				actual_direction = direction
+				actual_direction = Vector2(direction.x, direction.z).normalized()
 				if direction.length() < 1:
 					path_node += 1
 				else:
-					move_and_slide(direction.normalized() * chase_speed, Vector3.UP)
+					move_and_slide(Vector3(actual_direction.x, 0, actual_direction.y) * chase_speed, Vector3.UP)
 			else:
 				move_to(player.global_transform.origin)
 		OBJECTIVE_LOST:
+			body.get_active_material(0).albedo_color = Color(1,0.5,0)
 			if path_node < path.size():
 				var direction = (path[path_node] - global_transform.origin)
-				actual_direction = direction
+				actual_direction = Vector2(direction.x, direction.z).normalized()
 				if direction.length() < 1:
 					path_node += 1
 				else:
-					move_and_slide(direction.normalized() * chase_speed, Vector3.UP)
+					move_and_slide(Vector3(actual_direction.x, 0, actual_direction.y) * chase_speed, Vector3.UP)
 			else:
 				state = SEARCHING
 				# DEBE IRSE
@@ -162,29 +166,30 @@ func _physics_process(delta):
 				on_chase = false
 				look_state = 1
 		SEARCHING:
+			body.get_active_material(0).albedo_color = Color(1,1,0)
 			match look_state:
 				1:
 					var rng = RandomNumberGenerator.new()
 					rng.randomize()
 					search_direction = sign(rng.randf_range(-1,1))
 					before_searching = facing_direction
-					actual_direction = facing_direction.rotated(Vector3(0,1,0), search_depth * search_direction)
+					actual_direction = facing_direction.rotated(search_depth * search_direction)
 					look_state = 2
 				2: 
-					if facing_direction.angle_to(actual_direction) < PI/32:
+					if abs(facing_direction.angle_to(actual_direction)) < PI/32:
 						actual_direction = before_searching
 						look_state = 3
 				3:
-					if facing_direction.angle_to(actual_direction) < PI/8:
+					if abs(facing_direction.angle_to(actual_direction)) < PI/8:
 						var og_angle = before_searching
-						actual_direction = og_angle.rotated(Vector3(0,1,0), search_depth * -search_direction)
+						actual_direction = og_angle.rotated(search_depth * -search_direction)
 						look_state = 4
 				4:
-					if facing_direction.angle_to(actual_direction) < PI/32:
+					if abs(facing_direction.angle_to(actual_direction)) < PI/32:
 						actual_direction = before_searching
 						look_state = 5
 				5:
-					if facing_direction.angle_to(actual_direction) < PI/8:
+					if abs(facing_direction.angle_to(actual_direction)) < PI/32:
 						state = IDLE
 						move_to_node()
 
@@ -210,12 +215,12 @@ func seeing_player():
 	var self_pos = get_translation()
 	var self_2d = Vector2(self_pos.x, self_pos.z)
 	var distance = self_2d.distance_to(player_2d)
-	var dot = clamp(-1 + 2 * distance / (hearing_range * 4), -1, 1)
+	var dot = clamp(-2 + 2 * distance / (hearing_range * 1.2), -1, 1)
 	var angle = acos(dot)
 	bar1.set_rotation(Vector3(0,angle,0))
 	bar2.set_rotation(Vector3(0,-angle,0))
 	var to_player = self_2d.direction_to(player_2d)
-	var facing_2d = Vector2(facing_direction.x, facing_direction.z)
+	var facing_2d = Vector2(facing_direction.x, facing_direction.y)
 	var angle_to_player = facing_2d.angle_to(to_player)
 	var try_vector = facing_2d.rotated(angle_to_player).normalized()
 	if try_vector.is_equal_approx (to_player):
@@ -225,9 +230,9 @@ func seeing_player():
 		var collision = dynamic_raycast.get_collider()
 		if collision == player:
 			var player_dot = facing_2d.dot(to_player)
-			if player_dot > 0.5:
+			if player_dot > vision_dot:
 				return true
-			if player_dot > dot:
+			if player_dot > dot and distance <= hearing_range:
 				return true
 	return false
 
@@ -238,11 +243,9 @@ func _look_at(direction):
 		factor = agresive_rotation
 	else:
 		factor = calm_rotation
-	while facing_direction.angle_to(direction) > PI - 0.2:
-		direction = direction.rotated(Vector3(0,1,0),0.1)
-	var interpolated_direction = facing_direction.normalized().linear_interpolate(direction.normalized(), factor).normalized()
-	var new_angle = interpolated_direction.angle_to(Vector3(0,0,1))
-	if facing_direction.x < 0:
-		new_angle = -new_angle
+	while abs(facing_direction.angle_to(direction)) > PI - 0.2:
+		direction = direction.rotated(0.2)
+	var interpolated_direction = facing_direction.linear_interpolate(direction, factor).normalized()
+	var new_angle = interpolated_direction.angle_to(Vector2(0,1))
 	facing_direction = interpolated_direction
 	set_rotation(Vector3(0, new_angle, 0))

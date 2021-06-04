@@ -1,8 +1,8 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=39 format=2]
 
-[ext_resource path="res://Scripts/Entities/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Entities/Enemy2.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Entities/Player.gd" type="Script" id=2]
-[ext_resource path="res://Resources/Music/Music.wav" type="AudioStream" id=7]
+[ext_resource path="res://Resources/Music/Music.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 margin = 0.001
@@ -81,12 +81,73 @@ subdivide_width = 100
 [sub_resource type="SpatialMaterial" id=23]
 flags_unshaded = true
 
+[sub_resource type="CapsuleMesh" id=24]
+radius = 0.1
+mid_height = 20.0
+radial_segments = 4
+rings = 1
+
+[sub_resource type="SpatialMaterial" id=25]
+flags_unshaded = true
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="CapsuleMesh" id=26]
+radius = 0.1
+mid_height = 10.0
+radial_segments = 4
+rings = 1
+
+[sub_resource type="SpatialMaterial" id=27]
+flags_unshaded = true
+albedo_color = Color( 0.00784314, 1, 0, 1 )
+
+[sub_resource type="CapsuleMesh" id=28]
+radius = 0.1
+mid_height = 10.0
+radial_segments = 4
+rings = 1
+
+[sub_resource type="SpatialMaterial" id=29]
+flags_unshaded = true
+albedo_color = Color( 1, 0, 0.913725, 1 )
+
+[sub_resource type="CylinderMesh" id=30]
+top_radius = 20.0
+bottom_radius = 20.0
+height = 1.0
+
+[sub_resource type="SpatialMaterial" id=31]
+flags_transparent = true
+flags_unshaded = true
+albedo_color = Color( 1, 1, 0, 0.0784314 )
+
+[sub_resource type="SpatialMaterial" id=32]
+flags_unshaded = true
+albedo_color = Color( 1, 0.984314, 0, 1 )
+
+[sub_resource type="CapsuleMesh" id=33]
+material = SubResource( 32 )
+radius = 0.1
+mid_height = 20.0
+radial_segments = 4
+rings = 1
+
+[sub_resource type="CylinderMesh" id=34]
+top_radius = 10.0
+bottom_radius = 10.0
+height = 1.0
+
+[sub_resource type="SpatialMaterial" id=35]
+flags_transparent = true
+flags_unshaded = true
+albedo_color = Color( 0, 0.0392157, 1, 0.313726 )
+
 [node name="Spatial" type="Spatial"]
 
 [node name="SignalManager" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 3 )
 volume_db = -25.0
 autoplay = true
 
@@ -141,6 +202,7 @@ material/0 = null
 
 [node name="CollisionShape2" type="CollisionShape" parent="Player/Area"]
 shape = SubResource( 6 )
+disabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 7 )
@@ -1156,20 +1218,56 @@ transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0
 mesh = SubResource( 22 )
 material/0 = SubResource( 23 )
 
-[node name="RayCast" type="RayCast" parent="Navigation2/KinematicBody2/MeshInstance2"]
-transform = Transform( -1, -8.74228e-06, 0, 8.74228e-08, -100, 0, 0, 0, 1, 0, 1, 0 )
-enabled = true
-collide_with_areas = true
-
 [node name="RayCast" type="Spatial" parent="Navigation2/KinematicBody2"]
 
 [node name="RayCast" type="RayCast" parent="Navigation2/KinematicBody2/RayCast"]
+transform = Transform( 1, 0, 0, 0, -8.74228e-07, 1, 0, -20, -4.37114e-08, 0, 0, 0 )
+enabled = true
 
 [node name="MeshInstance" type="MeshInstance" parent="Navigation2/KinematicBody2/RayCast"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.907307, 10 )
+mesh = SubResource( 24 )
+material/0 = SubResource( 25 )
 
 [node name="Bar1" type="Spatial" parent="Navigation2/KinematicBody2"]
 
+[node name="MeshInstance" type="MeshInstance" parent="Navigation2/KinematicBody2/Bar1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+mesh = SubResource( 26 )
+material/0 = SubResource( 27 )
+
 [node name="Bar2" type="Spatial" parent="Navigation2/KinematicBody2"]
+
+[node name="MeshInstance" type="MeshInstance" parent="Navigation2/KinematicBody2/Bar2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+mesh = SubResource( 28 )
+material/0 = SubResource( 29 )
+
+[node name="Vision" type="Spatial" parent="Navigation2/KinematicBody2"]
+
+[node name="Area" type="MeshInstance" parent="Navigation2/KinematicBody2/Vision"]
+mesh = SubResource( 30 )
+material/0 = SubResource( 31 )
+
+[node name="Spatial" type="Spatial" parent="Navigation2/KinematicBody2/Vision"]
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Navigation2/KinematicBody2/Vision/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+mesh = SubResource( 33 )
+material/0 = null
+
+[node name="Spatial2" type="Spatial" parent="Navigation2/KinematicBody2/Vision"]
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Navigation2/KinematicBody2/Vision/Spatial2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+mesh = SubResource( 33 )
+material/0 = null
+
+[node name="CloseArea" type="MeshInstance" parent="Navigation2/KinematicBody2"]
+mesh = SubResource( 34 )
+material/0 = SubResource( 35 )
 
 [node name="Interest_Point_1" type="Spatial" parent="Navigation2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 30 )
