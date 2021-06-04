@@ -2,15 +2,17 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tiles002_4K_Color.jpg-075f0c56b651b9ac3d2d2490113e318c.stex"
+path.s3tc="res://.import/Tiles002_4K_Color.jpg-075f0c56b651b9ac3d2d2490113e318c.s3tc.stex"
+path.etc2="res://.import/Tiles002_4K_Color.jpg-075f0c56b651b9ac3d2d2490113e318c.etc2.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Resources/Materials/Archivos/BaldosasLab/Tiles002_4K_Color.jpg"
-dest_files=[ "res://.import/Tiles002_4K_Color.jpg-075f0c56b651b9ac3d2d2490113e318c.stex" ]
+dest_files=[ "res://.import/Tiles002_4K_Color.jpg-075f0c56b651b9ac3d2d2490113e318c.s3tc.stex", "res://.import/Tiles002_4K_Color.jpg-075f0c56b651b9ac3d2d2490113e318c.etc2.stex" ]
 
 [params]
 
