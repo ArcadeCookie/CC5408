@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Menus/Buttons/NewGameButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Menus/fade_in.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Resources/Images/Menus/portada.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Images/Menus/portada2.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Music/testjuego1.wav" type="AudioStream" id=4]
 [ext_resource path="res://Scripts/Menus/TitleScreen.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Map/NewGameIntro.tscn" type="PackedScene" id=6]

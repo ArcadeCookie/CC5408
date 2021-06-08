@@ -3,6 +3,8 @@ extends KinematicBody
 
 onready var camera = get_node("Camera")
 onready var world = get_parent()
+onready var GUI1 := $Camera/Spatial
+onready var luz := $Camera/SpotLight
 
 var gravity = -50
 
@@ -28,7 +30,9 @@ var availability_timer : Timer
 var direction = Vector3()
 var velocity = Vector3()
 
-
+# nuevo del menu
+var menu_opened = false
+signal change_ambience
 
 
 # Called when the node enters the scene tree for the first time.
@@ -38,6 +42,8 @@ func _ready():
 
 func get_input() -> Vector3:
 	var cam_direction = Vector3()
+	if menu_opened==true:
+		return cam_direction
 	if Input.is_action_pressed("move_forward"):
 		cam_direction += -camera.global_transform.basis.z
 	if Input.is_action_pressed("move_back"):
@@ -51,11 +57,22 @@ func get_input() -> Vector3:
 	return cam_direction
 	
 func _unhandled_input(event):
+	if menu_opened==true:
+		return 
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x - event.relative.y * mouse_sensitivity, -80, 80)
 	direction = Vector3()
 	direction = direction.normalized().rotated(Vector3.UP, rotation.y)
+
+# Standard method for handling key events
+func _unhandled_key_input(event : InputEventKey) -> void:
+	if Input.is_action_just_pressed("open_gui"):
+		GUI1.show()
+		menu_opened = true
+		luz.light_energy = 0
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
 
 func _physics_process(delta):
 	var objective_velocity = Vector3()
@@ -80,3 +97,12 @@ func _physics_process(delta):
 	velocity.x = objective_velocity.x
 	velocity.z = objective_velocity.z
 	velocity = move_and_slide(velocity, Vector3.UP, true)
+
+
+func _on_Spatial_panel_success():
+	menu_opened = false
+	luz.light_energy = 1
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	emit_signal("change_ambience")
+	GUI1.hide()
+	

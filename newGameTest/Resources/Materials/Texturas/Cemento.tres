@@ -7,6 +7,7 @@
 
 [resource]
 flags_world_triplanar = true
+albedo_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 albedo_texture = ExtResource( 1 )
 roughness_texture = ExtResource( 2 )
 normal_enabled = true

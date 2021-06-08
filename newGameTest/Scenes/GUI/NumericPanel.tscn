@@ -1,0 +1,359 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Resources/Fonts/N8ghtmare.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Menus/NumericPanel.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Fonts/TheSnowday.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Resources/Images/GUI/indicator2.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Images/GUI/numb_buttons.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Images/GUI/displayer.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Images/GUI/background.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 85
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "fail"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.94902, 0.0705882, 0.0705882, 1 ), Color( 0.94902, 0.0705882, 0.0705882, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "success"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0705882, 1, 0, 1 ), Color( 0.0705882, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+
+[node name="Numero1" type="TextureButton" parent="."]
+margin_left = 99.9493
+margin_top = 149.081
+margin_right = 199.949
+margin_bottom = 249.081
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Numero1"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Numero2" type="TextureButton" parent="."]
+margin_left = 199.949
+margin_top = 149.081
+margin_right = 299.949
+margin_bottom = 249.081
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Numero2"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "2"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Numero3" type="TextureButton" parent="."]
+margin_left = 299.949
+margin_top = 149.081
+margin_right = 399.949
+margin_bottom = 249.081
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Numero3"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "3"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Numero4" type="TextureButton" parent="."]
+margin_left = 99.9493
+margin_top = 249.081
+margin_right = 199.949
+margin_bottom = 349.081
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Numero4"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "4"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Numero5" type="TextureButton" parent="."]
+margin_left = 199.949
+margin_top = 249.081
+margin_right = 299.949
+margin_bottom = 349.081
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Numero5"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Numero6" type="TextureButton" parent="."]
+margin_left = 299.949
+margin_top = 249.081
+margin_right = 399.949
+margin_bottom = 349.081
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Numero6"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "6"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Numero7" type="TextureButton" parent="."]
+margin_left = 99.9493
+margin_top = 349.081
+margin_right = 199.949
+margin_bottom = 449.081
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Numero7"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "7"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Numero8" type="TextureButton" parent="."]
+margin_left = 199.949
+margin_top = 349.081
+margin_right = 299.949
+margin_bottom = 449.081
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Numero8"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "8"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Numero9" type="TextureButton" parent="."]
+margin_left = 299.949
+margin_top = 349.081
+margin_right = 399.949
+margin_bottom = 449.081
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Numero9"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "9"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Numero0" type="TextureButton" parent="."]
+margin_left = 199.949
+margin_top = 449.081
+margin_right = 299.949
+margin_bottom = 549.081
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Numero0"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Displayer" type="TextureRect" parent="."]
+margin_left = 503.206
+margin_top = 119.055
+margin_right = 803.206
+margin_bottom = 269.055
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Displayer"]
+margin_left = 15.0
+margin_top = 13.0
+margin_right = 284.0
+margin_bottom = 137.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Indicator" type="TextureRect" parent="."]
+margin_left = 576.227
+margin_top = 304.781
+margin_right = 726.227
+margin_bottom = 454.781
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Indicator"]
+anims/fail = SubResource( 3 )
+anims/success = SubResource( 4 )
+
+[node name="Success" type="ColorRect" parent="."]
+visible = false
+margin_left = 626.424
+margin_top = 355.14
+margin_right = 666.424
+margin_bottom = 395.14
+color = Color( 0.407843, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fail" type="ColorRect" parent="."]
+visible = false
+margin_left = 331.313
+margin_top = 48.772
+margin_right = 371.313
+margin_bottom = 88.772
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Numero1" to="." method="_on_Numero1_pressed"]
+[connection signal="pressed" from="Numero2" to="." method="_on_Numero2_pressed"]
+[connection signal="pressed" from="Numero3" to="." method="_on_Numero3_pressed"]
+[connection signal="pressed" from="Numero4" to="." method="_on_Numero4_pressed"]
+[connection signal="pressed" from="Numero5" to="." method="_on_Numero5_pressed"]
+[connection signal="pressed" from="Numero6" to="." method="_on_Numero6_pressed"]
+[connection signal="pressed" from="Numero7" to="." method="_on_Numero7_pressed"]
+[connection signal="pressed" from="Numero8" to="." method="_on_Numero8_pressed"]
+[connection signal="pressed" from="Numero9" to="." method="_on_Numero9_pressed"]
+[connection signal="pressed" from="Numero0" to="." method="_on_Numero0_pressed"]
