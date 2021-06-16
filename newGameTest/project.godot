@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 [autoload]
 
 DataManager="*res://Scripts/Entities/DataManager.gd"
+ResourceQueue="*res://Scripts/Entities/ResourceQueue.gd"
 
 [input]
 
