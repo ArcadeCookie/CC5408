@@ -113,12 +113,6 @@ material/6 = null
 material/7 = null
 material/8 = null
 material/9 = null
-material/10 = null
-material/11 = null
-material/12 = null
-material/13 = null
-material/14 = null
-material/15 = null
 
 [node name="LabEste" type="MeshInstance" parent="."]
 mesh = ExtResource( 4 )

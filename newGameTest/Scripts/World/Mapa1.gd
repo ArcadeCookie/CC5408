@@ -23,3 +23,9 @@ func _on_KinematicBody_change_ambience():
 	Mundo.environment.ambient_light_color = 000000
 	Music1.stop()
 	Music2.play()
+
+
+func _on_Control_done():
+	var text_control = $Control
+	text_control.hide()
+	text_control.queue_free()

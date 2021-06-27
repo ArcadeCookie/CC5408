@@ -33,6 +33,10 @@ var is_fading_in = false
 var direction = Vector3()
 var velocity = Vector3()
 
+var menu_opened = false
+signal change_ambience
+onready var GUI1 := $Camera/Spatial
+onready var luz := $Camera/SpotLight
 
 # This method set up the node
 func _ready() -> void:
@@ -72,6 +76,8 @@ func _unhandled_input(event : InputEvent) -> void:
 
 # Standard method for handling key events
 func _unhandled_key_input(event : InputEventKey) -> void:
+	if menu_opened==true:
+		return 
 	if Input.is_action_just_pressed("sprint"):
 		is_sprinting = true
 		is_resting = false
@@ -187,3 +193,13 @@ func change_map() -> void:
 	DataManager.State.Player.translation = get_translation()
 	DataManager.State.Player.rotation = get_rotation()
 	DataManager.change_map()
+
+
+
+func _on_Spatial_activateMenu():
+	GUI1.show()
+	menu_opened = true
+	luz.light_energy = 0
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+

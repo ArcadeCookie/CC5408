@@ -1,0 +1,219 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/GUI/TextIntro.gd" type="Script" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Resources/Fonts/TheSnowday.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+font_data = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "items"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0 ]
+}
+
+[sub_resource type="DynamicFontData" id=8]
+font_path = "res://Resources/Fonts/TheSnowday.ttf"
+
+[sub_resource type="DynamicFont" id=9]
+size = 40
+extra_spacing_top = 6
+extra_spacing_char = 1
+font_data = SubResource( 8 )
+
+[sub_resource type="Animation" id=10]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0 ]
+}
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 240.0
+margin_top = 450.0
+margin_right = 784.0
+margin_bottom = 580.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+text = "So, what do you think about Dr.X being the one 
+in charge of the experiment after you were
+leading the investigation?"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+anims/items = SubResource( 3 )
+anims/showText = SubResource( 4 )
+anims/wait = SubResource( 5 )
+
+[node name="Text2" type="Label" parent="."]
+visible = false
+margin_left = 240.0
+margin_top = 450.0
+margin_right = 784.0
+margin_bottom = 580.0
+custom_fonts/font = SubResource( 2 )
+text = "After all that effort and now just being a
+  supporter, I thought you were going to have
+  a grudge towards Dr.X or the project."
+align = 1
+percent_visible = 0.375
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text2Anim" type="AnimationPlayer" parent="Text2"]
+anims/showText = SubResource( 6 )
+anims/wait = SubResource( 7 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 633.431
+margin_top = -1.62106
+margin_right = 1177.43
+margin_bottom = 128.379
+custom_fonts/normal_font = SubResource( 9 )
+custom_colors/font_color_shadow = Color( 0.25098, 0.25098, 0.25098, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 2
+bbcode_enabled = true
+bbcode_text = "
+
+Go and activate the [color=#209f88]machine[/color]."
+text = "
+
+Go and activate the machine."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="RichTextLabel"]
+anims/items = SubResource( 10 )
+anims/showText = SubResource( 11 )
+anims/wait = SubResource( 12 )
+
+[connection signal="animation_finished" from="Label/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="RichTextLabel/AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]

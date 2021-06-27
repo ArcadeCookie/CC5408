@@ -67,12 +67,12 @@ func _unhandled_input(event):
 
 # Standard method for handling key events
 func _unhandled_key_input(event : InputEventKey) -> void:
-	if Input.is_action_just_pressed("open_gui"):
-		GUI1.show()
-		menu_opened = true
-		luz.light_energy = 0
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		
+	#if Input.is_action_just_pressed("open_gui"):
+		#GUI1.show()
+		#menu_opened = true
+		#luz.light_energy = 0
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	pass	
 
 func _physics_process(delta):
 	var objective_velocity = Vector3()
@@ -106,3 +106,24 @@ func _on_Spatial_panel_success():
 	emit_signal("change_ambience")
 	GUI1.hide()
 	
+
+
+func _on_MeshInstance_activateMenu():
+	GUI1.show()
+	menu_opened = true
+	luz.light_energy = 0
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+func _on_StaticBody_activateMenu():
+	GUI1.show()
+	menu_opened = true
+	luz.light_energy = 0
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+func _on_Spatial_activateMenu():
+	GUI1.show()
+	menu_opened = true
+	luz.light_energy = 0
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
