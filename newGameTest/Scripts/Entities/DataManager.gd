@@ -1,5 +1,7 @@
 extends Node
 
+onready var Game = get_tree().get_root().get_node("Game")
+
 # Variable to store the path in wich the data is stored
 const FILE_NAME = "res://Data/game-data.json"
 
@@ -64,7 +66,13 @@ func change_map() -> void:
 	State.Current_Dimension = new_dimension
 	
 	# DONT FORGET TO CHANGE FOR NEW MAPs, CUZ ITS KINDA HARCODED
-	get_tree().change_scene("res://Scenes/Demo/DemoMap" + new_dimension + ".tscn")
+	Game.change_scene("res://Scenes/Demo/DemoMap" + new_dimension + ".tscn")
+
+
+func change_to_specific_map(scene_id):
+	get_tree().call_group("object", "on_change_map")
+	State.Current_Dimension = scene_id
+	Game.change_scene("res://Scenes/Demo/DemoMap" + scene_id + ".tscn")
 
 
 func enable_dimension(dimension : String) -> void:
