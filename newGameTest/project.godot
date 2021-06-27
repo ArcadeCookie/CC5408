@@ -23,6 +23,15 @@ config/icon="res://icon.png"
 DataManager="*res://Scripts/Entities/DataManager.gd"
 ResourceQueue="*res://Scripts/Entities/ResourceQueue.gd"
 
+[debug]
+
+shapes/collision/shape_color=Color( 0, 0.6, 0.701961, 0.419608 )
+
+[display]
+
+window/size/resizable=false
+window/size/borderless=true
+
 [input]
 
 ui_accept={

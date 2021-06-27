@@ -23,8 +23,6 @@ var fade = 0
 var is_sprinting = false
 var is_resting = true
 var is_crouching = false
-var is_fading_out = false
-var is_fading_in = false
 
 var direction = Vector3()
 var velocity = Vector3()
@@ -32,7 +30,6 @@ var velocity = Vector3()
 
 # This method set up the node
 func _ready() -> void:
-	print(DataManager.State.Player)
 	if not DataManager.State.Player.empty():
 		set_translation(DataManager.State.Player.translation)
 		set_rotation(DataManager.State.Player.rotation)
@@ -77,8 +74,18 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 		is_sprinting = false
 	if Input.is_action_just_pressed("crouch"):
 		is_crouching = true
+		var pos = get_translation()
+		pos.y = 0
+		set_translation(pos)
+		var collision_shape = $CollisionShape
+		collision_shape.set_translation(Vector3(0,1.5,0))
 	if Input.is_action_just_released("crouch"):
 		is_crouching = false
+		var pos = get_translation()
+		pos.y = 1
+		set_translation(pos)
+		var collision_shape = $CollisionShape
+		collision_shape.set_translation(Vector3(0,0.5,0))
 	if Input.is_action_just_pressed("right_action"):
 		hand_action(right_hand)
 	if Input.is_action_just_pressed("left_action"):
@@ -109,7 +116,8 @@ func _physics_process(delta : float) -> void:
 			is_resting = true
 		else:
 			rest_timer += delta
-		
+	if is_crouching:
+		objective_velocity *= 0.4
 	velocity.x = objective_velocity.x
 	velocity.y = 0
 	velocity.z = objective_velocity.z

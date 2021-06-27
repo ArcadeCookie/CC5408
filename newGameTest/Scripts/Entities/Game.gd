@@ -16,7 +16,6 @@ func _ready():
 
 
 func change_scene(scene):
-	print(scene)
 	loading_world = scene
 	loading = true
 	fade.fade_in()
