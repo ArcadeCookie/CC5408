@@ -13,6 +13,8 @@ func _ready():
 	$World.add_child(current_world)
 	set_process(false)
 	ResourceQueue.start()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	call_HUD("res://Scenes/Menus/MainMenu2.tscn")
 
 
 func change_scene(scene):
@@ -38,3 +40,13 @@ func _process(delta: float) -> void:
 		loading = false
 		fade.fade_out()
 		set_process(false)
+
+
+func call_HUD(scene):
+	var s = load(scene).instance()
+	$CanvasLayer.add_child(s)
+
+
+func remove_HUD(scene_node):
+	$CanvasLayer.remove_child(scene_node)
+	scene_node.queue_free()

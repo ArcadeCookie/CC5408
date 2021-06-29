@@ -89,6 +89,7 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 	if Input.is_action_just_pressed("right_action"):
 		hand_action(right_hand)
 	if Input.is_action_just_pressed("left_action"):
+		DataManager.call_HUD("res://Scenes/GUI/IntroTextCtrl.tscn")
 		hand_action(left_hand)
 	if Input.is_action_just_pressed("scene_change"):
 		if right_hand.get_child_count() > 0:

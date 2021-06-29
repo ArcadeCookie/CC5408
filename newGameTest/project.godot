@@ -15,7 +15,7 @@ _global_script_class_icons={
 [application]
 
 config/name="newGameTest"
-run/main_scene="res://Scenes/Menus/MainMenu.tscn"
+run/main_scene="res://Scenes/Map/LoadingScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

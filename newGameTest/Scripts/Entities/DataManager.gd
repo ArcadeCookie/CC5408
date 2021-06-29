@@ -75,6 +75,14 @@ func change_to_specific_map(scene_id):
 	Game.change_scene("res://Scenes/Demo/DemoMap" + scene_id + ".tscn")
 
 
+func call_HUD(scene):
+	Game.call_HUD(scene)
+
+
+func remove_HUD(scene_node):
+	Game.remove_HUD(scene_node)
+	
+
 func enable_dimension(dimension : String) -> void:
 	if not dimension in State.Available_Dimensions and not dimension in State.Disabled_Dimensions:
 		State.Available_Dimensions.append(dimension)
