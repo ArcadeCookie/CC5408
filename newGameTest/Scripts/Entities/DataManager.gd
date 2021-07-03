@@ -81,7 +81,13 @@ func call_HUD(scene):
 
 func remove_HUD(scene_node):
 	Game.remove_HUD(scene_node)
-	
+
+## added
+func send_signal(sig):
+	Game.send_signal(sig)
+
+func a():
+	Game.testremove()
 
 func enable_dimension(dimension : String) -> void:
 	if not dimension in State.Available_Dimensions and not dimension in State.Disabled_Dimensions:

@@ -9,7 +9,8 @@ onready var fade = $CanvasLayer/Fade
 
 func _ready():
 	fade.connect("faded", self, "on_faded")
-	current_world = load("res://Scenes/Demo/DemoMap1.tscn").instance()
+	current_world = load("res://Scenes/Map/Mapa1text.tscn").instance()
+	#current_world = load("res://Scenes/Demo/DemoMap1.tscn").instance()
 	$World.add_child(current_world)
 	set_process(false)
 	ResourceQueue.start()
@@ -50,3 +51,14 @@ func call_HUD(scene):
 func remove_HUD(scene_node):
 	$CanvasLayer.remove_child(scene_node)
 	scene_node.queue_free()
+
+## testing
+
+func send_signal(sig):
+	current_world.signalR(sig)
+
+func testremove():
+	var something = $CanvasLayer.get_children()
+	for children in something:
+		if not children is ColorRect:
+			$CanvasLayer.remove_child(children)

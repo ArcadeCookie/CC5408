@@ -23,6 +23,7 @@ func mostrarLabel():
 			yield(Indicator, "animation_finished")
 			Codigo = ""
 			Displayer.text	= Codigo
+			DataManager.remove_HUD(self)
 	
 
 

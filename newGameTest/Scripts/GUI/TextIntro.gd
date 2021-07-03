@@ -31,9 +31,11 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 				RichLabel.show()
 				RichLabel.bbcode_text = newtext
 				RichAnimPlayer.play("items")
-				if textnum == 5:
-					RichLabel.hide()
-					emit_signal("done")
+				#yield(RichAnimPlayer, "animation_finished")
+				#DataManager.remove_HUD(self)
+				#if textnum == 5:
+				#	RichLabel.hide()
+				#	emit_signal("done")
 			else:
 				LabelH.text = newtext
 				LabelH.show()
@@ -52,6 +54,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		newtext = "\n Imagine being the one starting up the machine, \n I envy you. You better hurry up, it's starting soon!"
 	elif textnum == 4:
 		newtext = "\n Go and activate the [color=#209f88]machine[/color]."
+		DataManager.send_signal("move")
+		## this was added
 	#elif textnum == 5:
 	#	emit_signal("done")
 	readyA=true

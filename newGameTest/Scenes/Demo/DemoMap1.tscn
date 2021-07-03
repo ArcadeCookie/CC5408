@@ -1,9 +1,9 @@
-[gd_scene load_steps=119 format=2]
+[gd_scene load_steps=114 format=2]
 
 [ext_resource path="res://Scenes/Entities/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Objects/special_thingy0.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Objects/thingy1.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/Objects/terminal_thingy0.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Map/TerminalTest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Objects/thingy0.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/Objects/terminal_thingy2.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/Objects/terminal_thingy4.gd" type="Script" id=8]
@@ -73,21 +73,6 @@ albedo_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="ConvexPolygonShape" id=18]
 points = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1 )
-
-[sub_resource type="CubeMesh" id=19]
-size = Vector3( 1, 2, 1 )
-
-[sub_resource type="SpatialMaterial" id=20]
-albedo_color = Color( 0, 1, 0, 1 )
-
-[sub_resource type="ConvexPolygonShape" id=21]
-points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
-
-[sub_resource type="CubeMesh" id=22]
-size = Vector3( 0.5, 0.4, 0.8 )
-
-[sub_resource type="SpatialMaterial" id=23]
-albedo_color = Color( 0.921569, 0, 1, 1 )
 
 [sub_resource type="CubeMesh" id=24]
 size = Vector3( 1, 2, 1 )
@@ -1382,21 +1367,7 @@ material/0 = SubResource( 17 )
 transform = Transform( -4.07302e-07, -1, 0, 2.5, -1.62921e-07, 0, 0, 0, 1, 0, 2.5, -1 )
 shape = SubResource( 18 )
 
-[node name="Terminal" type="StaticBody" parent="Door_0"]
-transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -0.3, 1, 2.25 )
-script = ExtResource( 4 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Door_0/Terminal"]
-mesh = SubResource( 19 )
-material/0 = SubResource( 20 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Door_0/Terminal"]
-shape = SubResource( 21 )
-
-[node name="MeshInstance2" type="MeshInstance" parent="Door_0/Terminal"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26, 0.75, 0 )
-mesh = SubResource( 22 )
-material/0 = SubResource( 23 )
+[node name="Terminal" parent="Door_0" instance=ExtResource( 4 )]
 
 [node name="Terminal2" type="StaticBody" parent="Door_0"]
 transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -0.3, 1, -2.26496 )

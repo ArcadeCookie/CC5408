@@ -180,7 +180,7 @@ text = "After all that effort and now just being a
   supporter, I thought you were going to have
   a grudge towards Dr.X or the project."
 align = 1
-percent_visible = 0.375
+percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -190,7 +190,7 @@ anims/showText = SubResource( 6 )
 anims/wait = SubResource( 7 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 633.431
 margin_top = -1.62106
 margin_right = 1177.43

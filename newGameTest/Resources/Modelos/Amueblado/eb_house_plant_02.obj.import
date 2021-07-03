@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/eb_house_plant_02.obj-9ba70d39a4b42d6f940136592dfb2803.mesh"
+
+[deps]
+
+files=[ "res://.import/eb_house_plant_02.obj-9ba70d39a4b42d6f940136592dfb2803.mesh" ]
+
+source_file="res://Resources/Modelos/Amueblado/eb_house_plant_02.obj"
+dest_files=[ "res://.import/eb_house_plant_02.obj-9ba70d39a4b42d6f940136592dfb2803.mesh", "res://.import/eb_house_plant_02.obj-9ba70d39a4b42d6f940136592dfb2803.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

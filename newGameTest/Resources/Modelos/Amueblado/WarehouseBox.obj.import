@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/WarehouseBox.obj-490fbc829292eb2c90a0928ee444da4b.mesh"
+
+[deps]
+
+files=[ "res://.import/WarehouseBox.obj-490fbc829292eb2c90a0928ee444da4b.mesh" ]
+
+source_file="res://Resources/Modelos/Amueblado/WarehouseBox.obj"
+dest_files=[ "res://.import/WarehouseBox.obj-490fbc829292eb2c90a0928ee444da4b.mesh", "res://.import/WarehouseBox.obj-490fbc829292eb2c90a0928ee444da4b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

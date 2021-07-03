@@ -11,8 +11,8 @@ onready var left_hand = camera.get_node("LeftHand")
 onready var world = get_parent()
 
 var mouse_sensitivity = 0.2
-var speed = 5
-var sprinting_speed = 10
+var speed = 0
+var sprinting_speed = 0
 var stamina = 3
 var max_stamina = 3
 var rest_timer = 0
@@ -89,7 +89,6 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 	if Input.is_action_just_pressed("right_action"):
 		hand_action(right_hand)
 	if Input.is_action_just_pressed("left_action"):
-		DataManager.call_HUD("res://Scenes/GUI/IntroTextCtrl.tscn")
 		hand_action(left_hand)
 	if Input.is_action_just_pressed("scene_change"):
 		if right_hand.get_child_count() > 0:
@@ -161,6 +160,8 @@ func hand_action(hand : Node) -> void:
 			var collision = raycast.get_collider()
 			if collision.has_method("on_grab"):
 				collision.on_grab(self, hand)
+			if collision.has_method("on_terminal_interaction"):
+				collision.on_terminal_interaction(collision, self)
 	else:
 	# Have an object grabed on hand node
 		if raycast.is_colliding():
@@ -180,3 +181,6 @@ func change_map() -> void:
 	DataManager.State.Player.rotation = get_rotation()
 	DataManager.change_map()
 
+func changespeed() -> void:
+	speed = 5
+	sprinting_speed = 10

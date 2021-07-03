@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Chair.obj-4d06939b0b0b8756f73a687e3f7e6920.mesh"
+
+[deps]
+
+files=[ "res://.import/Chair.obj-4d06939b0b0b8756f73a687e3f7e6920.mesh" ]
+
+source_file="res://Resources/Modelos/Amueblado/Chair.obj"
+dest_files=[ "res://.import/Chair.obj-4d06939b0b0b8756f73a687e3f7e6920.mesh", "res://.import/Chair.obj-4d06939b0b0b8756f73a687e3f7e6920.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
