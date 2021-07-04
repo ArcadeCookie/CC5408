@@ -21,31 +21,33 @@ func iniciar():
 #	pass
 
 func _on_Timer_timeout():
-	if tiempo <= 40:		
-		Bola.scale.x = Bola.scale.x + 0.125
-		Bola.scale.y = Bola.scale.y + 0.125
-		Bola.scale.z = Bola.scale.z + 0.125
+	if tiempo <= 50:		
+		Bola.scale.x = Bola.scale.x + 0.08
+		Bola.scale.y = Bola.scale.y + 0.08
+		Bola.scale.z = Bola.scale.z + 0.08
 		#Bola.translation.z = Bola.translation.z - 0.0125
 		iniciar()
-	elif (40 < tiempo) and (tiempo <= 100):
-		Bola.scale.x = Bola.scale.x + 0.25
-		Bola.scale.y = Bola.scale.y + 0.25
-		Bola.scale.z = Bola.scale.z + 0.25
-		Bola2.scale.x = Bola2.scale.x + 0.25
-		Bola2.scale.y = Bola2.scale.y + 0.25
-		Bola2.scale.z = Bola2.scale.z + 0.25
+	elif (50 < tiempo) and (tiempo <= 80):
+		Bola.scale.x = Bola.scale.x + 0.24
+		Bola.scale.y = Bola.scale.y + 0.24
+		Bola.scale.z = Bola.scale.z + 0.24
+		Bola2.scale.x = Bola2.scale.x + 0.08
+		Bola2.scale.y = Bola2.scale.y + 0.08
+		Bola2.scale.z = Bola2.scale.z + 0.08
 		#Bola2.translation.z = Bola2.translation.z - 0.05
 		Bola.translation.z = Bola.translation.z - 0.05
 		iniciar()
-	elif (150 < tiempo):
-		iniciar()
+	elif (110 < tiempo):
+		#iniciar()
+		DataManager.call_HUD("res://Scenes/Map/White.tscn")
+		# aca deberia ir escena a blanco
 	else:
-		Bola.scale.x = Bola.scale.x + 0.3
-		Bola.scale.y = Bola.scale.y + 0.3
-		Bola.scale.z = Bola.scale.z + 0.3
-		Bola2.scale.x = Bola2.scale.x + 0.3
-		Bola2.scale.y = Bola2.scale.y + 0.3
-		Bola2.scale.z = Bola2.scale.z + 0.3
+		Bola.scale.x = Bola.scale.x + 0.36
+		Bola.scale.y = Bola.scale.y + 0.36
+		Bola.scale.z = Bola.scale.z + 0.36
+		Bola2.scale.x = Bola2.scale.x + 0.12
+		Bola2.scale.y = Bola2.scale.y + 0.12
+		Bola2.scale.z = Bola2.scale.z + 0.12
 		#Bola2.translation.z = Bola2.translation.z - 0.075
 		Bola.translation.z = Bola.translation.z - 0.075
 		iniciar()

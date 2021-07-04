@@ -10,4 +10,5 @@ func _init():
 # Overriden method so this specific instance of a whole terminal node can have
 # specific desired behaviour
 func on_activation():
-	DataManager.call_HUD("res://Scenes/GUI/NumericPanel.tscn")
+	#DataManager.call_HUD("res://Scenes/GUI/NumericPanel.tscn")
+	DataManager.call_HUD("res://Scenes/GUI/IntroMonitor.tscn")

@@ -54,7 +54,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		newtext = "\n Imagine being the one starting up the machine, \n I envy you. You better hurry up, it's starting soon!"
 	elif textnum == 4:
 		newtext = "\n Go and activate the [color=#209f88]machine[/color]."
-		DataManager.send_signal("move")
+		DataManager.send_msg("move")
 		## this was added
 	#elif textnum == 5:
 	#	emit_signal("done")

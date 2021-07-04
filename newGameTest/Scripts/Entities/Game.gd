@@ -9,7 +9,7 @@ onready var fade = $CanvasLayer/Fade
 
 func _ready():
 	fade.connect("faded", self, "on_faded")
-	current_world = load("res://Scenes/Map/Mapa1text.tscn").instance()
+	current_world = load("res://Scenes/Map/MapaExp.tscn").instance()
 	#current_world = load("res://Scenes/Demo/DemoMap1.tscn").instance()
 	$World.add_child(current_world)
 	set_process(false)
@@ -39,6 +39,8 @@ func _process(delta: float) -> void:
 		current_world = new_world.instance()
 		$World.add_child(current_world)
 		loading = false
+		# linea nueva
+		DataManager.removeScenes()
 		fade.fade_out()
 		set_process(false)
 
@@ -54,11 +56,11 @@ func remove_HUD(scene_node):
 
 ## testing
 
-func send_signal(sig):
-	current_world.signalR(sig)
+func send_msg(msg):
+	current_world.msgReceive(msg)
 
-func testremove():
-	var something = $CanvasLayer.get_children()
-	for children in something:
+func removeScenes():
+	var nodes = $CanvasLayer.get_children()
+	for children in nodes:
 		if not children is ColorRect:
 			$CanvasLayer.remove_child(children)

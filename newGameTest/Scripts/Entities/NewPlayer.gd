@@ -11,8 +11,8 @@ onready var left_hand = camera.get_node("LeftHand")
 onready var world = get_parent()
 
 var mouse_sensitivity = 0.2
-var speed = 0
-var sprinting_speed = 0
+var speed = 5
+var sprinting_speed = 10
 var stamina = 3
 var max_stamina = 3
 var rest_timer = 0
@@ -141,14 +141,12 @@ func on_grabed_object(hand : Node, object : Node) -> void:
 # Method to drop an object and once again include it in the world
 func drop_object(hand : Node) -> void:
 	var object = hand.get_child(0)
-	var scale = object.get_scale()
 	var position = \
 			camera.to_global(right_hand.get_translation())*0.5 \
 			+ camera.to_global(left_hand.get_translation())*0.5
 	object.set_linear_velocity(Vector3())
 	object.set_angular_velocity(Vector3())
 	object.set_translation(position)
-	object.set_scale(scale)
 	hand.remove_child(object)
 	world.add_child(object)
 	object.on_drop(object)
@@ -183,6 +181,6 @@ func change_map() -> void:
 	DataManager.State.Player.rotation = get_rotation()
 	DataManager.change_map()
 
-func changespeed() -> void:
-	speed = 5
-	sprinting_speed = 10
+func changespeed(val) -> void:
+	speed = 5*val
+	sprinting_speed = 10*val

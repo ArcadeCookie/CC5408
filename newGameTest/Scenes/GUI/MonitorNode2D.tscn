@@ -1,0 +1,268 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Resources/Images/Menus/ScreenWarning.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Images/Menus/ScreenOkay.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=16]
+resource_name = "show"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.9, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Resources/Fonts/TheSnowday.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+font_data = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Warning"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://Resources/Fonts/TheSnowday.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 42
+font_data = SubResource( 4 )
+
+[sub_resource type="Animation" id=15]
+resource_name = "stop"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "text"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0 ]
+}
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://Resources/Fonts/TheSnowday.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 42
+font_data = SubResource( 7 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "Begin"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Stop"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0 ]
+}
+
+[sub_resource type="DynamicFontData" id=10]
+font_path = "res://Resources/Fonts/TheSnowday.ttf"
+
+[sub_resource type="DynamicFont" id=11]
+size = 42
+font_data = SubResource( 10 )
+
+[sub_resource type="DynamicFontData" id=12]
+font_path = "res://Resources/Fonts/TheSnowday.ttf"
+
+[sub_resource type="DynamicFont" id=13]
+size = 42
+font_data = SubResource( 12 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Okay" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Warning" type="TextureRect" parent="."]
+visible = false
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Warning"]
+anims/show = SubResource( 16 )
+
+[node name="ExpData" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 86.876
+margin_top = 74.1624
+margin_right = 357.876
+margin_bottom = 247.162
+custom_fonts/font = SubResource( 2 )
+text = "Experiment ongoing
+H Levels : 70%
+X Levels : 75%
+"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Warning2" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 690.955
+margin_top = 119.468
+margin_right = 1274.96
+margin_bottom = 292.468
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Warning : High levels of Sustance V-3234
+present in the machine's fluids
+"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Warning2"]
+anims/Warning = SubResource( 3 )
+
+[node name="Proceed" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 694.731
+margin_top = 334.672
+margin_right = 1278.73
+margin_bottom = 507.672
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Do you want to proceed?
+"
+valign = 2
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Proceed"]
+anims/stop = SubResource( 15 )
+anims/text = SubResource( 6 )
+
+[node name="Commence" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 694.731
+margin_top = 298.805
+margin_right = 1278.73
+margin_bottom = 471.805
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Begin the experiment?"
+valign = 2
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Commence"]
+anims/Begin = SubResource( 9 )
+anims/Stop = SubResource( 14 )
+
+[node name="Yes" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 694.731
+margin_top = 345.998
+margin_right = 1278.73
+margin_bottom = 518.998
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Yes"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExpInfo" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.09
+margin_top = 476.253
+margin_right = 382.09
+margin_bottom = 649.253
+custom_fonts/font = SubResource( 13 )
+text = "Dimensional Experiment - Final Test
+Lead by Dr. X"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://Resources/Modelos/Mapa/LabOeste.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Resources/Modelos/Mapa/Recepcion.obj" type="ArrayMesh" id=2]
@@ -52,8 +52,10 @@
 [ext_resource path="res://Scripts/World/Intro.gd" type="Script" id=50]
 [ext_resource path="res://Scripts/Objects/MonitorInit.gd" type="Script" id=51]
 [ext_resource path="res://Scripts/Objects/MonitorBody.gd" type="Script" id=52]
+[ext_resource path="res://Scenes/GUI/IntroMonitor.tscn" type="PackedScene" id=53]
 [ext_resource path="res://Resources/Images/Items/tarjeta.png" type="Texture" id=54]
 [ext_resource path="res://Scripts/Objects/Card.gd" type="Script" id=55]
+[ext_resource path="res://Resources/Music/Experimento.wav" type="AudioStream" id=56]
 
 [sub_resource type="Environment" id=1]
 ambient_light_color = Color( 0.294118, 0.294118, 0.294118, 1 )
@@ -598,7 +600,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45.0466 )
 mesh = SubResource( 21 )
 material/0 = ExtResource( 16 )
 
-[node name="RigidBody" parent="." instance=ExtResource( 44 )]
+[node name="Particulas" parent="." instance=ExtResource( 44 )]
 
 [node name="OfficeDecoration" type="Spatial" parent="."]
 
@@ -668,7 +670,7 @@ material/0 = SubResource( 27 )
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.452671, -11.9911 )
 
 [node name="Card" type="RigidBody" parent="."]
-transform = Transform( 0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 18.9294, 0.887944, 25.1561 )
+transform = Transform( 0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 3.03908, 0.887944, -18.225 )
 script = ExtResource( 55 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Card"]
@@ -683,5 +685,14 @@ texture = ExtResource( 54 )
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 shape = SubResource( 30 )
 
-[node name="KinematicBody" parent="." instance=ExtResource( 27 )]
+[node name="KinematicBody2" parent="." instance=ExtResource( 27 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.967107, -17.4776 )
+
+[node name="Screen" parent="." instance=ExtResource( 53 )]
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.70914, 2.05123, -10.3762 )
+
+[node name="ExpOST" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 56 )
+
+[connection signal="activate" from="Monitor/Terminal" to="." method="_on_Terminal_activate"]
+[connection signal="machineError" from="Screen" to="." method="_on_Screen_machineError"]

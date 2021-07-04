@@ -20,3 +20,4 @@ func intro():
 	#_anim_player.play("fadeout")
 	#yield(_anim_player, "animation_finished")
 	DataManager.remove_HUD(self)
+	DataManager.send_msg("ready")
