@@ -131,27 +131,27 @@ data = PoolVector3Array( -11.3043, 0, 11.0943, -5.2203, 0, 11.0943, -11.3043, 0,
 
 [sub_resource type="BoxShape" id=22]
 
-[sub_resource type="CubeMesh" id=26]
+[sub_resource type="CubeMesh" id=23]
 size = Vector3( 1, 2, 1 )
 
-[sub_resource type="SpatialMaterial" id=27]
+[sub_resource type="SpatialMaterial" id=24]
 albedo_color = Color( 0, 1, 0, 1 )
 
-[sub_resource type="ConvexPolygonShape" id=28]
+[sub_resource type="ConvexPolygonShape" id=25]
 points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
-[sub_resource type="CubeMesh" id=29]
+[sub_resource type="CubeMesh" id=26]
 size = Vector3( 0.5, 0.4, 0.8 )
 
-[sub_resource type="SpatialMaterial" id=30]
+[sub_resource type="SpatialMaterial" id=27]
 albedo_color = Color( 0.921569, 0, 1, 1 )
 
-[sub_resource type="CubeMesh" id=31]
+[sub_resource type="CubeMesh" id=28]
 
-[sub_resource type="SpatialMaterial" id=33]
+[sub_resource type="SpatialMaterial" id=29]
 albedo_color = Color( 0.533333, 0.239216, 0.239216, 1 )
 
-[sub_resource type="BoxShape" id=32]
+[sub_resource type="BoxShape" id=30]
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 50 )
@@ -651,16 +651,16 @@ transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
 script = ExtResource( 52 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Monitor/Terminal"]
-mesh = SubResource( 26 )
-material/0 = SubResource( 27 )
+mesh = SubResource( 23 )
+material/0 = SubResource( 24 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Monitor/Terminal"]
-shape = SubResource( 28 )
+shape = SubResource( 25 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Monitor/Terminal"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26, 0.75, 0 )
-mesh = SubResource( 29 )
-material/0 = SubResource( 30 )
+mesh = SubResource( 26 )
+material/0 = SubResource( 27 )
 
 [node name="Spatial" type="Spatial" parent="."]
 
@@ -672,8 +672,8 @@ transform = Transform( 0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 1
 script = ExtResource( 55 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Card"]
-mesh = SubResource( 31 )
-material/0 = SubResource( 33 )
+mesh = SubResource( 28 )
+material/0 = SubResource( 29 )
 
 [node name="Sprite3D" type="Sprite3D" parent="Card/MeshInstance"]
 transform = Transform( 0.39, 0, 0, 0, 0.65, 2.22045e-16, 0, 3.55271e-15, 1, 0, 0, 1.00049 )
@@ -681,7 +681,7 @@ texture = ExtResource( 54 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Card"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
-shape = SubResource( 32 )
+shape = SubResource( 30 )
 
-[node name="KinematicBody2" parent="." instance=ExtResource( 27 )]
+[node name="KinematicBody" parent="." instance=ExtResource( 27 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.967107, -17.4776 )

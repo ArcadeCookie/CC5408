@@ -22,9 +22,10 @@ func _ready() -> void:
 	var og_mesh = og_mesh_instance.mesh
 	
 	highlight = MeshInstance.new()
+	highlight.set_scale($MeshInstance.get_scale())
 	add_child(highlight)
 	var mesh = og_mesh.duplicate()
-	#mesh.flip_faces = true
+	mesh.flip_faces = true
 	
 	var mat = SpatialMaterial.new()
 	mat.albedo_color = Color(1,1,0,0.6)
