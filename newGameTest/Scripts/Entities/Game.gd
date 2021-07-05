@@ -57,7 +57,8 @@ func remove_HUD(scene_node):
 ## testing
 
 func send_msg(msg):
-	current_world.msgReceive(msg)
+	if current_world.has_method("msgReceive"):
+		current_world.msgReceive(msg)
 
 func removeScenes():
 	var nodes = $CanvasLayer.get_children()

@@ -39,7 +39,7 @@ func _on_Timer_timeout():
 		iniciar()
 	elif (110 < tiempo):
 		#iniciar()
-		DataManager.call_HUD("res://Scenes/Map/White.tscn")
+		DataManager.call_HUD("res://Scenes/Map/WhiteFade.tscn")
 		# aca deberia ir escena a blanco
 	else:
 		Bola.scale.x = Bola.scale.x + 0.36
