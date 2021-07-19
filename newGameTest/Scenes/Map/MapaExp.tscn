@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://Resources/Modelos/Mapa/LabOeste.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Resources/Modelos/Mapa/Recepcion.obj" type="ArrayMesh" id=2]
@@ -49,7 +49,6 @@
 [ext_resource path="res://Resources/Modelos/Amueblado/WarehouseBox.obj" type="ArrayMesh" id=47]
 [ext_resource path="res://Resources/Materials/Archivos/WareHouseBox/WareHouseBox2.jpg" type="Texture" id=48]
 [ext_resource path="res://Resources/Materials/Archivos/WareHouseBox/WareHouseBox1.jpg" type="Texture" id=49]
-[ext_resource path="res://Scripts/World/Intro.gd" type="Script" id=50]
 [ext_resource path="res://Scripts/Objects/MonitorInit.gd" type="Script" id=51]
 [ext_resource path="res://Scripts/Objects/MonitorBody.gd" type="Script" id=52]
 [ext_resource path="res://Scenes/GUI/IntroMonitor.tscn" type="PackedScene" id=53]
@@ -150,16 +149,7 @@ size = Vector3( 0.5, 0.4, 0.8 )
 [sub_resource type="SpatialMaterial" id=27]
 albedo_color = Color( 0.921569, 0, 1, 1 )
 
-[sub_resource type="CubeMesh" id=28]
-size = Vector3( 1, 1, 1 )
-
-[sub_resource type="SpatialMaterial" id=29]
-albedo_color = Color( 0.643137, 0.643137, 0.643137, 1 )
-
-[sub_resource type="ConvexPolygonShape" id=30]
-points = PoolVector3Array( -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5 )
-
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=28]
 resource_name = "intermittence_in"
 length = 1.5
 tracks/0/type = "value"
@@ -211,7 +201,7 @@ tracks/3/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=29]
 resource_name = "intermittence_out"
 length = 1.5
 tracks/0/type = "value"
@@ -263,6 +253,15 @@ tracks/3/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
+[sub_resource type="CubeMesh" id=30]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=31]
+albedo_color = Color( 0.643137, 0.643137, 0.643137, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=32]
+points = PoolVector3Array( -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5 )
+
 [sub_resource type="BoxShape" id=33]
 
 [sub_resource type="SpatialMaterial" id=34]
@@ -282,7 +281,6 @@ gravity = Vector3( -0.2, 0, 0 )
 [sub_resource type="QuadMesh" id=36]
 
 [node name="Spatial" type="Spatial"]
-script = ExtResource( 50 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -594,8 +592,6 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.6, 0
 [node name="PuertaLab2" parent="RecepcionM" instance=ExtResource( 14 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.600261, 0, 3.83337 )
 
-[node name="Particulas" parent="." instance=ExtResource( 44 )]
-
 [node name="OfficeDecoration" type="Spatial" parent="."]
 
 [node name="Baños" type="MeshInstance" parent="OfficeDecoration"]
@@ -671,15 +667,50 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26, 0.75, 0 )
 mesh = SubResource( 26 )
 material/0 = SubResource( 27 )
 
-[node name="KinematicBody2" parent="." instance=ExtResource( 27 )]
-transform = Transform( 0.0100354, 0, 0.99995, 0, 1, 0, -0.99995, 0, 0.0100354, -1.85239, 0.967107, -19.5629 )
+[node name="Screen" parent="Monitor" instance=ExtResource( 53 )]
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.19983, 1.15633, -0.1027 )
 
-[node name="Screen" parent="." instance=ExtResource( 53 )]
-transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.24155, 2.05123, -11.593 )
+[node name="LightAnim" type="AnimationPlayer" parent="Monitor"]
+anims/intermittence_in = SubResource( 28 )
+anims/intermittence_out = SubResource( 29 )
 
-[node name="ExpOST" type="AudioStreamPlayer" parent="."]
+[node name="WarningLight" type="OmniLight" parent="Monitor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.183304, 5.6381, 10.8623 )
+visible = false
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 15.0
+
+[node name="WarningLight2" type="OmniLight" parent="Monitor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2105, 5.6381, -3.2287 )
+visible = false
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 15.0
+
+[node name="WarningLight3" type="OmniLight" parent="Monitor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06528, 5.6381, 4.25434 )
+visible = false
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 15.0
+
+[node name="WarningLight4" type="OmniLight" parent="Monitor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.18972, 5.6381, 3.64334 )
+visible = false
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 15.0
+
+[node name="Particulas" parent="Monitor" instance=ExtResource( 44 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0417203, 5.94991, 5.30476 )
+
+[node name="ExpOST" type="AudioStreamPlayer" parent="Monitor"]
 stream = ExtResource( 56 )
 volume_db = -20.8
+
+[node name="WarningSound" type="AudioStreamPlayer3D" parent="Monitor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0176822, 1.8724, 2.15395 )
+stream = ExtResource( 57 )
+
+[node name="KinematicBody2" parent="." instance=ExtResource( 27 )]
+transform = Transform( 0.0100354, 0, 0.99995, 0, 1, 0, -0.99995, 0, 0.0100354, -1.85239, 0.967107, -19.5629 )
 
 [node name="Card2" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0.284709, 0.0663101, -21.6893 )
@@ -687,48 +718,16 @@ script = ExtResource( 55 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Card2"]
 transform = Transform( 0.4, 0, 0, 0, 0.25, 0, 0, 0, 0.05, -0.00598907, 0.00761795, 5.60284e-05 )
-mesh = SubResource( 28 )
-material/0 = SubResource( 29 )
+mesh = SubResource( 30 )
+material/0 = SubResource( 31 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Card2"]
 transform = Transform( 0.4, 0, 0, 0, 0.25, 0, 0, 8.88178e-16, 0.05, -0.00598907, 0.00761795, 5.60284e-05 )
-shape = SubResource( 30 )
+shape = SubResource( 32 )
 
 [node name="Sprite3D" type="Sprite3D" parent="Card2"]
 transform = Transform( 0.076, 0, 0, 0, 0.0775, 0, 0, 0, 0.025, -0.00598907, 0.00740051, 0.0251312 )
 texture = ExtResource( 54 )
-
-[node name="WarningLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.141584, 6.533, -0.628 )
-visible = false
-light_color = Color( 1, 0, 0, 1 )
-omni_range = 15.0
-
-[node name="WarningLight3" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.107, 6.533, -7.23596 )
-visible = false
-light_color = Color( 1, 0, 0, 1 )
-omni_range = 15.0
-
-[node name="WarningLight4" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.148, 6.533, -7.84696 )
-visible = false
-light_color = Color( 1, 0, 0, 1 )
-omni_range = 15.0
-
-[node name="WarningLight2" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25222, 6.533, -14.719 )
-visible = false
-light_color = Color( 1, 0, 0, 1 )
-omni_range = 15.0
-
-[node name="LightAnim" type="AnimationPlayer" parent="."]
-anims/intermittence_in = SubResource( 31 )
-anims/intermittence_out = SubResource( 32 )
-
-[node name="WarningSound" type="AudioStreamPlayer3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0594025, 2.7673, -9.33635 )
-stream = ExtResource( 57 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( -0.119588, 0, -1.99642, 0, 2, 0, 1.99642, 0, -0.119588, 6.30178, -4.84855, -26.4632 )
@@ -771,4 +770,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76721, 0 )
 shape = SubResource( 33 )
 
 [connection signal="activate" from="Monitor/Terminal" to="." method="_on_Terminal_activate"]
-[connection signal="animation_finished" from="LightAnim" to="." method="_on_LightAnim_animation_finished"]
+[connection signal="animation_finished" from="Monitor/LightAnim" to="Monitor" method="_on_LightAnim_animation_finished"]

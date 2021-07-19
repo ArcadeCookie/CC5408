@@ -20,6 +20,7 @@ func _ready():
 
 func change_scene(scene):
 	loading_world = scene
+	print(loading_world)
 	loading = true
 	fade.fade_in()
 
@@ -55,7 +56,6 @@ func remove_HUD(scene_node):
 	scene_node.queue_free()
 
 ## testing
-
 func send_msg(msg):
 	if not msg == null:
 		if current_world.has_method("msgReceive"):

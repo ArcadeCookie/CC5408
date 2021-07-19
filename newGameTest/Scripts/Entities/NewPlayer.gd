@@ -66,8 +66,8 @@ func _unhandled_input(event : InputEvent) -> void:
 
 # Standard method for handling key events
 func _unhandled_key_input(event : InputEventKey) -> void:
-	if Input.is_action_just_pressed("ui_select"):
-		$Camera/ScreenShaker._wakeup()
+	#if Input.is_action_just_pressed("ui_select"):
+	#	$Camera/ScreenShaker._wakeup()
 	if Input.is_action_just_pressed("sprint"):
 		is_sprinting = true
 		is_resting = false
@@ -162,10 +162,8 @@ func hand_action(hand : Node) -> void:
 			var collision = raycast.get_collider()
 			if collision.has_method("on_grab"):
 				collision.on_grab(self, hand)
-			if collision.has_method("test_extra"):
+			if collision.has_method("on_terminal_interaction"):
 				collision.on_terminal_interaction(collision, self)
-			#if collision.has_method("on_terminal_interaction"):
-		#		collision.on_terminal_interaction(collision, self)
 	else:
 	# Have an object grabed on hand node
 		if raycast.is_colliding():

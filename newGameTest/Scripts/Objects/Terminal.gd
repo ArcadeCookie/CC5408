@@ -69,7 +69,10 @@ func force_on_terminal_interaction() -> void:
 # only required if you want the specific activation of a terminal do something other than
 # just make itself active
 func on_terminal_interaction(terminal_node : Node, object : Node) -> void:
-	if object.id == req_object_id and not is_active:
+	var this_id = -1
+	if object.has_method("on_grab"):
+		this_id = object.id
+	if this_id == req_object_id and not is_active:
 		is_active = true
 		DataManager.State.Terminals[id] = true
 		terminal_body.on_terminal_active()

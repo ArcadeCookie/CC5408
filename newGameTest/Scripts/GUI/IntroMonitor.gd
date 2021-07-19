@@ -1,9 +1,6 @@
 extends Spatial
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var Terminal = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,7 +46,7 @@ func _activate():
 	## de advertencia
 	## ahora deberia mostrarse el primer sprite de experimento (un rayo?)
 	## nuevamente otro cambio a los numeros de ExpData
-	DataManager.send_msg("beginexp")
+	Terminal.beginexp()
 	_animplayer = $Viewport/Node2D/ExpData/AnimationPlayer
 	_animplayer.play("text2")
 	yield(_animplayer, "animation_finished")
@@ -59,18 +56,18 @@ func _activate():
 	_animplayer = $Viewport/Node2D/Warning/AnimationPlayer
 	_animplayer.play("show")
 	yield(_animplayer, "animation_finished")
-	DataManager.send_msg("error1") ## sprite 1
+	Terminal.error1() ## sprite 1
 	# ------------------------------------------------------------------------
 	## error 1 maquina, incrementan los numeros de nuevo
 	_animplayer = $Viewport/Node2D/ExpData/AnimationPlayer
 	_animplayer.play("text3")
 	yield(_animplayer, "animation_finished")
-	DataManager.send_msg("error2") ## sprite 2
+	Terminal.error2() ## sprite 2
 	# ------------------------------------------------------------------------
 	## error 2 maquina
 	_animplayer.play("text4")
 	yield(_animplayer, "animation_finished")
-	DataManager.send_msg("error3") ## sprite 3 + explosion bola
+	Terminal.error3() ## sprite 3 + explosion bola
 	## aca agregar alguna reproduccion de sonido o algo con send_msg
 	## nuevamente los numeros empiezan a cambiar pero se van a rojo y que tengan !!!
 	

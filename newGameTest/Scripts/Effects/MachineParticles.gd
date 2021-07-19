@@ -8,6 +8,7 @@ onready var Bola := $Particles4
 onready var Bola2 := $Particles5
 onready var Minutero := $Timer
 var tiempo
+var done = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,8 +39,9 @@ func _on_Timer_timeout():
 		Bola.translation.z = Bola.translation.z - 0.05
 		iniciar()
 	elif (110 < tiempo):
-		#iniciar()
-		DataManager.call_HUD("res://Scenes/Map/WhiteFade.tscn")
+		if not done:
+			DataManager.call_HUD("res://Scenes/Map/WhiteFade.tscn")
+			done = true
 		# aca deberia ir escena a blanco
 	else:
 		Bola.scale.x = Bola.scale.x + 0.36
