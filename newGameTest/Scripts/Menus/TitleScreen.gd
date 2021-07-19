@@ -5,9 +5,13 @@ extends Control
 func _ready():
 	var newgame = $Menu/HBoxContainer/Buttons/NewGameButton
 	newgame.connect("pressed", self, "_on_NewGameButton_pressed")
-	
+	$ScreenChanger.play("titlescreen")
 #
 func _on_NewGameButton_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	DataManager.call_HUD("res://Scenes/Map/NewGameIntro.tscn")
 	DataManager.remove_HUD(self)
+
+
+func _on_ScreenChanger_animation_finished(anim_name):
+	$ScreenChanger.play("titlescreen")

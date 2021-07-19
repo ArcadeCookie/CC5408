@@ -23,3 +23,8 @@ func on_terminal_interaction(terminal_node : Node, object : Node) -> void:
 	else:
 		DataManager.removeScenes()
 		DataManager.call_HUD("res://Scenes/GUI/MissingCard.tscn")
+
+## this is added just for this part, must change later
+## delete after chaning
+func test_extra():
+	pass

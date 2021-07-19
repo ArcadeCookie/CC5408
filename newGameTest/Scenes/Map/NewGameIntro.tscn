@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Menus/InitialSpeech.gd" type="Script" id=1]
 
@@ -26,23 +26,38 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "show"
-length = 4.0
+resource_name = "new"
+length = 6.0
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath(".:percent_visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.7, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ 0.0, 0.0, 1.0 ]
 }
 
 [sub_resource type="Animation" id=5]
 resource_name = "show"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -57,8 +72,22 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "fadeout"
+[sub_resource type="Animation" id=7]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
@@ -90,9 +119,9 @@ __meta__ = {
 
 [node name="Text1" type="Label" parent="CenterContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 267.0
+margin_left = 819.0
 margin_top = 270.0
-margin_right = 756.0
+margin_right = 1308.0
 margin_bottom = 330.0
 rect_min_size = Vector2( 360, 60 )
 custom_fonts/font = SubResource( 2 )
@@ -106,11 +135,32 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/Text1"]
 anims/show = SubResource( 3 )
 
+[node name="Text4" type="Label" parent="CenterContainer"]
+margin_left = 107.0
+margin_top = 259.0
+margin_right = 100.0
+margin_bottom = 341.0
+rect_min_size = Vector2( 360, 60 )
+text = "El asbesto es un material de construcción usado para la creación de aislantes
+ térmicos y techados de las casas. Respirar la fibra de asbesto tiene un alto 
+riesgo de producir cáncer en los pulmones de las personas que lo aspiran. 
+Por ese motivo, en Chile desde el año 2001 se prohíbe
+ el uso de asbesto en materiales de construcción."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/Text4"]
+anims/new = SubResource( 4 )
+anims/show = SubResource( 5 )
+
 [node name="Text2" type="Label" parent="CenterContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 332.0
+margin_left = 884.0
 margin_top = 270.0
-margin_right = 692.0
+margin_right = 1244.0
 margin_bottom = 330.0
 rect_min_size = Vector2( 360, 60 )
 custom_fonts/font = SubResource( 2 )
@@ -122,13 +172,13 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/Text2"]
-anims/show = SubResource( 4 )
+anims/show = SubResource( 6 )
 
 [node name="Text3" type="Label" parent="CenterContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 264.0
+margin_left = 816.0
 margin_top = 270.0
-margin_right = 759.0
+margin_right = 1311.0
 margin_bottom = 330.0
 rect_min_size = Vector2( 360, 60 )
 custom_fonts/font = SubResource( 2 )
@@ -140,7 +190,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/Text3"]
-anims/show = SubResource( 5 )
+anims/show = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fadeout = SubResource( 6 )
+anims/fadeout = SubResource( 8 )

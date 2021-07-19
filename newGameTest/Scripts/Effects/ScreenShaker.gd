@@ -5,10 +5,13 @@ const TRANS = Tween.TRANS_SINE
 const EASE = Tween.EASE_IN_OUT
 onready var CamOGrot = Vector3()
 var count = 0
+var time_expl = 1.0
+var amp_expl = 3.0
+var done = 0
 
 onready var camera = get_parent()
 
-func start(duration=1.0, frequency=15, amplitude=10.15):
+func start(duration=1.0, frequency=15, amplitude=2.0):
 	self.amplitude = amplitude
 	
 	$Duration.wait_time = duration
@@ -47,6 +50,51 @@ func _on_Frequency_timeout():
 	_new_shake()
 
 func _on_Duration_timeout():
-	_reset()
+	self.time_expl += 0.1
+	self.amp_expl += 0.4
+	start(time_expl, 15, amp_expl)
+	#_reset()
 	#if self.count==7:
-	$Frequency.stop()
+	#$Frequency.stop()
+
+func _wakeup():
+	camera.rotation_degrees.z = -90.0
+	camera.translation.y = 0.25
+	var rand = Vector3()
+	var transl = Vector3()
+	rand.x = camera.rotation_degrees.x
+	rand.y = camera.rotation_degrees.y
+	rand.z = camera.rotation_degrees.z + 30.0
+	transl.x = camera.translation.x
+	transl.y = camera.translation.y + 0.25
+	transl.z = camera.translation.z
+	
+	$TweenShake.interpolate_property(camera, "rotation_degrees", camera.rotation_degrees, rand, $Timer.wait_time, TRANS, EASE)
+	#$TweenShake.start()
+	$TweenShake.interpolate_property(camera, "translation", camera.translation, transl, $Timer.wait_time, TRANS, EASE)
+	$TweenShake.start()
+	$Timer.start()
+
+func _on_Timer_timeout():
+	if self.done == 0:
+		$Timer2.start()
+		#self.done = 1
+		print("done")
+
+func _on_Timer2_timeout():
+	if self.done == 1:
+		return
+	$Timer.wait_time = 2.5
+	var rand = Vector3()
+	var transl = Vector3()
+	rand.x = camera.rotation_degrees.x
+	rand.y = camera.rotation_degrees.y
+	rand.z = camera.rotation_degrees.z + 60.0
+	transl.x = camera.translation.x
+	transl.y = camera.translation.y + 0.5
+	transl.z = camera.translation.z
+	
+	$TweenShake.interpolate_property(camera, "rotation_degrees", camera.rotation_degrees, rand, $Timer.wait_time, TRANS, EASE)
+	$TweenShake.interpolate_property(camera, "translation", camera.translation, transl, $Timer.wait_time, TRANS, EASE)
+	$TweenShake.start()
+	self.done = 1

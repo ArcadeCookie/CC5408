@@ -36,7 +36,11 @@ func msgReceive(msg):
 		$WarningSound.play()
 		## aqui sonido warning
 	if msg == "error3":
+		$KinematicBody2/Camera/ScreenShaker.start()
 		$Particulas.iniciar()
+
+#func _wakeup():
+#	$KinematicBody2/Camera/ScreenShaker._wakeup()
 
 #func _on_Monitor_activateMenu():
 #	DataManager.call_HUD("res://Scenes/GUI/NumericPanel.tscn")

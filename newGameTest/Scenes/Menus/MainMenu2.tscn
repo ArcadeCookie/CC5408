@@ -1,8 +1,37 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Menus/Buttons/NewGameButton.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Resources/Images/Menus/portada2.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Images/Menus/portada_2.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Images/Menus/portada_1.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Menus/TitleScreen.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "titlescreen"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -15,10 +44,22 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 256.0
-margin_bottom = 55.0
+margin_right = 1.0
+margin_bottom = 1.0
 texture = ExtResource( 3 )
-stretch_mode = 2
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1.0
+margin_bottom = 1.0
+texture = ExtResource( 2 )
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,4 +105,8 @@ margin_top = 240.0
 margin_right = 205.0
 margin_bottom = 240.0
 
+[node name="ScreenChanger" type="AnimationPlayer" parent="."]
+anims/titlescreen = SubResource( 1 )
+
 [connection signal="pressed" from="Menu/HBoxContainer/Buttons/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="animation_finished" from="ScreenChanger" to="." method="_on_ScreenChanger_animation_finished"]
