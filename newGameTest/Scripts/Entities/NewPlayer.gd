@@ -6,6 +6,10 @@ onready var camera = get_node("Camera")
 onready var raycast = camera.get_node("RayCast")
 onready var right_hand = camera.get_node("RightHand")
 onready var left_hand = camera.get_node("LeftHand")
+onready var drop_node = camera.get_node("Drop")
+onready var sub_viewport = get_parent().get_parent().get_parent().get_node("CanvasLayer/ViewportContainer/Viewport")
+onready var viewport_rh = sub_viewport.get_node("Camera/RightHand")
+onready var viewport_lh = sub_viewport.get_node("Camera/LeftHand")
 
 # parent nodes reference
 onready var world = get_parent()
@@ -76,18 +80,10 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 		is_sprinting = false
 	if Input.is_action_just_pressed("crouch"):
 		is_crouching = true
-		var pos = get_translation()
-		pos.y = 0
-		set_translation(pos)
-		var collision_shape = $CollisionShape
-		collision_shape.set_translation(Vector3(0,1.5,0))
+		crouch()
 	if Input.is_action_just_released("crouch"):
 		is_crouching = false
-		var pos = get_translation()
-		pos.y = 1
-		set_translation(pos)
-		var collision_shape = $CollisionShape
-		collision_shape.set_translation(Vector3(0,0.5,0))
+		crouch()
 	if Input.is_action_just_pressed("right_action"):
 		hand_action(right_hand)
 	if Input.is_action_just_pressed("left_action"):
@@ -138,19 +134,30 @@ func _process(delta : float) -> void:
 func on_grabed_object(hand : Node, object : Node) -> void:
 	world.remove_child(object)
 	hand.add_child(object)
+	var phantom_object = object.duplicate()
+	if hand == right_hand:
+		viewport_rh.add_child(phantom_object)
+		phantom_object.set_translation(Vector3(0,0,0))
+	else:
+		viewport_lh.add_child(phantom_object)
+		phantom_object.set_translation(Vector3(0,0,0))
 
 
-# Method to drop an object and once again include it in the world
 func drop_object(hand : Node) -> void:
 	var object = hand.get_child(0)
-	var position = \
-			camera.to_global(right_hand.get_translation())*0.5 \
-			+ camera.to_global(left_hand.get_translation())*0.5
-	object.set_linear_velocity(Vector3())
-	object.set_angular_velocity(Vector3())
-	object.set_translation(position)
+	var position = camera.to_global(drop_node.get_translation())
+	var drop_pos = camera.to_global(drop_node.get_translation())
+	var cam_pos = self.to_global(camera.get_translation())
+	object.set_translation(cam_pos - Vector3(0, 0.1, 0))
 	hand.remove_child(object)
 	world.add_child(object)
+	if hand == right_hand:
+		var phantom_object = viewport_rh.get_child(0)
+		phantom_object.queue_free()
+	else:
+		var phantom_object = viewport_lh.get_child(0)
+		phantom_object.queue_free()
+	object.set_linear_velocity(2 * (drop_pos - cam_pos))
 	object.on_drop(object)
 
 
@@ -175,6 +182,21 @@ func hand_action(hand : Node) -> void:
 				drop_object(hand)
 		else:
 				drop_object(hand)
+
+
+func crouch():
+	var cam_pos = camera.get_translation()
+	var collision_shape = $CollisionShape
+	var collision_shape2 = $CollisionShape2
+	if is_crouching:
+		collision_shape.disabled = false
+		collision_shape2.disabled = true
+		cam_pos.y = -0.2
+	else:
+		collision_shape.disabled = true
+		collision_shape2.disabled = false
+		cam_pos.y = 0.8
+	camera.set_translation(cam_pos)
 
 
 # OVERRIDE TO SPECIFIC INSTANCE BEHAVIOUR

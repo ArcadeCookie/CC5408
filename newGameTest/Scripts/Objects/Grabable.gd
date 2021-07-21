@@ -16,12 +16,18 @@ var highlight : MeshInstance
 
 # This function set up the node
 func _ready() -> void:
+	can_sleep = false
+	
 	add_to_group("object")
 	
+	set_collision_layer(4)
+	
 	var og_mesh_instance = get_node("MeshInstance")
+	og_mesh_instance.set_layer_mask(2)
 	var og_mesh = og_mesh_instance.mesh
 	
 	highlight = MeshInstance.new()
+	highlight.set_layer_mask(4)
 	highlight.set_scale($MeshInstance.get_scale())
 	add_child(highlight)
 	var mesh = og_mesh.duplicate()
@@ -82,3 +88,10 @@ func _on_timer_timeout() -> void:
 func on_change_map() -> void:
 	DataManager.State[dimension][id].translation = get_translation()
 	DataManager.State[dimension][id].rotation = get_rotation()
+
+
+func _process(delta):
+	var pos = get_translation()
+	if pos.y < 0.01:
+		pos.y = 0.05
+		set_translation(pos)
