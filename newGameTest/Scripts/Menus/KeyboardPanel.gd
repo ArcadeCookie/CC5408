@@ -3,180 +3,107 @@ extends Control
 onready var Codigo
 onready var Displayer := $Displayer/Label
 onready var Indicator := $Indicator/AnimationPlayer
-var correcto = "TEST"
-signal success
+var correcto = "IAMGOAT"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Codigo = ""
 	pass # Replace with function body.
 
-func mostrarLabel():
-	Displayer.text	= Codigo
-	if len(Codigo) == 4:
-		if Codigo==correcto:
-			Indicator.play("success")
-			yield(Indicator, "animation_finished")
-			emit_signal("success")
-			Codigo = ""
-			Displayer.text	= Codigo
-		else:
-			Indicator.play("fail")
-			yield(Indicator, "animation_finished")
-			Codigo = ""
-			Displayer.text	= Codigo
+func mostrarLabel(character):
+	if len(Codigo) < 7:
+		Codigo = Codigo + str(character)
+		Displayer.text	= Codigo
+		if len(Codigo) == 7:
+			if Codigo==correcto:
+				Indicator.play("success")
+				yield(Indicator, "animation_finished")
+				emit_signal("success")
+				Codigo = ""
+				Displayer.text	= Codigo
+			else:
+				Indicator.play("fail")
+				yield(Indicator, "animation_finished")
+				Codigo = ""
+				Displayer.text	= Codigo
+	else:
+		return
 
 
 func _on_Q_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "Q"
-		mostrarLabel()
+	mostrarLabel("Q")
 
 func _on_W_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "W"
-		mostrarLabel()
-
+	mostrarLabel("W")
 
 func _on_E_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "E"
-		mostrarLabel()
-
+	mostrarLabel("E")
 
 func _on_R_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "R"
-		mostrarLabel()
-
+	mostrarLabel("R")
 
 func _on_T_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "T"
-		mostrarLabel()
-
+	mostrarLabel("T")
 
 func _on_Y_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "Y"
-		mostrarLabel()
-
+	mostrarLabel("Y")
 
 func _on_U_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "U"
-		mostrarLabel()
-
+	mostrarLabel("U")
 
 func _on_I_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "I"
-		mostrarLabel()
-
+	mostrarLabel("I")
 
 func _on_O_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "O"
-		mostrarLabel()
-
+	mostrarLabel("O")
 
 func _on_P_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "P"
-		mostrarLabel()
-
+	mostrarLabel("P")
 
 func _on_A_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "A"
-		mostrarLabel()
-
+	mostrarLabel("A")
 
 func _on_S_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "S"
-		mostrarLabel()
-
+	mostrarLabel("S")
 
 func _on_D_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "D"
-		mostrarLabel()
-
+	mostrarLabel("D")
 
 func _on_F_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "F"
-		mostrarLabel()
-
+	mostrarLabel("F")
 
 func _on_G_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "G"
-		mostrarLabel()
-
+	mostrarLabel("G")
 
 func _on_H_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "H"
-		mostrarLabel()
-
+	mostrarLabel("H")
 
 func _on_J_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "J"
-		mostrarLabel()
-
+	mostrarLabel("J")
 
 func _on_K_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "K"
-		mostrarLabel()
-
+	mostrarLabel("K")
 
 func _on_L_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "L"
-		mostrarLabel()
-
+	mostrarLabel("L")
 
 func _on_Z_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "Z"
-		mostrarLabel()
-
+	mostrarLabel("Z")
 
 func _on_X_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "X"
-		mostrarLabel()
-
+	mostrarLabel("X")
 
 func _on_C_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "C"
-		mostrarLabel()
-
+	mostrarLabel("C")
 
 func _on_V_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "V"
-		mostrarLabel()
-
+	mostrarLabel("V")
 
 func _on_B_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "B"
-		mostrarLabel()
-
+	mostrarLabel("B")
 
 func _on_N_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "N"
-		mostrarLabel()
-
+	mostrarLabel("N")
 
 func _on_M_pressed():
-	if len(Codigo) < 4:
-		Codigo = Codigo + "M"
-		mostrarLabel()
+	mostrarLabel("M")

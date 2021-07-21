@@ -7,9 +7,6 @@ func _ready():
 		
 func intro():
 	self.show()
-	_anim_player = $CenterContainer/Text4/AnimationPlayer
-	_anim_player.play("new")
-	yield(_anim_player, "animation_finished")
 	#_anim_player = $CenterContainer/Text1/AnimationPlayer
 	#_anim_player.play("show")
 	#yield(_anim_player, "animation_finished")

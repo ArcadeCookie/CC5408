@@ -5,13 +5,16 @@ const TRANS = Tween.TRANS_SINE
 const EASE = Tween.EASE_IN_OUT
 onready var CamOGrot = Vector3()
 var count = 0
-var time_expl = 1.0
-var amp_expl = 3.0
+var time_expl = 0.5
+var amp_expl = 0.015
 var done = 0
 
 onready var camera = get_parent()
 
-func start(duration=1.0, frequency=15, amplitude=2.0):
+func _ready():
+	set_process(false)
+
+func start(duration=0.2, frequency=15, amplitude=0.015):
 	self.amplitude = amplitude
 	
 	$Duration.wait_time = duration
@@ -19,43 +22,32 @@ func start(duration=1.0, frequency=15, amplitude=2.0):
 	$Duration.start()
 	$Frequency.start()
 	
-	_new_shake()
-
-func _new_shake():
-	var rand = Vector3()
-	self.CamOGrot.x = 0+ camera.rotation_degrees.x
-	self.CamOGrot.y = 0+ camera.rotation_degrees.y
-	self.CamOGrot.z = 0+ camera.rotation_degrees.z
-	var amount = self.amplitude + (0.05*self.count)
-	rand.x = CamOGrot.x + rand_range(-amount, amount)
-	rand.y = CamOGrot.y + rand_range(-amount, amount)
-	rand.z = CamOGrot.z + rand_range(-amount, amount)
-	#rand.x = rand_range(-amplitude, amplitude)
-	#rand.y = rand_range(-amplitude, amplitude)
-	#rand.z = rand_range(-amplitude, amplitude)
+	#_new_shake()
+	set_process(true)
 	
-	$TweenShake.interpolate_property(camera, "rotation_degrees", camera.rotation_degrees, rand, $Frequency.wait_time, TRANS, EASE)
-	$TweenShake.start()
-
-func _reset():
-	#self.count += 1
-	#print(self.count)
-	#if self.count == 7:
-	camera.rotation_degrees = self.CamOGrot
-	#pass
-	$TweenShake.interpolate_property(camera, "rotation_degrees", camera.rotation_degrees, Vector3(), $Frequency.wait_time, TRANS, EASE)
+func _process(delta):
+	var rand = Vector3()
+	self.CamOGrot.x = camera.translation.x
+	self.CamOGrot.y = camera.translation.y
+	self.CamOGrot.z = camera.translation.z
+	var amount = self.amplitude + (0.01*self.count)
+	rand.x = CamOGrot.x + rand_range(-amount, amount)
+	rand.z = CamOGrot.z	+ rand_range(-amount*0.25, amount*0.25)
+	rand.y = clamp(CamOGrot.y + rand_range(-amount, amount), 0.7, 0.9)
+	
+	$TweenShake.interpolate_property(camera, "translation", camera.translation, rand, $Frequency.wait_time, TRANS, EASE)
 	$TweenShake.start()
 
 func _on_Frequency_timeout():
-	_new_shake()
+	$TweenShake.interpolate_property(camera, "translation", camera.translation, CamOGrot, $Frequency.wait_time, TRANS, EASE)
+	$TweenShake.start()
+	pass
 
 func _on_Duration_timeout():
-	self.time_expl += 0.1
-	self.amp_expl += 0.4
+	self.time_expl += 0.18
+	self.amp_expl += 0.07
+	self.amplitude += 0.075
 	start(time_expl, 15, amp_expl)
-	#_reset()
-	#if self.count==7:
-	#$Frequency.stop()
 
 func _wakeup():
 	camera.rotation_degrees.z = -90.0
@@ -70,7 +62,6 @@ func _wakeup():
 	transl.z = camera.translation.z
 	
 	$TweenShake.interpolate_property(camera, "rotation_degrees", camera.rotation_degrees, rand, $Timer.wait_time, TRANS, EASE)
-	#$TweenShake.start()
 	$TweenShake.interpolate_property(camera, "translation", camera.translation, transl, $Timer.wait_time, TRANS, EASE)
 	$TweenShake.start()
 	$Timer.start()
@@ -78,7 +69,6 @@ func _wakeup():
 func _on_Timer_timeout():
 	if self.done == 0:
 		$Timer2.start()
-		#self.done = 1
 		print("done")
 
 func _on_Timer2_timeout():

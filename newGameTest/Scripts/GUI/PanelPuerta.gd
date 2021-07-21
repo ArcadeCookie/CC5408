@@ -1,8 +1,8 @@
 extends Control
 
 onready var Codigo
-onready var Displayer := $Displayer/Label
-onready var Indicator := $Indicator/AnimationPlayer
+onready var Displayer := $DisplayText
+onready var Indicator := $PasswordThingy/AnimationPlayer
 var correcto = "2836"
 
 # Called when the node enters the scene tree for the first time.
@@ -16,19 +16,16 @@ func mostrarLabel(numero):
 		Displayer.text	= Codigo
 		if len(Codigo) == 4:
 			if Codigo==correcto:
-				Indicator.play("success")
+				Indicator.play("accepted")
 				yield(Indicator, "animation_finished")
+				DataManager.remove_HUD(self)
 			else:
-				Indicator.play("fail")
+				Indicator.play("rejected")
 				yield(Indicator, "animation_finished")
 				Codigo = ""
-				Displayer.text	= Codigo
-				DataManager.remove_HUD(self)
+				Displayer.text = Codigo
 	else:
 		return
-
-func _on_Exit_pressed():
-	DataManager.remove_HUD(self)
 
 func _on_Numero1_pressed():
 	mostrarLabel(1)
@@ -59,3 +56,6 @@ func _on_Numero9_pressed():
 
 func _on_Numero0_pressed():
 	mostrarLabel(0)
+
+func _on_Close_pressed():
+	DataManager.remove_HUD(self)

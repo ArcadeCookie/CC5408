@@ -1,49 +1,47 @@
 extends Control
 
-onready var LabelH = $Label
-onready var AnimPlayer = $Label/AnimationPlayer
-onready var RichLabel = $RichTextLabel
-onready var RichAnimPlayer = $RichTextLabel/AnimationPlayer2
+onready var Texto = $Texto
+onready var TextoAnim = $Texto/Anim
+#onready var TextocFormato = $TextocFormato
+#onready var TextocFormatoAnim = $TextocFormato/Anim
 var playing
-var readyA
+var animReady
 var textnum
 var newtext
-var itemMissing
-signal done
 
 func _ready():
-	AnimPlayer.play("showText")
+	TextoAnim.play("showText")
 	playing = true
-	readyA = false
-	itemMissing = false
+	animReady = false
 	textnum = 0
 
 func _unhandled_key_input(event : InputEventKey) -> void:
 	if Input.is_action_just_pressed("ui_select"):
 		if playing==true:
-			AnimPlayer.advance(5)
-		elif playing==false and readyA==true:
-			AnimPlayer.stop(true)
-			LabelH.hide()
-			#LabelH.text = newtext
-			#LabelH.show()
+			TextoAnim.advance(5)
+		elif playing==false and animReady==true:
+			TextoAnim.stop(true)
+			Texto.hide()
 			if textnum >= 4: # indicacion maquina
-				RichLabel.show()
-				RichLabel.bbcode_text = newtext
-				RichAnimPlayer.play("items")
-				#yield(RichAnimPlayer, "animation_finished")
-				#DataManager.remove_HUD(self)
-				#if textnum == 5:
-				#	RichLabel.hide()
-				#	emit_signal("done")
+				pass
+				#$TextocFormato.show()
+				#$TextocFormato.bbcode_text = newtext
+				#$TextocFormato/AnimF.play("items")
 			else:
-				LabelH.text = newtext
-				LabelH.show()
+				Texto.text = newtext
+				Texto.show()
 				playing = true
-				AnimPlayer.play("showText")
-			readyA=false
+				TextoAnim.play("showText")
+			animReady=false
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func missing_card():
+	newtext = "\n You're missing your [color=#209f88]card[/color]. \n Go to your office and find it."
+	$TextocFormato.show()
+	$TextocFormato.bbcode_text = newtext
+	$TextocFormato/AnimF.play("items")
+
+
+func _on_Anim_animation_finished(anim_name):
 	playing = false	
 	textnum += 1
 	if textnum == 1:
@@ -54,21 +52,12 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		newtext = "\n Imagine being the one starting up the machine, \n I envy you. You better hurry up, it's starting soon!"
 	elif textnum == 4:
 		newtext = "\n Go and activate the [color=#209f88]machine[/color]."
-		## this was added
-	#elif textnum == 5:
-	#	emit_signal("done")
-	readyA=true
+		$TextocFormato.show()
+		$TextocFormato.bbcode_text = newtext
+		$TextocFormato/AnimF.play("items")
+	animReady=true
 
-func _on_AnimationPlayer2_animation_finished(anim_name):
+
+func _on_AnimF_animation_finished(anim_name):
 	playing = false	
 	textnum += 1
-	#if textnum == 5:
-	#	emit_signal("done")
-	#readyA=true
-	
-func missing_card():
-	newtext = "\n You're missing your [color=#209f88]card[/color]. \n Go to your office and find it."
-	itemMissing = true
-	RichLabel.show()
-	RichLabel.bbcode_text = newtext
-	RichAnimPlayer.play("items")
