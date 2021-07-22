@@ -18,15 +18,16 @@ func _change_page():
 	actual_page = next_page
 	
 func _on_PreviousPage_pressed():
-	if page_num != 1:
+	if page_num > 1:
 		page_num -= 1
 		_change_page()
 
 
 func _on_NextPage_pressed():
-	if page_num != 2:
+	if page_num < 2:
 		page_num += 1
 		_change_page()
 
 func _on_Exit_pressed():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	DataManager.remove_HUD(self)

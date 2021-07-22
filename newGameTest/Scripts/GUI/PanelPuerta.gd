@@ -18,6 +18,7 @@ func mostrarLabel(numero):
 			if Codigo==correcto:
 				Indicator.play("accepted")
 				yield(Indicator, "animation_finished")
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				DataManager.remove_HUD(self)
 			else:
 				Indicator.play("rejected")
@@ -58,4 +59,5 @@ func _on_Numero0_pressed():
 	mostrarLabel(0)
 
 func _on_Close_pressed():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	DataManager.remove_HUD(self)

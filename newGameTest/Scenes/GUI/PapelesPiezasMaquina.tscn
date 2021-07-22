@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/GUI/Papeles/PapelesPiezasMaquina.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Images/GUI/Papeles/infopiezas.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Images/GUI/numb_buttons.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Images/GUI/button2.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Resources/Fonts/N8ghtmare.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 46
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Resources/Fonts/TheSnowday.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = SubResource( 3 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "init"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Page1" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="TextureButton" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.2
+anchor_top = 0.55
+anchor_right = 0.25
+anchor_bottom = 0.63
+margin_left = 252.174
+margin_top = 187.089
+margin_right = 292.174
+margin_bottom = 227.089
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Exit"]
+margin_left = -3.56357
+margin_top = 14.2544
+margin_right = 88.4364
+margin_bottom = 74.2544
+custom_fonts/font = SubResource( 2 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texto" type="Label" parent="."]
+anchor_left = 0.15
+anchor_top = 0.88
+anchor_right = 0.192
+anchor_bottom = 0.88
+margin_left = 0.399994
+margin_right = 672.392
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 4 )
+text = "
+..."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="Texto"]
+anims/init = SubResource( 5 )
+anims/show = SubResource( 6 )
+
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+[connection signal="animation_finished" from="Texto/Anim" to="." method="_on_Anim_animation_finished"]

@@ -1,0 +1,184 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Resources/Fonts/N8ghtmare.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Resources/Images/GUI/Papeles/light7.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Images/GUI/Papeles/light5.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Images/GUI/Papeles/light6.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Images/GUI/numb_buttons.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Images/GUI/button2.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Images/GUI/Papeles/light3.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Images/GUI/Papeles/light2.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Images/GUI/Papeles/light1.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Images/GUI/Papeles/light4.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Images/GUI/Papeles/light8.png" type="Texture" id=11]
+[ext_resource path="res://Scripts/GUI/Papeles/Papeles4.gd" type="Script" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Resources/Fonts/N8ghtmare.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 46
+font_data = SubResource( 2 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Page1" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Page2" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Page3" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Page4" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Page5" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Page6" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Page7" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PageEmpty" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousPage" type="TextureButton" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 352.965
+margin_top = 509.004
+margin_right = 452.964
+margin_bottom = 609.004
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PreviousPage"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "<"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextPage" type="TextureButton" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 452.964
+margin_top = 509.004
+margin_right = 552.964
+margin_bottom = 609.004
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NextPage"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = ">"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="TextureButton" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.2
+anchor_top = 0.55
+anchor_right = 0.25
+anchor_bottom = 0.63
+margin_left = 361.705
+margin_top = 187.089
+margin_right = 401.705
+margin_bottom = 227.089
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Exit"]
+margin_left = -3.56357
+margin_top = 14.2544
+margin_right = 88.4364
+margin_bottom = 74.2544
+custom_fonts/font = SubResource( 3 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="PreviousPage" to="." method="_on_PreviousPage_pressed"]
+[connection signal="pressed" from="NextPage" to="." method="_on_NextPage_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

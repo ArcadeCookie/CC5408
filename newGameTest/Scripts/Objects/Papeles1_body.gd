@@ -13,5 +13,6 @@ func _init():
 # specific desired behaviour
 func on_activation():
 	DataManager.call_HUD("res://Scenes/GUI/Papeles1.tscn")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#var world = get_parent()
 	#world.get_node("KinematicBody2").disable_mouse()

@@ -45,5 +45,5 @@ func _on_Anim_animation_finished(anim_name):
 	elif textnum == 6:
 		newtext = "..."
 	elif textnum == 7:
-		newtext = "\n \n I need the password to get details of the missing pieces. \n It should be in one of the offices' computers."
+		newtext = "\n \n I need the password to get details of the missing pieces. \n I left some notes in my office some days ago."
 	animReady=true

@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/GUI/Papeles/Papeles3.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Images/GUI/Papeles/dim4.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Images/GUI/numb_buttons.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Images/GUI/button2.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Resources/Fonts/N8ghtmare.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 46
+font_data = SubResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Page1" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="TextureButton" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.2
+anchor_top = 0.55
+anchor_right = 0.25
+anchor_bottom = 0.63
+margin_left = 252.722
+margin_top = 183.0
+margin_right = 324.522
+margin_bottom = 223.0
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Exit"]
+margin_left = 0.931364
+margin_top = 14.2544
+margin_right = 122.931
+margin_bottom = 74.2544
+custom_fonts/font = SubResource( 2 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

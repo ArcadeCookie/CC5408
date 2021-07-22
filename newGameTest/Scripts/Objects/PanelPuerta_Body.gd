@@ -5,7 +5,7 @@ extends "res://Scripts/Objects/TerminalBody.gd"
 
 # Exectuted on generation of the instance, giving the object this value for id
 func _init():
-	id = 12 
+	id = 15 
 	# After this, the object gets instanciated with TerminalBody._ready()
 
 
@@ -13,5 +13,4 @@ func _init():
 # specific desired behaviour
 func on_activation():
 	DataManager.call_HUD("res://Scenes/GUI/PanelPuerta.tscn")
-	#var world = get_parent()
-	#world.get_node("KinematicBody2").disable_mouse()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
