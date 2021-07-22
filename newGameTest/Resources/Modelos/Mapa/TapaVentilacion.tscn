@@ -12,5 +12,5 @@ material/0 = null
 [node name="StaticBody" type="StaticBody" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
+transform = Transform( 1, 0, 0, 0, 1.46489, 0, 0, 0, 1.51977, 0, 0.58054, 0 )
 shape = SubResource( 1 )
