@@ -35,7 +35,8 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 	
 func _on_Exit_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	DataManager.remove_HUD(self)
+	DataManager.player_play()
+	DataManager.remove_unique_HUD(self)
 
 
 func _on_Anim_animation_finished(anim_name):

@@ -12,5 +12,6 @@ func _init():
 # Overriden method so this specific instance of a whole terminal node can have
 # specific desired behaviour
 func on_activation():
-	DataManager.call_HUD("res://Scenes/GUI/PapelesPiezasMaquina.tscn")
+	DataManager.call_unique_HUD("res://Scenes/GUI/PapelesPiezasMaquina.tscn")
+	DataManager.player_stop()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

@@ -16,23 +16,19 @@ func _change_page():
 	elif page_num == 3:
 		next_page = $Page2
 	elif page_num == 4:
-		next_page = $Page3
+		next_page = $PageEmpty
 	elif page_num == 5:
-		next_page = $Page4
+		next_page = $Page3
 	elif page_num == 6:
 		next_page = $PageEmpty
 	elif page_num == 7:
-		next_page = $PageEmpty
+		next_page = $Page4
 	elif page_num == 8:
 		next_page = $Page5
 	elif page_num == 9:
-		next_page = $Page6
+		next_page = $PageEmpty
 	elif page_num == 10:
-		next_page = $PageEmpty
-	elif page_num == 11:
-		next_page = $PageEmpty
-	elif page_num == 12:
-		next_page = $Page7
+		next_page = $Page6
 	if next_page != actual_page:
 		next_page.show()
 		actual_page.hide()
@@ -45,10 +41,11 @@ func _on_PreviousPage_pressed():
 
 
 func _on_NextPage_pressed():
-	if page_num < 12:
+	if page_num < 10:
 		page_num += 1
 		_change_page()
 
 func _on_Exit_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	DataManager.player_play()
 	DataManager.remove_unique_HUD(self)

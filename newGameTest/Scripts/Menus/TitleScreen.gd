@@ -6,6 +6,8 @@ func _ready():
 	var newgame = $Menu/HBoxContainer/Buttons/NewGameButton
 	newgame.connect("pressed", self, "_on_NewGameButton_pressed")
 	$ScreenChanger.play("titlescreen")
+	AudioManager.change_track("res://Resources/Music/testjuego1.wav")
+	AudioManager.play_music()
 #
 func _on_NewGameButton_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

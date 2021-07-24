@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://Resources/Modelos/Mapa/LabOeste.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Resources/Modelos/Mapa/Recepcion.obj" type="ArrayMesh" id=2]
@@ -38,21 +38,29 @@
 [ext_resource path="res://Scenes/Objects/Papeles3.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Scenes/Objects/PapelesPiezasMaquina.tscn" type="PackedScene" id=37]
 [ext_resource path="res://Scenes/Objects/Papeles4.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Scenes/Objects/DiscoDuro.tscn" type="PackedScene" id=39]
+[ext_resource path="res://Scenes/Objects/Tubo1.tscn" type="PackedScene" id=40]
+[ext_resource path="res://Scenes/Objects/PapelesArchive1.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Resources/Materials/Texturas/PisoMadera3.tres" type="Material" id=42]
+[ext_resource path="res://Scenes/Objects/PapelesArchive2.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Scenes/Effects/MachineParticles.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Resources/Materials/Texturas/MetalShelf.tres" type="Material" id=45]
 [ext_resource path="res://Resources/Modelos/Amueblado/MetalShelf.obj" type="ArrayMesh" id=46]
 [ext_resource path="res://Resources/Modelos/Amueblado/WarehouseBox.obj" type="ArrayMesh" id=47]
 [ext_resource path="res://Resources/Materials/Archivos/WareHouseBox/WareHouseBox2.jpg" type="Texture" id=48]
 [ext_resource path="res://Resources/Materials/Archivos/WareHouseBox/WareHouseBox1.jpg" type="Texture" id=49]
+[ext_resource path="res://Scenes/Objects/PapelesArchive3.tscn" type="PackedScene" id=50]
 [ext_resource path="res://Scripts/Objects/MonitorInit.gd" type="Script" id=51]
 [ext_resource path="res://Scripts/Objects/MonitorBody.gd" type="Script" id=52]
 [ext_resource path="res://Scenes/GUI/IntroMonitor.tscn" type="PackedScene" id=53]
 [ext_resource path="res://Resources/Images/Items/tarjeta.png" type="Texture" id=54]
 [ext_resource path="res://Scripts/Objects/Card.gd" type="Script" id=55]
-[ext_resource path="res://Resources/Music/Experimento.wav" type="AudioStream" id=56]
 [ext_resource path="res://Resources/Sounds/warning.wav" type="AudioStream" id=57]
 [ext_resource path="res://Resources/Modelos/Enemigos/Sombra5.obj" type="ArrayMesh" id=58]
+[ext_resource path="res://Scenes/Objects/PuertaMadera.tscn" type="PackedScene" id=59]
+[ext_resource path="res://Scenes/Objects/PapelesArchive4.tscn" type="PackedScene" id=60]
+[ext_resource path="res://Scenes/Objects/PCMezcla1.tscn" type="PackedScene" id=61]
+[ext_resource path="res://Scenes/Objects/CajaFuerte.tscn" type="PackedScene" id=62]
 
 [sub_resource type="Environment" id=1]
 ambient_light_color = Color( 0.447059, 0.447059, 0.447059, 1 )
@@ -679,11 +687,6 @@ omni_range = 15.0
 [node name="Particulas" parent="Monitor" instance=ExtResource( 44 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0417203, 5.94991, 5.30476 )
 
-[node name="ExpOST" type="AudioStreamPlayer" parent="Monitor"]
-stream = ExtResource( 56 )
-volume_db = -20.8
-autoplay = true
-
 [node name="WarningSound" type="AudioStreamPlayer3D" parent="Monitor"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0176822, 1.8724, 2.15395 )
 stream = ExtResource( 57 )
@@ -759,6 +762,24 @@ shape = SubResource( 32 )
 [node name="Papeles4" parent="." instance=ExtResource( 38 )]
 
 [node name="PapelesPiezasMaquina" parent="." instance=ExtResource( 37 )]
+
+[node name="CajaFuerte" parent="." instance=ExtResource( 62 )]
+
+[node name="DiscoDuro" parent="." instance=ExtResource( 39 )]
+
+[node name="PapelesArchive1" parent="." instance=ExtResource( 41 )]
+
+[node name="PapelesArchive2" parent="." instance=ExtResource( 43 )]
+
+[node name="PapelesArchive3" parent="." instance=ExtResource( 50 )]
+
+[node name="PapelesArchive4" parent="." instance=ExtResource( 60 )]
+
+[node name="PCMezcla1" parent="." instance=ExtResource( 61 )]
+
+[node name="PuertaMadera" parent="." instance=ExtResource( 59 )]
+
+[node name="Tubo1" parent="." instance=ExtResource( 40 )]
 
 [connection signal="activate" from="Monitor/Terminal" to="." method="_on_Terminal_activate"]
 [connection signal="animation_finished" from="Monitor/LightAnim" to="Monitor" method="_on_LightAnim_animation_finished"]

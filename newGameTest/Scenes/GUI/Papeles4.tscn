@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Resources/Fonts/N8ghtmare.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Resources/Images/GUI/Papeles/light7.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Images/GUI/Papeles/light5.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Images/GUI/Papeles/light6.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Images/GUI/numb_buttons.png" type="Texture" id=5]
@@ -77,15 +76,6 @@ __meta__ = {
 }
 
 [node name="Page6" type="TextureRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Page7" type="TextureRect" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0

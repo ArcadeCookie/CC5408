@@ -19,5 +19,7 @@ func intro():
 	#_anim_player = $AnimationPlayer
 	#_anim_player.play("fadeout")
 	#yield(_anim_player, "animation_finished")
+	AudioManager.change_track("res://Resources/Music/Experimento.wav")
+	AudioManager.play_music()
 	DataManager.remove_HUD(self)
 	DataManager.call_HUD("res://Scenes/GUI/IntroTextCtrl.tscn")

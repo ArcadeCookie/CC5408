@@ -13,4 +13,5 @@ func _init():
 # specific desired behaviour
 func on_activation():
 	DataManager.call_unique_HUD("res://Scenes/GUI/Papeles2.tscn")
+	DataManager.player_stop()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

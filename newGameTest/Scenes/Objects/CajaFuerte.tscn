@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Objects/CajaFuerte.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Objects/CajaFuerte_Body.gd" type="Script" id=2]
+
+[sub_resource type="CubeMesh" id=36]
+
+[sub_resource type="SpatialMaterial" id=37]
+flags_unshaded = true
+albedo_color = Color( 0.0666667, 0.0431373, 0.12549, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=38]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[node name="CajaFuerte" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.271, 0.597336, 11.8153 )
+script = ExtResource( 2 )
+
+[node name="Terminal" type="StaticBody" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.13246, 0 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Terminal"]
+mesh = SubResource( 36 )
+material/0 = SubResource( 37 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terminal"]
+shape = SubResource( 38 )

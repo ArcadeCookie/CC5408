@@ -19,7 +19,8 @@ func mostrarLabel(numero):
 				Indicator.play("accepted")
 				yield(Indicator, "animation_finished")
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-				DataManager.remove_HUD(self)
+				DataManager.player_play()
+				DataManager.remove_unique_HUD(self)
 			else:
 				Indicator.play("rejected")
 				yield(Indicator, "animation_finished")
@@ -60,4 +61,5 @@ func _on_Numero0_pressed():
 
 func _on_Close_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	DataManager.remove_HUD(self)
+	DataManager.player_play()
+	DataManager.remove_unique_HUD(self)
