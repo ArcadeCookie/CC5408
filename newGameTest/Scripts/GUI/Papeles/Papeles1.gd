@@ -30,4 +30,4 @@ func _on_NextPage_pressed():
 
 func _on_Exit_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	DataManager.remove_HUD(self)
+	DataManager.remove_unique_HUD(self)

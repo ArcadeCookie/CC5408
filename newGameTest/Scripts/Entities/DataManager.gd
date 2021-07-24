@@ -79,8 +79,16 @@ func call_HUD(scene):
 	Game.call_HUD(scene)
 
 
+func call_unique_HUD(scene):
+	Game.call_unique_HUD(scene)
+
+
 func remove_HUD(scene_node):
 	Game.remove_HUD(scene_node)
+
+
+func remove_unique_HUD(scene_node):
+	Game.remove_unique_HUD(scene_node)
 
 
 func removeScenes():
@@ -96,3 +104,11 @@ func disable_dimension(dimension : String) -> void:
 	State.Available_Dimensions.erase(dimension)
 	if not dimension in State.Disabled_Dimensions:
 		State.Disabled_Dimensions.append(dimension)
+
+
+func player_stop():
+	Game.player_stop()
+
+
+func player_play():
+	Game.player_play()

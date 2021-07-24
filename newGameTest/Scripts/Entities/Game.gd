@@ -5,6 +5,8 @@ var current_world: Node = null
 var loading = false
 var loading_world = ""
 
+var HUD_on_screen = false
+
 onready var fade = $CanvasLayer/Fade
 
 func _ready():
@@ -51,13 +53,40 @@ func call_HUD(scene):
 	$CanvasLayer.add_child(s)
 
 
+func call_unique_HUD(scene):
+	if not HUD_on_screen:
+		HUD_on_screen = true
+		var s = load(scene).instance()
+		$CanvasLayer.add_child(s)
+
+
 func remove_HUD(scene_node):
 	$CanvasLayer.remove_child(scene_node)
 	scene_node.queue_free()
 
 
+func remove_unique_HUD(scene_node):
+	$CanvasLayer.remove_child(scene_node)
+	scene_node.queue_free()
+	HUD_on_screen = false
+
+
 func removeScenes():
 	var nodes = $CanvasLayer.get_children()
 	for children in nodes:
-		if not children is ColorRect:
+		if not children is ColorRect and not children is ViewportContainer:
 			$CanvasLayer.remove_child(children)
+
+
+func player_stop():
+	var player = $World/Spatial/Player
+	if player != null:
+		player.speed = 0
+		player.sprinting_speed = 0
+
+
+func player_play():
+	var player = $World/Spatial/Player
+	if player != null:
+		player.speed = 5
+		player.sprinting_speed = 10

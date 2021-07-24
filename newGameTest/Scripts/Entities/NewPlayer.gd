@@ -135,12 +135,15 @@ func on_grabed_object(hand : Node, object : Node) -> void:
 	world.remove_child(object)
 	hand.add_child(object)
 	var phantom_object = object.duplicate()
+	object.visible = false
+	phantom_object.set_angular_velocity(Vector3(0,0,0))
+	phantom_object.set_linear_velocity(Vector3(0,0,0))
+	phantom_object.set_mode(1)
 	if hand == right_hand:
 		viewport_rh.add_child(phantom_object)
-		phantom_object.set_translation(Vector3(0,0,0))
 	else:
 		viewport_lh.add_child(phantom_object)
-		phantom_object.set_translation(Vector3(0,0,0))
+	phantom_object.set_translation(Vector3(0,0,0))
 
 
 func drop_object(hand : Node) -> void:
@@ -151,6 +154,8 @@ func drop_object(hand : Node) -> void:
 	object.set_translation(cam_pos - Vector3(0, 0.1, 0))
 	hand.remove_child(object)
 	world.add_child(object)
+	
+	object.visible = true
 	if hand == right_hand:
 		var phantom_object = viewport_rh.get_child(0)
 		phantom_object.queue_free()

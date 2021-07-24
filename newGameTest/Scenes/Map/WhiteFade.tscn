@@ -20,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "whiteout"
-length = 2.0
+length = 2.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -28,14 +28,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 2 ),
+"times": PoolRealArray( 0, 0.5, 2.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
 [node name="ColorRect" type="ColorRect"]
-modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

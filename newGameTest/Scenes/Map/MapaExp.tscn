@@ -688,7 +688,7 @@ autoplay = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0176822, 1.8724, 2.15395 )
 stream = ExtResource( 57 )
 
-[node name="KinematicBody2" parent="." instance=ExtResource( 27 )]
+[node name="Player" parent="." instance=ExtResource( 27 )]
 transform = Transform( 0.0100354, 0, 0.99995, 0, 1, 0, -0.99995, 0, 0.0100354, -1.85239, 0.967107, -19.5629 )
 
 [node name="Card2" type="RigidBody" parent="."]
