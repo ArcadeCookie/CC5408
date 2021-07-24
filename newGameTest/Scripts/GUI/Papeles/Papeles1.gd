@@ -13,6 +13,7 @@ func _change_page():
 		next_page = $Page1
 	elif page_num == 2:
 		next_page = $Page2
+	AudioManager.play_FX("res://Resources/Sounds/pageturn.wav")
 	next_page.show()
 	actual_page.hide()
 	actual_page = next_page

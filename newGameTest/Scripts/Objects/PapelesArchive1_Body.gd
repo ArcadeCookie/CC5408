@@ -11,7 +11,9 @@ func _init():
 # Overriden method so this specific instance of a whole terminal node can have
 # specific desired behaviour
 func on_activation():
-	DataManager.call_HUD("res://Scenes/GUI/PapelesArchive1.tscn")
+	DataManager.call_unique_HUD("res://Scenes/GUI/PapelesArchive1.tscn")
+	AudioManager.play_FX("res://Resources/Sounds/pageturn.wav")
+	DataManager.player_stop()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#var world = get_parent()
 	#world.get_node("KinematicBody2").disable_mouse()

@@ -15,7 +15,7 @@ func on_activation():
 	#	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#	first_time = 1
 	#else:
-	DataManager.call_HUD("res://Scenes/GUI/PCMezcla1.tscn")
+	DataManager.call_unique_HUD("res://Scenes/GUI/PCMezcla1.tscn")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 	#var world = get_parent()

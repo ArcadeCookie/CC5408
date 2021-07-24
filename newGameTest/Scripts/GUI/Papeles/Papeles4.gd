@@ -30,6 +30,7 @@ func _change_page():
 	elif page_num == 10:
 		next_page = $Page6
 	if next_page != actual_page:
+		AudioManager.play_FX("res://Resources/Sounds/pageturn.wav")
 		next_page.show()
 		actual_page.hide()
 		actual_page = next_page

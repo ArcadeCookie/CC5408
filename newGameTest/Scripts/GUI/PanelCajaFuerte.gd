@@ -49,14 +49,14 @@ func _on_Numero0_pressed():
 
 func _on_Close_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	DataManager.remove_HUD(self)
+	DataManager.remove_unique_HUD(self)
 
 func _on_Enter_pressed():
 	if len(Codigo) == 6:
 		if Codigo==correcto:
 			# sonido exito aca
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			DataManager.remove_HUD(self)
+			DataManager.remove_unique_HUD(self)
 		else:
 			# sonido de fallo aca
 			Codigo = ""
