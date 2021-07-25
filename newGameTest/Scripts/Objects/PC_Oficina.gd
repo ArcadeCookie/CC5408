@@ -19,6 +19,4 @@ func on_terminal_interaction(terminal_node : Node, object : Node) -> void:
 		DataManager.State.Terminals[id] = true
 		terminal_body.on_terminal_active()
 	else:
-		DataManager.removeScenes()
 		DataManager.call_unique_HUD("res://Scenes/GUI/PC_Oficina_No.tscn")
-		DataManager.player_stop()

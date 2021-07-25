@@ -6,6 +6,7 @@ var playing
 var animReady
 var textnum
 var newtext
+var SpaceBar
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +14,7 @@ func _ready():
 	playing = true
 	animReady = false
 	textnum = 0
+	SpaceBar = 0
 
 func _unhandled_key_input(event : InputEventKey) -> void:
 	if textnum == -1:
@@ -24,6 +26,8 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 			TextoAnim.stop(true)
 			Texto.hide()
 			if textnum == 6: # indicacion maquina
+				$SpaceBar.showing = 0
+				$SpaceBar.hide()
 				$Exit.show()
 				textnum = -1
 			else:
@@ -47,6 +51,8 @@ func _on_Anim_animation_finished(anim_name):
 		textnum += 1
 		if textnum == 1:
 			newtext = "This place is enormous. I don't remember it so well, \n since I spent most of the time in the main lab and my office."
+			$SpaceBar._play()
+			SpaceBar = 1
 		elif textnum == 2:
 			newtext = "If I remember correctly, there were some blueprints \n of the complex in the Archive Room right beside."
 		elif textnum == 3:

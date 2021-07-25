@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/GUI/TextIntro.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/GUI/SpaceBar.tscn" type="PackedScene" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Resources/Fonts/TheSnowday.ttf"
@@ -126,7 +127,7 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
-text = "So, what do you think about Dr.X being the one 
+text = "So, what do you think about Dr.Light being the one 
 in charge of the experiment after you were
 leading the investigation?"
 align = 1
@@ -142,12 +143,8 @@ anims/wait = SubResource( 5 )
 
 [node name="TextocFormato" type="RichTextLabel" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.6
-anchor_top = 0.05
-anchor_right = 0.6
-anchor_bottom = 0.05
-margin_right = 400.0
-margin_bottom = 75.0
+anchor_right = 0.4
+anchor_bottom = 0.12
 custom_fonts/normal_font = SubResource( 7 )
 custom_colors/font_color_shadow = Color( 0.25098, 0.25098, 0.25098, 1 )
 custom_constants/shadow_offset_x = 1
@@ -165,6 +162,8 @@ __meta__ = {
 anims/items = SubResource( 8 )
 anims/showText = SubResource( 9 )
 anims/wait = SubResource( 10 )
+
+[node name="SpaceBar" parent="." instance=ExtResource( 2 )]
 
 [connection signal="animation_finished" from="Texto/Anim" to="." method="_on_Anim_animation_finished"]
 [connection signal="animation_finished" from="TextocFormato/AnimF" to="." method="_on_AnimF_animation_finished"]

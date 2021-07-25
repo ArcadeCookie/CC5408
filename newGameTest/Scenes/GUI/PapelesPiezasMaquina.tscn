@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/GUI/Papeles/PapelesPiezasMaquina.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Images/GUI/Papeles/infopiezas.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/GUI/SpaceBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Images/GUI/numb_buttons.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Images/GUI/button2.png" type="Texture" id=6]
 
@@ -107,6 +108,8 @@ __meta__ = {
 [node name="Anim" type="AnimationPlayer" parent="Texto"]
 anims/init = SubResource( 5 )
 anims/show = SubResource( 6 )
+
+[node name="SpaceBar" parent="." instance=ExtResource( 3 )]
 
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
 [connection signal="animation_finished" from="Texto/Anim" to="." method="_on_Anim_animation_finished"]
