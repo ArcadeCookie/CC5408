@@ -33,11 +33,10 @@ func error1():
 
 func error2():
 	$Particulas/Particles2.show()
-	$ExpOST.stop()
 	$WarningSound.play()
 	## aqui sonido warning
 
 func error3():
 	var world = get_parent()
-	world.get_node("KinematicBody2/Camera/ScreenShaker").start()
+	world.get_node("Player/Camera/ScreenShaker").start()
 	$Particulas.iniciar()

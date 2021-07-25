@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://Resources/Modelos/Mapa/LabOeste.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Resources/Modelos/Mapa/Recepcion.obj" type="ArrayMesh" id=2]
@@ -55,12 +55,14 @@
 [ext_resource path="res://Scenes/GUI/IntroMonitor.tscn" type="PackedScene" id=53]
 [ext_resource path="res://Resources/Images/Items/tarjeta.png" type="Texture" id=54]
 [ext_resource path="res://Scripts/Objects/Card.gd" type="Script" id=55]
+[ext_resource path="res://Scenes/Objects/PC_Oficina.tscn" type="PackedScene" id=56]
 [ext_resource path="res://Resources/Sounds/warning.wav" type="AudioStream" id=57]
 [ext_resource path="res://Resources/Modelos/Enemigos/Sombra5.obj" type="ArrayMesh" id=58]
 [ext_resource path="res://Scenes/Objects/PuertaMadera.tscn" type="PackedScene" id=59]
 [ext_resource path="res://Scenes/Objects/PapelesArchive4.tscn" type="PackedScene" id=60]
 [ext_resource path="res://Scenes/Objects/PCMezcla1.tscn" type="PackedScene" id=61]
 [ext_resource path="res://Scenes/Objects/CajaFuerte.tscn" type="PackedScene" id=62]
+[ext_resource path="res://Scenes/Objects/PuertaDeslizante.tscn" type="PackedScene" id=63]
 
 [sub_resource type="Environment" id=1]
 ambient_light_color = Color( 0.447059, 0.447059, 0.447059, 1 )
@@ -551,7 +553,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.082, -20, 19.268 )
 transform = Transform( -0.996908, 0, -0.0785808, 0, 1, 0, 0.0785808, 0, -0.996908, 19.4522, 0, 20.9943 )
 
 [node name="PuertaPequeña5" parent="OficinasM" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3166, 0, 6.79834 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4841, 0, 5.39313 )
 
 [node name="Luz" parent="OficinasM" instance=ExtResource( 35 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.917, 2.974, 23.999 )
@@ -752,34 +754,55 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76721, 0 )
 shape = SubResource( 32 )
 
 [node name="PanelPuertaOficina" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.966, 1.359, 18.469 )
 
 [node name="Papeles1" parent="." instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03653, 0.967498, -17.5899 )
 
 [node name="Papeles2" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.192, 0.022, 25.253 )
 
 [node name="Papeles3" parent="." instance=ExtResource( 36 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.192, 0.022, 12.328 )
 
 [node name="Papeles4" parent="." instance=ExtResource( 38 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.05, 0.022, 12.328 )
 
 [node name="PapelesPiezasMaquina" parent="." instance=ExtResource( 37 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.483, 0.317, 17.499 )
 
 [node name="CajaFuerte" parent="." instance=ExtResource( 62 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.371, 0.597, 11.815 )
 
 [node name="DiscoDuro" parent="." instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 33.388, 0.066, 11.725 )
 
 [node name="PapelesArchive1" parent="." instance=ExtResource( 41 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.933, 0.967, 5.597 )
 
 [node name="PapelesArchive2" parent="." instance=ExtResource( 43 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.173, 0.967, 5.597 )
 
 [node name="PapelesArchive3" parent="." instance=ExtResource( 50 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.173, 0.967, 8.594 )
 
 [node name="PapelesArchive4" parent="." instance=ExtResource( 60 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.121, 0.967, 8.594 )
 
 [node name="PCMezcla1" parent="." instance=ExtResource( 61 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.213, 0.597, 5.047 )
 
 [node name="PuertaMadera" parent="." instance=ExtResource( 59 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4388, 1.10915, -3.79846 )
 
 [node name="Tubo1" parent="." instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 38.731, 0.217572, 4.912 )
+
+[node name="PC_Oficina" parent="." instance=ExtResource( 56 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4474, 1.21431, 24.7881 )
+
+[node name="PuertaDeslizante" parent="." instance=ExtResource( 63 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.592802, 1.10515, -23.3616 )
 
 [connection signal="activate" from="Monitor/Terminal" to="." method="_on_Terminal_activate"]
 [connection signal="animation_finished" from="Monitor/LightAnim" to="Monitor" method="_on_LightAnim_animation_finished"]

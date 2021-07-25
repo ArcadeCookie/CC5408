@@ -15,10 +15,14 @@ func change_track(track_route):
 	if not track_loaded:
 		track_loaded = true
 
+func fade_music(secs):
+	var tween = Tween.new()
+	tween.interpolate_property(MusicStream, "volume_db", MusicStream.volume_db, -25.0, secs, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	Game.add_child(tween)
+	tween.start()
 
 func stop_music():
 	MusicStream.stop()
-
 
 func play_FX(sound_route):
 	var audio_stream_player = AudioStreamPlayer.new()

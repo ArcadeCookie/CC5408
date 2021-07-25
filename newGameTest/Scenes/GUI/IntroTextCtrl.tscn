@@ -130,6 +130,7 @@ text = "So, what do you think about Dr.X being the one
 in charge of the experiment after you were
 leading the investigation?"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -141,21 +142,21 @@ anims/wait = SubResource( 5 )
 
 [node name="TextocFormato" type="RichTextLabel" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 633.431
-margin_top = -1.62106
-margin_right = 1177.43
-margin_bottom = 128.379
+anchor_left = 0.6
+anchor_top = 0.05
+anchor_right = 0.6
+anchor_bottom = 0.05
+margin_right = 400.0
+margin_bottom = 75.0
 custom_fonts/normal_font = SubResource( 7 )
 custom_colors/font_color_shadow = Color( 0.25098, 0.25098, 0.25098, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 2
 bbcode_enabled = true
-bbcode_text = "
-
-Go and activate the [color=#209f88]machine[/color]."
-text = "
-
-Go and activate the machine."
+bbcode_text = "Go and activate the [color=#209f88]machine[/color]."
+text = "Go and activate the machine."
+fit_content_height = true
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

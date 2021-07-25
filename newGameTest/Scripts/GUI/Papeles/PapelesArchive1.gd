@@ -6,4 +6,5 @@ func _ready():
 	
 func _on_Exit_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	DataManager.player_play()
 	DataManager.remove_unique_HUD(self)

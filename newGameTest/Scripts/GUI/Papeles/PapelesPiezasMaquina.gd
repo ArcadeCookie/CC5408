@@ -52,7 +52,7 @@ func _on_Anim_animation_finished(anim_name):
 		elif textnum == 3:
 			newtext = "Gotta remember the password to \n not waste time in there though."
 		elif textnum == 4:
-			newtext = "\n V-3234..."
+			newtext = "V-3234..."
 		elif textnum == 5:
-			newtext = "\n If this works again..."
+			newtext = "If this works again..."
 		animReady=true

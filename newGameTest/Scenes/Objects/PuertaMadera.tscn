@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Resources/Materials/Archivos/Madera1/Wood037_4K_Normal.jpg" type="Texture" id=1]
 [ext_resource path="res://Resources/Materials/Archivos/Madera1/Wood037_4K_Displacement.jpg" type="Texture" id=2]
@@ -6,10 +6,11 @@
 [ext_resource path="res://Resources/Materials/Archivos/Madera1/Wood037_4K_Roughness.jpg" type="Texture" id=4]
 [ext_resource path="res://Scripts/Objects/PuertaMadera_Body.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/Objects/PuertaMadera.gd" type="Script" id=6]
+[ext_resource path="res://Resources/Sounds/Door_Open.wav" type="AudioStream" id=7]
 
-[sub_resource type="CubeMesh" id=54]
+[sub_resource type="CubeMesh" id=1]
 
-[sub_resource type="SpatialMaterial" id=55]
+[sub_resource type="SpatialMaterial" id=2]
 flags_world_triplanar = true
 albedo_texture = ExtResource( 3 )
 roughness_texture = ExtResource( 4 )
@@ -24,11 +25,10 @@ depth_flip_binormal = false
 depth_texture = ExtResource( 2 )
 uv1_triplanar = true
 
-[sub_resource type="BoxShape" id=53]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.0831871, 1.09131, 0.587968 )
 
 [node name="PuertaMadera" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5228, 1.09501, -3.7869 )
 script = ExtResource( 5 )
 
 [node name="Terminal" type="StaticBody" parent="."]
@@ -36,11 +36,14 @@ transform = Transform( 0.1, 0, 0, 0, 1.1, 0, 0, 0, 0.6, 0, 0, 0 )
 script = ExtResource( 6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Terminal"]
-mesh = SubResource( 54 )
-material/0 = SubResource( 55 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Terminal"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0 )
-shape = SubResource( 53 )
+shape = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="Terminal"]
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="Terminal"]
+stream = ExtResource( 7 )
