@@ -1,4 +1,4 @@
-extends "res://Scripts/Objects/TerminalBody.gd"
+extends "res://Scripts/Objects/TerminalBodyMacroSupport.gd"
 # Specific instance of a Terminal object
 # Hierarchy: This -> TerminalBody -> Node -> ...
 onready var Left = $Left

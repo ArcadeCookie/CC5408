@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Resources/Materials/Archivos/Madera1/Wood037_4K_Normal.jpg" type="Texture" id=1]
 [ext_resource path="res://Resources/Materials/Archivos/Madera1/Wood037_4K_Displacement.jpg" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Resources/Materials/Archivos/Madera1/Wood037_4K_Roughness.jpg" type="Texture" id=4]
 [ext_resource path="res://Scripts/Objects/PuertaDeslizante_Body.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/Objects/PuertaDeslizante.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Objects/PuertaDeslizante2.gd" type="Script" id=7]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -30,7 +31,7 @@ points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1,
 
 [sub_resource type="CubeMesh" id=4]
 
-[sub_resource type="SpatialMaterial" id=10]
+[sub_resource type="SpatialMaterial" id=5]
 flags_world_triplanar = true
 albedo_color = Color( 0.568627, 0.878431, 0.94902, 1 )
 albedo_texture = ExtResource( 3 )
@@ -51,7 +52,7 @@ points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1,
 
 [sub_resource type="CubeMesh" id=7]
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="SpatialMaterial" id=8]
 flags_world_triplanar = true
 albedo_color = Color( 0.831373, 0.192157, 0.552941, 1 )
 albedo_texture = ExtResource( 3 )
@@ -91,7 +92,7 @@ shape = SubResource( 3 )
 [node name="MeshInstance" type="MeshInstance" parent="Left"]
 transform = Transform( 0.1, 0, 0, 0, 1.1, 0, 0, 0, 0.6, 0, 0, 0 )
 mesh = SubResource( 4 )
-material/0 = SubResource( 10 )
+material/0 = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Left"]
 transform = Transform( 0.1, 0, 0, 0, 1.1, 0, 0, 0, 0.6, 0, 0, 0 )
@@ -105,10 +106,23 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2 )
 [node name="MeshInstance" type="MeshInstance" parent="Right"]
 transform = Transform( 0.0999999, 0, 0, 0, 1.1, 0, 0, 0, 0.6, 0, 0, 0 )
 mesh = SubResource( 7 )
-material/0 = SubResource( 11 )
+material/0 = SubResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Right"]
 transform = Transform( 0.0999999, 0, 0, 0, 1.1, 0, 0, 0, 0.6, 0, 0, 0 )
 shape = SubResource( 9 )
 
 [node name="Tween" type="Tween" parent="Right"]
+
+[node name="Terminal2" type="StaticBody" parent="."]
+transform = Transform( 0.05, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0.172, 0.265, -1.573 )
+script = ExtResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Terminal2"]
+transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terminal2"]
+transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 3 )
