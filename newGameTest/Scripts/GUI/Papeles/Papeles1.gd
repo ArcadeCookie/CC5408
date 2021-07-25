@@ -31,6 +31,7 @@ func _on_NextPage_pressed():
 
 func _on_Exit_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	AudioManager.fade_music(2.0)
+	#AudioManager.fade_music(2.0)
+	#AudioManager.fade(9)
 	DataManager.player_play()
 	DataManager.remove_unique_HUD(self)

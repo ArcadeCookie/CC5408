@@ -3,6 +3,8 @@ extends Node
 onready var Game = get_tree().get_root().get_node("Game")
 onready var MusicStream = Game.get_node("MusicStreamPlayer")
 
+var fading = false
+var fade_intensity = 1
 var track_loaded = false
 
 func play_music():
@@ -15,11 +17,15 @@ func change_track(track_route):
 	if not track_loaded:
 		track_loaded = true
 
-func fade_music(secs):
-	var tween = Tween.new()
-	tween.interpolate_property(MusicStream, "volume_db", MusicStream.volume_db, -25.0, secs, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	Game.add_child(tween)
-	tween.start()
+func _process(delta):
+	if fading:
+		MusicStream.volume_db -= delta*fade_intensity
+		if MusicStream.volume_db < -79.0:
+			fading = false
+
+func fade(intensity):
+	fading = true
+	fade_intensity = intensity
 
 func stop_music():
 	MusicStream.stop()
