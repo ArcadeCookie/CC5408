@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Map/Fade.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Entities/Game.gd" type="Script" id=2]
@@ -48,6 +48,29 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://Resources/Fonts/TheSnowday.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+font_data = SubResource( 5 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "display"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Text:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2.5, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="Game" type="Node2D"]
@@ -177,6 +200,35 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Stamina/ProgressBar"]
 anims/Fade = SubResource( 3 )
 anims/In = SubResource( 4 )
+
+[node name="Objective" type="ColorRect" parent="CanvasLayer"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="CanvasLayer/Objective"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "this is the current objective"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ObjectiveAnim" type="AnimationPlayer" parent="CanvasLayer/Objective/Text"]
+anims/display = SubResource( 7 )
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 

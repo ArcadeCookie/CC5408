@@ -85,5 +85,5 @@ anims/items = SubResource( 3 )
 anims/showText = SubResource( 4 )
 anims/wait = SubResource( 5 )
 
-[connection signal="animation_finished" from="Texto/Anim" to="." method="_on_Anim_animation_finished"]
 [connection signal="animation_finished" from="Texto/Anim" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="Texto/Anim" to="." method="_on_Anim_animation_finished"]

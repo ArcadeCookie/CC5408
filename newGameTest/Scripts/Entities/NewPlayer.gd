@@ -70,8 +70,8 @@ func _unhandled_input(event : InputEvent) -> void:
 
 # Standard method for handling key events
 func _unhandled_key_input(event : InputEventKey) -> void:
-	#if Input.is_action_just_pressed("ui_select"):
-	#	$Camera/ScreenShaker._wakeup()
+	if Input.is_action_just_pressed("ui_objective"):
+		DataManager.showObjective()
 	if Input.is_action_just_pressed("sprint"):
 		is_sprinting = true
 		is_resting = false

@@ -12,6 +12,7 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 			$Texto/Anim.advance(5)
 		else:
 			DataManager.player_play()
+			DataManager.changeObjective("I have to go to the laboratory to prepare a tube of V-3234.")
 			DataManager.remove_unique_HUD(self)
 
 func _on_Anim_animation_finished(anim_name):

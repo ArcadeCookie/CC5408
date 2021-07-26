@@ -116,3 +116,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Fade":
 		stamina_bar.visible = false
 		showing_stamina = false
+
+func changeObjective(objective):
+	$CanvasLayer/Objective/Text.text = objective
+	showObjective()
+	
+func showObjective():
+	$CanvasLayer/Objective/Text/ObjectiveAnim.play("display")

@@ -116,3 +116,10 @@ func player_play():
 
 func update_stamina(val, maximum, going_up):
 	Game.update_stamina(val, maximum, going_up)
+
+
+func changeObjective(objective):
+	Game.changeObjective(objective)
+
+func showObjective():
+	Game.showObjective()
