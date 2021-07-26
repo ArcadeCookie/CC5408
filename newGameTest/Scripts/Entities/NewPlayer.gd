@@ -105,11 +105,14 @@ func _physics_process(delta : float) -> void:
 		objective_velocity = get_input() * sprinting_speed
 		stamina -= delta
 		if stamina <= 0:
+			stamina = 0
 			is_sprinting = false
+		DataManager.update_stamina(stamina, max_stamina, false)
 	else:
 		objective_velocity = get_input() * speed
 		if is_resting:
 			stamina = clamp(stamina + delta * rest_factor, 0, max_stamina)
+			DataManager.update_stamina(stamina, max_stamina, true)
 		elif rest_timer >= rest_time_threshold:
 			is_resting = true
 		else:

@@ -1,7 +1,54 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Map/Fade.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Entities/Game.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 0.984314, 0, 0.341176 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "In"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
@@ -10,7 +57,7 @@ script = ExtResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="Cross" type="ColorRect" parent="CanvasLayer"]
 anchor_left = 0.495
 anchor_top = 0.491
 anchor_right = 0.505
@@ -25,7 +72,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/ColorRect"]
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Cross"]
 anchor_left = 0.4
 anchor_top = -0.1
 anchor_right = 0.6
@@ -36,7 +83,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/ColorRect"]
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/Cross"]
 anchor_left = 0.4
 anchor_top = 0.6
 anchor_right = 0.6
@@ -47,7 +94,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/ColorRect"]
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/Cross"]
 anchor_left = 0.6
 anchor_top = 0.4
 anchor_right = 1.1
@@ -58,7 +105,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect5" type="ColorRect" parent="CanvasLayer/ColorRect"]
+[node name="ColorRect5" type="ColorRect" parent="CanvasLayer/Cross"]
 anchor_left = -0.1
 anchor_top = 0.4
 anchor_right = 0.4
@@ -74,6 +121,8 @@ __meta__ = {
 [node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 0.14032
+margin_bottom = 0.14032
 mouse_filter = 2
 stretch = true
 __meta__ = {
@@ -97,4 +146,38 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.25, -0.3 )
 [node name="LeftHand" type="Spatial" parent="CanvasLayer/ViewportContainer/Viewport/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.25, -0.3 )
 
+[node name="Stamina" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Stamina"]
+visible = false
+anchor_left = 0.1
+anchor_top = 0.975
+anchor_right = 0.9
+anchor_bottom = 1.0
+margin_left = 1.18921
+margin_top = -1.18921
+margin_right = 1.18921
+margin_bottom = -1.18921
+mouse_filter = 2
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Stamina/ProgressBar"]
+anims/Fade = SubResource( 3 )
+anims/In = SubResource( 4 )
+
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="animation_finished" from="CanvasLayer/Stamina/ProgressBar/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

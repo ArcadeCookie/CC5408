@@ -7,7 +7,10 @@ var loading_world = ""
 
 var HUD_on_screen = false
 
+var showing_stamina = false
+
 onready var fade = $CanvasLayer/Fade
+onready var stamina_bar = $CanvasLayer/Stamina/ProgressBar
 
 func _ready():
 	fade.connect("faded", self, "on_faded")
@@ -90,3 +93,26 @@ func player_play():
 	if player != null:
 		player.speed = 5
 		player.sprinting_speed = 10
+
+
+func update_stamina(val, maximum, going_up):
+	if not showing_stamina and not going_up:
+		stamina_bar.visible = true
+		showing_stamina = true
+		stamina_bar.get_node("AnimationPlayer").play("In")
+	stamina_bar.anchor_left = 0.49 - 0.4 * val / maximum
+	stamina_bar.anchor_right = 0.51 + 0.4 * val / maximum
+	if val == maximum and going_up:
+		hide_stamina()
+
+
+func hide_stamina():
+	stamina_bar.get_node("AnimationPlayer").play("Fade")
+	#stamina_bar.visible = false
+	#showing_stamina = false
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Fade":
+		stamina_bar.visible = false
+		showing_stamina = false

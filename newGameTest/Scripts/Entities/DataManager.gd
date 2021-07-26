@@ -112,3 +112,7 @@ func player_stop():
 
 func player_play():
 	Game.player_play()
+
+
+func update_stamina(val, maximum, going_up):
+	Game.update_stamina(val, maximum, going_up)
