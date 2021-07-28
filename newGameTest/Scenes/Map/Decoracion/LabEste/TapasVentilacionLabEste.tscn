@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Modelos/Mapa/TapaVentilacion.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Resources/Modelos/Mapa/TapaVentilacion.tscn" type="PackedScene" id=2]
+
+[node name="TapasVentilacionLabEste" type="Spatial"]
+
+[node name="TapaVentilacion" type="MeshInstance" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5782, -1.19209e-07, -27.2464 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="TapaVentilacion2" type="MeshInstance" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6386, 0, 4.59398 )
+mesh = ExtResource( 1 )
+material/0 = null

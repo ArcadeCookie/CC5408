@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Resources/Modelos/Mapa/PuertaPequeña.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Resources/Modelos/Mapa/PuertaLab.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Resources/Modelos/Mapa/PuertaLab.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Resources/Modelos/Mapa/PuertaPequeña.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources/Materials/Texturas/Madera1.tres" type="Material" id=5]
+[ext_resource path="res://Resources/Materials/Texturas/Plastico.tres" type="Material" id=6]
+[ext_resource path="res://Resources/Materials/Texturas/Metal1.tres" type="Material" id=7]
+[ext_resource path="res://Resources/Materials/Texturas/MetalPerillas.tres" type="Material" id=8]
+[ext_resource path="res://Resources/Materials/Texturas/Vidrio.tres" type="Material" id=9]
+
+[node name="PuertasLabCentral" type="Spatial"]
+
+[node name="PuertaPequeña5" type="MeshInstance" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.56153, 0, -25.6432 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 5 )
+material/1 = ExtResource( 5 )
+material/2 = ExtResource( 8 )
+material/3 = ExtResource( 8 )
+material/4 = ExtResource( 8 )
+material/5 = ExtResource( 8 )
+
+[node name="PuertaPequeña6" type="MeshInstance" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.361, 0, -25.643 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 5 )
+material/1 = ExtResource( 5 )
+material/2 = ExtResource( 8 )
+material/3 = ExtResource( 8 )
+material/4 = ExtResource( 8 )
+material/5 = ExtResource( 8 )
+
+[node name="PuertaPequeña7" type="MeshInstance" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.36, 0, -25.643 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 5 )
+material/1 = ExtResource( 5 )
+material/2 = ExtResource( 8 )
+material/3 = ExtResource( 8 )
+material/4 = ExtResource( 8 )
+material/5 = ExtResource( 8 )
+
+[node name="PuertaPequeña8" type="MeshInstance" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.56058, 0, -25.6425 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 5 )
+material/1 = ExtResource( 5 )
+material/2 = ExtResource( 8 )
+material/3 = ExtResource( 8 )
+material/4 = ExtResource( 8 )
+material/5 = ExtResource( 8 )
+
+[node name="PuertaLab8" type="MeshInstance" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.361, 0, -16.09 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 7 )
+material/1 = ExtResource( 6 )
+material/2 = ExtResource( 9 )

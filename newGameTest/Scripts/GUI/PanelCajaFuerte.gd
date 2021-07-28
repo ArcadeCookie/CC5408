@@ -13,6 +13,7 @@ func _ready():
 func mostrarLabel(numero):
 	if len(Codigo) < 6:
 		Codigo = Codigo + str(numero)
+		AudioManager.play_FX("res://Resources/Sounds/Buttonpress.wav")
 		Displayer.text	= Codigo
 	else:
 		return
@@ -56,9 +57,12 @@ func _on_Enter_pressed():
 		if Codigo==correcto:
 			# sonido exito aca
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			AudioManager.play_FX("res://Resources/Sounds/CorrectPassword.wav")
+			DataManager.call_unique_HUD("res://Scenes/GUI/CajaFuerteAbierta.tscn")
 			DataManager.remove_unique_HUD(self)
 		else:
 			# sonido de fallo aca
+			AudioManager.play_FX("res://Resources/Sounds/IncorrectPassword.wav")
 			Codigo = ""
 			Displayer.text = Codigo
 	else:

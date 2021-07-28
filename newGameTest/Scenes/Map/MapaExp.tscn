@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=2]
+[gd_scene load_steps=105 format=2]
 
 [ext_resource path="res://Resources/Modelos/Mapa/LabOeste.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Resources/Modelos/Mapa/Recepcion.obj" type="ArrayMesh" id=2]
@@ -63,6 +63,12 @@
 [ext_resource path="res://Scenes/Objects/PCMezcla1.tscn" type="PackedScene" id=61]
 [ext_resource path="res://Scenes/Objects/CajaFuerte.tscn" type="PackedScene" id=62]
 [ext_resource path="res://Scenes/Objects/PuertaDeslizante.tscn" type="PackedScene" id=63]
+[ext_resource path="res://Scenes/Objects/LabMixer.tscn" type="PackedScene" id=64]
+[ext_resource path="res://Scenes/Objects/LabMixer/Item2.tscn" type="PackedScene" id=65]
+[ext_resource path="res://Scenes/Objects/LabMixer/Decoy1.tscn" type="PackedScene" id=66]
+[ext_resource path="res://Scenes/Objects/LabMixer/Decoy2.tscn" type="PackedScene" id=67]
+[ext_resource path="res://Scenes/Objects/LabMixer/Item3.tscn" type="PackedScene" id=68]
+[ext_resource path="res://Scenes/Objects/LabMixer/Oil.tscn" type="PackedScene" id=69]
 
 [sub_resource type="Environment" id=1]
 ambient_light_color = Color( 0.447059, 0.447059, 0.447059, 1 )
@@ -694,7 +700,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0176822, 1.8724, 2.15395 )
 stream = ExtResource( 57 )
 
 [node name="Player" parent="." instance=ExtResource( 27 )]
-transform = Transform( 0.0100354, 0, 0.99995, 0, 1, 0, -0.99995, 0, 0.0100354, -1.85239, 0.967107, -19.5629 )
+transform = Transform( 0.0100354, 0, 0.99995, 0, 1, 0, -0.99995, 0, 0.0100354, 35.933, 0.967107, -2.2421 )
 
 [node name="Card2" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0.284709, 0.0663101, -21.6893 )
@@ -803,6 +809,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4474, 1.21431, 24.7881 )
 
 [node name="PuertaDeslizante" parent="." instance=ExtResource( 63 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.592802, 1.10515, -23.3616 )
+
+[node name="LabMixer" parent="." instance=ExtResource( 64 )]
+transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 42.9657, 0.616607, 0 )
+
+[node name="Decoy1" parent="." instance=ExtResource( 66 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.1651, 0, -9.07409 )
+
+[node name="Decoy2" parent="." instance=ExtResource( 67 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.8673, 0, -4.53616 )
+
+[node name="Item2" parent="." instance=ExtResource( 65 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.4447, 0, -8.53039 )
+
+[node name="Item3" parent="." instance=ExtResource( 68 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.6341, 0, -5.15041 )
+
+[node name="Oil" parent="." instance=ExtResource( 69 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.4108, 0, 3.17458 )
 
 [connection signal="activate" from="Monitor/Terminal" to="." method="_on_Terminal_activate"]
 [connection signal="animation_finished" from="Monitor/LightAnim" to="Monitor" method="_on_LightAnim_animation_finished"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Map/Zonas/LabCentral.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Map/Zonas/Casino.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Map/Zonas/LabEste.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Map/Zonas/Oficinas.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Map/Zonas/LabOeste.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Map/Zonas/MaquinaLab.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Map/Zonas/Recepcion.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Environment" id=1]
+background_energy = 0.0
+ambient_light_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="MaquinaLab" parent="." instance=ExtResource( 6 )]
+
+[node name="LabEste" parent="." instance=ExtResource( 3 )]
+
+[node name="Casino" parent="." instance=ExtResource( 2 )]
+
+[node name="LabOeste" parent="." instance=ExtResource( 5 )]
+
+[node name="Oficinas" parent="." instance=ExtResource( 4 )]
+
+[node name="Recepcion" parent="." instance=ExtResource( 8 )]
+
+[node name="LabCentral" parent="." instance=ExtResource( 1 )]

@@ -52,7 +52,7 @@ func _on_Anim_animation_finished(anim_name):
 		if SpaceBar == 0:
 			$SpaceBar._play()
 			SpaceBar = 1
-		newtext = "After all that effort and now just being a\n supporter, I thought you were going to have\n a grudge towards Dr.X or the project."
+		newtext = "After all that effort and now just being a\n supporter, I thought you were going to have\n a grudge towards Dr. Light or the project."
 	elif textnum == 2:
 		newtext = "\n But here we are, about to witness a huge step\n for mankind and it's all thanks to you."
 	elif textnum == 3:

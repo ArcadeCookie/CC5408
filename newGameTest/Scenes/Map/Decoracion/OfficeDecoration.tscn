@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Resources/Modelos/Amueblado/Gabinete.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Resources/Modelos/Amueblado/MetalShelf.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Resources/Modelos/Amueblado/Baños.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Resources/Materials/Texturas/Plastico.tres" type="Material" id=4]
+[ext_resource path="res://Resources/Materials/Texturas/MetalLLavesBaños.tres" type="Material" id=5]
+[ext_resource path="res://Resources/Materials/Texturas/LozaBaños.tres" type="Material" id=6]
+[ext_resource path="res://Resources/Materials/Texturas/Espejo.tres" type="Material" id=7]
+[ext_resource path="res://Resources/Materials/Texturas/Metal3.tres" type="Material" id=8]
+[ext_resource path="res://Resources/Materials/Texturas/Madera1Oscura.tres" type="Material" id=9]
+[ext_resource path="res://Resources/Materials/Texturas/MetalShelf.tres" type="Material" id=10]
+
+[sub_resource type="BoxShape" id=17]
+
+[sub_resource type="BoxShape" id=21]
+
+[node name="OfficeDecoration" type="Spatial"]
+
+[node name="Baños" type="MeshInstance" parent="."]
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 5 )
+material/1 = ExtResource( 5 )
+material/2 = ExtResource( 5 )
+material/3 = ExtResource( 5 )
+material/4 = ExtResource( 4 )
+material/5 = ExtResource( 8 )
+material/6 = ExtResource( 6 )
+material/7 = ExtResource( 7 )
+material/8 = ExtResource( 5 )
+material/9 = ExtResource( 5 )
+material/10 = ExtResource( 5 )
+material/11 = ExtResource( 5 )
+material/12 = ExtResource( 4 )
+material/13 = ExtResource( 8 )
+material/14 = ExtResource( 6 )
+material/15 = ExtResource( 7 )
+
+[node name="StaticBody2" type="StaticBody" parent="Baños"]
+transform = Transform( 2.75, 0, 0, 0, 0.32, 0, 0, 0, 0.4, 19.2604, 0.439108, 27.8335 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Baños/StaticBody2"]
+transform = Transform( 1, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, 0.927, 0 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Baños/StaticBody2"]
+transform = Transform( 1, 0, 0, 0, 0.4, 0, 0, 0, 1, -0.000156879, 0.926743, 9.72341 )
+shape = SubResource( 17 )
+
+[node name="StaticBody" type="StaticBody" parent="Baños"]
+transform = Transform( 2.45, 0, 0, 0, 0.8, 0, 0, 0, 0.6, 24.6388, 1.09648, 32.0044 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Baños/StaticBody"]
+shape = SubResource( 21 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Baños/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.28418 )
+shape = SubResource( 21 )
+
+[node name="MetalShelf2" type="MeshInstance" parent="."]
+transform = Transform( 0.02, 0, 0, 0, 0.013, 0, 0, 0, 0.015, 37.1978, 0, 11.3157 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 10 )
+
+[node name="Gabinete2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.66, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 5 )
+material/1 = ExtResource( 5 )
+material/2 = ExtResource( 5 )
+material/3 = ExtResource( 9 )

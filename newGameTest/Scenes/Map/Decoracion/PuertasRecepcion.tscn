@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Resources/Modelos/Mapa/PuertaLab.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Resources/Modelos/Mapa/PuertaLab.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Resources/Materials/Texturas/Plastico.tres" type="Material" id=3]
+[ext_resource path="res://Resources/Materials/Texturas/Metal1.tres" type="Material" id=4]
+[ext_resource path="res://Resources/Materials/Texturas/Vidrio.tres" type="Material" id=5]
+
+[node name="PuertasRecepcion" type="Spatial"]
+
+[node name="PuertaLab" type="MeshInstance" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.6, 0, 3.83343 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 4 )
+material/1 = ExtResource( 3 )
+material/2 = ExtResource( 5 )
+
+[node name="PuertaLab2" type="MeshInstance" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.600261, 0, 3.83337 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 4 )
+material/1 = ExtResource( 3 )
+material/2 = ExtResource( 5 )

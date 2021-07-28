@@ -19,10 +19,12 @@ func mostrarLabel(numero):
 				Indicator.play("accepted")
 				yield(Indicator, "animation_finished")
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+				AudioManager.play_FX("res://Resources/Sounds/CorrectPassword.wav")
 				DataManager.player_play()
 				DataManager.remove_unique_HUD(self)
 			else:
 				Indicator.play("rejected")
+				AudioManager.play_FX("res://Resources/Sounds/IncorrectPassword.wav")
 				yield(Indicator, "animation_finished")
 				Codigo = ""
 				Displayer.text = Codigo

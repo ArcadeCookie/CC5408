@@ -127,11 +127,12 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
-text = "So, what do you think about Dr.Light being the one 
+text = "So, what do you think about Dr. Light being the one 
 in charge of the experiment after you were
 leading the investigation?"
 align = 1
 valign = 1
+percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

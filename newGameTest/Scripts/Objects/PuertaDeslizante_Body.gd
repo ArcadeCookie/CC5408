@@ -28,6 +28,7 @@ func _openDoor():
 	$Right/Tween.interpolate_property(Right, "translation", Right.translation, transl_Right, 0.6, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	$Left/Tween.start()
 	$Right/Tween.start()
+	$Sound.play()
 	status = 1
 
 func _closeDoor():
@@ -39,4 +40,5 @@ func _closeDoor():
 	$Right/Tween.interpolate_property(Right, "translation", Right.translation, transl_Right, 0.6, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	$Left/Tween.start()
 	$Right/Tween.start()
+	$Sound.play()
 	status = 0

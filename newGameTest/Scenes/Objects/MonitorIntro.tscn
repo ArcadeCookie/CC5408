@@ -1,0 +1,190 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Resources/Sounds/warning.wav" type="AudioStream" id=1]
+[ext_resource path="res://Scenes/Effects/MachineParticles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/GUI/IntroMonitor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Effects/MachineParticles.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/GUI/IntroMonitor.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Objects/MonitorInit.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Objects/MonitorBody.gd" type="Script" id=7]
+
+[sub_resource type="CubeMesh" id=22]
+size = Vector3( 1, 2, 1 )
+
+[sub_resource type="SpatialMaterial" id=23]
+albedo_color = Color( 0, 1, 0, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=24]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=25]
+size = Vector3( 0.5, 0.4, 0.8 )
+
+[sub_resource type="SpatialMaterial" id=26]
+albedo_color = Color( 0.921569, 0, 1, 1 )
+
+[sub_resource type="Animation" id=27]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("WarningLight:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WarningLight3:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WarningLight4:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("WarningLight2:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=28]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("WarningLight2:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WarningLight4:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WarningLight3:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("WarningLight:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="Monitor" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0417203, 0.894901, -11.4903 )
+script = ExtResource( 6 )
+
+[node name="Terminal" type="StaticBody" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
+script = ExtResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Terminal"]
+mesh = SubResource( 22 )
+material/0 = SubResource( 23 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terminal"]
+shape = SubResource( 24 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Terminal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26, 0.75, 0 )
+mesh = SubResource( 25 )
+material/0 = SubResource( 26 )
+
+[node name="Screen" type="Spatial" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.19983, 1.15633, -0.1027 )
+script = ExtResource( 5 )
+
+[node name="LightAnim" type="AnimationPlayer" parent="."]
+anims/intermittence_in = SubResource( 27 )
+anims/intermittence_out = SubResource( 28 )
+
+[node name="WarningLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.183304, 5.6381, 10.8623 )
+visible = false
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 15.0
+
+[node name="WarningLight2" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2105, 5.6381, -3.2287 )
+visible = false
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 15.0
+
+[node name="WarningLight3" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06528, 5.6381, 4.25434 )
+visible = false
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 15.0
+
+[node name="WarningLight4" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.18972, 5.6381, 3.64334 )
+visible = false
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 15.0
+
+[node name="Particulas" type="RigidBody" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0417203, 5.94991, 5.30476 )
+mode = 1
+mass = 20.0
+script = ExtResource( 4 )
+
+[node name="WarningSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0176822, 1.8724, 2.15395 )
+stream = ExtResource( 1 )
+
+[connection signal="animation_finished" from="LightAnim" to="." method="_on_LightAnim_animation_finished"]

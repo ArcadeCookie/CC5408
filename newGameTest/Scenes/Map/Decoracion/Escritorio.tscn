@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Resources/Modelos/Amueblado/Escritorio.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Resources/Materials/Texturas/Madera1.tres" type="Material" id=2]
+[ext_resource path="res://Resources/Materials/Texturas/PlasticoNegro.tres" type="Material" id=3]
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0.109804, 0.109804, 0.109804, 1 )
+metallic = 0.5
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_color = Color( 0, 0, 0, 1 )
+roughness = 0.0
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_color = Color( 0.635294, 0.105882, 0.105882, 1 )
+
+[sub_resource type="BoxShape" id=17]
+
+[sub_resource type="CylinderShape" id=18]
+
+[node name="Escritorio" type="MeshInstance"]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+material/1 = SubResource( 14 )
+material/2 = ExtResource( 3 )
+material/3 = SubResource( 15 )
+material/4 = ExtResource( 3 )
+material/5 = SubResource( 16 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3446, 1.18264, 24.897 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.03, 0, 0, 0, 0.38, 0, 0, 0, 0.5, -0.915646, -0.800872, -6.29425e-05 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.03, 0, 0, 0, 0.38, 0, 0, 0, 0.5, 0.919594, -0.800872, -6.29425e-05 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.94, 0, 0, 0, 0.02, 0, 0, 0, 0.505, 0.00214577, -0.403399, 0.0089283 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.07, 0, 0, 0, 0.1, 0, 0, 0, 0.07, 0.667589, -0.281895, -0.267103 )
+shape = SubResource( 18 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.22, 0, 0, 0, 0.14, 0, 0, 0, 0.47, 0.659761, -0.573898, -0.0028019 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.88, 0, 0, 0, 0.17, 0, 0, 0, 0.02, 0.00213623, -0.591427, -0.495333 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.21836, 0, 0.0268113, 0, 0.05, 0, -0.0268113, 0, 0.21836, 0.50717, -0.573898, 1.77676 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.217859, 0, 0.00835039, 0, 0.2, 0, -0.0306181, 0, 0.0594161, 0.50717, -0.137699, 2.07223 )
+shape = SubResource( 17 )

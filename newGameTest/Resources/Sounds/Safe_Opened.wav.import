@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Safe_Opened.wav-790ed0bc669f1bd105c63e15da50ca3a.sample"
+
+[deps]
+
+source_file="res://Resources/Sounds/Safe_Opened.wav"
+dest_files=[ "res://.import/Safe_Opened.wav-790ed0bc669f1bd105c63e15da50ca3a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
