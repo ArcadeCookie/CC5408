@@ -18,7 +18,7 @@ onready var world = $Navigation/NavigationMeshInstance/World
 
 func _ready():
 	fade.connect("faded", self, "on_faded")
-	current_world = load("res://Scenes/Map/MapaExp.tscn").instance()
+	current_world = load("res://Scenes/Map/Dimension1.tscn").instance()
 	#current_world = load("res://Scenes/Demo/DemoMap1.tscn").instance()
 	world.add_child(current_world)
 	set_process(false)
@@ -86,14 +86,14 @@ func removeScenes():
 
 
 func player_stop():
-	var player = world.get_node("/Spatial/Player")
+	var player = world.get_node("Spatial/Player")
 	if player != null:
 		player.speed = 0
 		player.sprinting_speed = 0
 
 
 func player_play():
-	var player = world.get_node("/Spatial/Player")
+	var player = world.get_node("Spatial/Player")
 	if player != null:
 		player.speed = 5
 		player.sprinting_speed = 10
@@ -135,3 +135,13 @@ func showKeys():
 func hideKeys():
 	Q_key.visible = false
 	E_key.visible = false
+
+func camera_stop():
+	var player = world.get_node("Spatial/Player")
+	if player != null:
+		player.camera_free = false
+
+func camera_play():
+	var player = world.get_node("Spatial/Player")
+	if player != null:
+		player.camera_free = true

@@ -41,7 +41,6 @@ func _on_Timer_timeout():
 	elif (110 < tiempo):
 		if not done:
 			DataManager.call_HUD("res://Scenes/Map/WhiteFade.tscn")
-			AudioManager.fade(6)
 			done = true
 		# aca deberia ir escena a blanco
 	else:

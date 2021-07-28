@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Menus/Creditos.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Images/Menus/Creditos.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Resources/Fonts/N8ghtmare.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = SubResource( 1 )
+
+[node name="Creditos" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.064
+anchor_top = 0.064
+anchor_right = 0.064
+anchor_bottom = 0.064
+margin_right = 150.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="Button"]
+custom_fonts/font = SubResource( 2 )
+text = "Return"
+valign = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

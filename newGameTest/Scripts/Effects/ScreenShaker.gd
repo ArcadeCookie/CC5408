@@ -50,8 +50,8 @@ func _on_Duration_timeout():
 	start(time_expl, 15, amp_expl)
 
 func _wakeup():
-	camera.rotation_degrees.z = -90.0
-	camera.translation.y = 0.25
+	#camera.rotation_degrees.z = -90.0
+	#camera.translation.y = 0.25
 	var rand = Vector3()
 	var transl = Vector3()
 	rand.x = camera.rotation_degrees.x
@@ -70,6 +70,10 @@ func _on_Timer_timeout():
 	if self.done == 0:
 		$Timer2.start()
 		print("done")
+	if self.done == 1:
+		#DataManager.player_play()
+		$Timer.one_shot = true
+		self.done = 2
 
 func _on_Timer2_timeout():
 	if self.done == 1:
@@ -88,3 +92,4 @@ func _on_Timer2_timeout():
 	$TweenShake.interpolate_property(camera, "translation", camera.translation, transl, $Timer.wait_time, TRANS, EASE)
 	$TweenShake.start()
 	self.done = 1
+	$Timer.start()

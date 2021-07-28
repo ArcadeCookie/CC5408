@@ -1,0 +1,176 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://Scenes/Map/Zonas/LabCentral.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Map/Zonas/Casino.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Map/Zonas/LabEste.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Map/Zonas/Oficinas.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Map/Zonas/LabOeste.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Map/Zonas/MaquinaLab.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Entities/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Map/Zonas/Recepcion.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Map/Decoracion/Gabinete.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Map/Decoracion/PuertaSingle.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scripts/GUI/Dimension1/Beginning.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/Map/Decoracion/Luz.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Map/Decoracion/Escritorio.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Map/Decoracion/Estanteria.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Map/Decoracion/OfficeDecoration.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Objects/MonitorIntro.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Map/Decoracion/MarcoPuerta.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Map/Decoracion/PuertaSingleOpened.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Map/Decoracion/Oficina/MonitorPC.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Map/Decoracion/LabCentral/PuertasLabCentral.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Map/Decoracion/LabCentral/BarandasMaquina.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Objects/Papeles1.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scenes/Objects/PapelesArchive1.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/Objects/Papeles3.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Scenes/Objects/PapelesArchive2.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Scenes/Objects/PapelesArchive4.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Scenes/Objects/PapelesArchive3.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Scenes/Objects/Papeles2.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Scenes/Objects/Papeles4.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Scenes/Objects/Dimension1/Puerta1.tscn" type="PackedScene" id=30]
+
+[sub_resource type="Environment" id=1]
+background_energy = 0.0
+ambient_light_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+albedo_color = Color( 0.619608, 0.619608, 0.619608, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Mapa" type="Spatial" parent="."]
+
+[node name="MaquinaLab" parent="Mapa" instance=ExtResource( 6 )]
+
+[node name="LabEste" parent="Mapa" instance=ExtResource( 3 )]
+
+[node name="Casino" parent="Mapa" instance=ExtResource( 2 )]
+
+[node name="LabOeste" parent="Mapa" instance=ExtResource( 5 )]
+
+[node name="Oficinas" parent="Mapa" instance=ExtResource( 4 )]
+
+[node name="Recepcion" parent="Mapa" instance=ExtResource( 8 )]
+
+[node name="LabCentral" parent="Mapa" instance=ExtResource( 1 )]
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77874, 1, -19.7405 )
+
+[node name="Decoracion" type="Spatial" parent="."]
+
+[node name="PanelPuertaOficina" type="Spatial" parent="Decoracion"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.9654, 1.34214, 18.4766 )
+
+[node name="Terminal" type="StaticBody" parent="Decoracion/PanelPuertaOficina"]
+transform = Transform( 0.01, 0, 0, 0, 0.15, 0, 0, 0, 0.1, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Decoracion/PanelPuertaOficina/Terminal"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Decoracion/PanelPuertaOficina/Terminal"]
+shape = SubResource( 4 )
+
+[node name="Escritorio" parent="Decoracion" instance=ExtResource( 13 )]
+
+[node name="Estanteria" parent="Decoracion" instance=ExtResource( 14 )]
+
+[node name="Gabinete" parent="Decoracion" instance=ExtResource( 9 )]
+
+[node name="Luz" parent="Decoracion" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8917, 2.974, 24.0212 )
+
+[node name="OfficeDecoration" parent="Decoracion" instance=ExtResource( 15 )]
+
+[node name="PuertaPequeñaAbierta" parent="Decoracion" instance=ExtResource( 18 )]
+transform = Transform( -0.996195, 0, -0.0871556, 0, 1, 0, 0.0871556, 0, -0.996195, 19.455, 0, 20.964 )
+
+[node name="MonitorPC" parent="Decoracion" instance=ExtResource( 19 )]
+
+[node name="PuertasLabCentral" parent="Decoracion" instance=ExtResource( 20 )]
+
+[node name="BarandasMaquina" parent="Decoracion" instance=ExtResource( 21 )]
+
+[node name="MarcoPuerta" parent="Decoracion" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3222, 0, 6.79692 )
+
+[node name="MarcoPuerta2" parent="Decoracion" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.067, 0, 19.269 )
+
+[node name="MarcoPuerta3" parent="Decoracion" instance=ExtResource( 17 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.287, 0, 18.163 )
+
+[node name="MarcoPuerta4" parent="Decoracion" instance=ExtResource( 17 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.287, 0, 20.3728 )
+
+[node name="MarcoPuerta5" parent="Decoracion" instance=ExtResource( 17 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.907, 0, 18.163 )
+
+[node name="Monitor" parent="." instance=ExtResource( 16 )]
+
+[node name="Beginning" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Beginning"]
+wait_time = 5.5
+one_shot = true
+
+[node name="Papeles1" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9005, 0.818742, 25.1668 )
+
+[node name="Papeles2" parent="." instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7663, 0, 13.6403 )
+
+[node name="Papeles3" parent="." instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0202, 0, 15.5775 )
+
+[node name="Papeles4" parent="." instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4808, 0, 24.9295 )
+
+[node name="PapelesArchive1" parent="." instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7663, 0, 8.71615 )
+
+[node name="PapelesArchive2" parent="." instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7663, 0, 6.10692 )
+
+[node name="PapelesArchive3" parent="." instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.409, 0, 6.35044 )
+
+[node name="PapelesArchive4" parent="." instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3433, 0, 8.71209 )
+
+[node name="Puerta1" parent="." instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.322, 0, 6.797 )
+
+[node name="Puerta2" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.067, 0, 19.269 )
+
+[node name="Puerta3" parent="." instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.287, 0, 18.163 )
+
+[node name="Puerta4" parent="." instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.287, 0, 20.3728 )
+
+[node name="Puerta5" parent="." instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.907, 0, 18.163 )
+
+[connection signal="timeout" from="Beginning/Timer" to="Beginning" method="_on_Timer_timeout"]

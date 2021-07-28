@@ -27,6 +27,7 @@ var fade = 0
 var is_sprinting = false
 var is_resting = true
 var is_crouching = false
+var camera_free = true
 
 var direction = Vector3()
 var velocity = Vector3()
@@ -63,6 +64,8 @@ func get_input() -> Vector3:
 # Standard method for handling events
 func _unhandled_input(event : InputEvent) -> void:
 	if event is InputEventMouseMotion:
+		if not camera_free:
+			return
 		rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x - event.relative.y * mouse_sensitivity, -80, 80)
 	direction = Vector3()

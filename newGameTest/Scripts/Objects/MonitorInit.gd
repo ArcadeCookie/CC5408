@@ -33,6 +33,7 @@ func error1():
 
 func error2():
 	$Particulas/Particles2.show()
+	AudioManager.fade(6)
 	$WarningSound.play()
 	## aqui sonido warning
 

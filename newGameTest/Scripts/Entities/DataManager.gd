@@ -131,3 +131,10 @@ func showKeys():
 
 func hideKeys():
 	Game.hideKeys()
+
+
+func camera_stop():
+	Game.camera_stop()
+
+func camera_play():
+	Game.camera_play()
