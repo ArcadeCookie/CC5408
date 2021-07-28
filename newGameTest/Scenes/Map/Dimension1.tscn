@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Scenes/Map/Zonas/LabCentral.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Zonas/Casino.tscn" type="PackedScene" id=2]
@@ -17,7 +17,7 @@
 [ext_resource path="res://Scenes/Map/Decoracion/OfficeDecoration.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Objects/MonitorIntro.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scenes/Map/Decoracion/MarcoPuerta.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Scenes/Map/Decoracion/PuertaSingleOpened.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Resources/Modelos/Mapa/PuertaPequeña.obj" type="ArrayMesh" id=18]
 [ext_resource path="res://Scenes/Map/Decoracion/Oficina/MonitorPC.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Map/Decoracion/LabCentral/PuertasLabCentral.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scenes/Map/Decoracion/LabCentral/BarandasMaquina.tscn" type="PackedScene" id=21]
@@ -30,10 +30,19 @@
 [ext_resource path="res://Scenes/Objects/Papeles2.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Scenes/Objects/Papeles4.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Scenes/Objects/Dimension1/Puerta1.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Resources/Materials/Texturas/Madera1.tres" type="Material" id=31]
+[ext_resource path="res://Resources/Materials/Texturas/MetalPerillas.tres" type="Material" id=32]
+[ext_resource path="res://Resources/Sounds/Door_Open.wav" type="AudioStream" id=33]
+[ext_resource path="res://Scripts/Objects/Dimension1/PuertaDrLight.gd" type="Script" id=34]
+[ext_resource path="res://Scripts/Objects/Dimension1/PuertaDrWattson_Body.gd" type="Script" id=35]
+[ext_resource path="res://Scripts/Objects/Dimension1/PuertaDrJohn_Body.gd" type="Script" id=36]
+[ext_resource path="res://Scripts/Objects/Dimension1/PuertaDrLight_Body.gd" type="Script" id=37]
+[ext_resource path="res://Scripts/Objects/Dimension1/PuertaDrJohn.gd" type="Script" id=38]
+[ext_resource path="res://Scripts/Objects/Dimension1/PuertaDrWattson.gd" type="Script" id=39]
 
 [sub_resource type="Environment" id=1]
 background_energy = 0.0
-ambient_light_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+ambient_light_color = Color( 0.305882, 0.305882, 0.305882, 1 )
 
 [sub_resource type="CubeMesh" id=2]
 
@@ -44,6 +53,8 @@ albedo_color = Color( 0.619608, 0.619608, 0.619608, 1 )
 
 [sub_resource type="ConvexPolygonShape" id=4]
 points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="BoxShape" id=5]
 
 [node name="Spatial" type="Spatial"]
 
@@ -95,9 +106,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8917, 2.974, 24.0212 )
 
 [node name="OfficeDecoration" parent="Decoracion" instance=ExtResource( 15 )]
 
-[node name="PuertaPequeñaAbierta" parent="Decoracion" instance=ExtResource( 18 )]
-transform = Transform( -0.996195, 0, -0.0871556, 0, 1, 0, 0.0871556, 0, -0.996195, 19.455, 0, 20.964 )
-
 [node name="MonitorPC" parent="Decoracion" instance=ExtResource( 19 )]
 
 [node name="PuertasLabCentral" parent="Decoracion" instance=ExtResource( 20 )]
@@ -118,6 +126,9 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.287,
 
 [node name="MarcoPuerta5" parent="Decoracion" instance=ExtResource( 17 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.907, 0, 18.163 )
+
+[node name="MarcoPuerta6" parent="Decoracion" instance=ExtResource( 17 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.907, 0, 20.373 )
 
 [node name="Monitor" parent="." instance=ExtResource( 16 )]
 
@@ -164,13 +175,96 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.322, 0, 6.797 )
 [node name="Puerta2" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.067, 0, 19.269 )
 
-[node name="Puerta3" parent="." instance=ExtResource( 10 )]
+[node name="PuertaOficinaPlayer" type="Spatial" parent="."]
+transform = Transform( -0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, -0.984808, 19.3072, 0, 20.9967 )
+
+[node name="Terminal" type="StaticBody" parent="PuertaOficinaPlayer"]
+
+[node name="MeshInstance" type="MeshInstance" parent="PuertaOficinaPlayer/Terminal"]
+mesh = ExtResource( 18 )
+material/0 = ExtResource( 31 )
+material/1 = ExtResource( 31 )
+material/2 = ExtResource( 32 )
+material/3 = ExtResource( 32 )
+material/4 = ExtResource( 32 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PuertaOficinaPlayer/Terminal"]
+transform = Transform( 0.05, 0, 0, 0, 1.072, 0, 0, 0, 0.55, 0, 1.07223, 0 )
+shape = SubResource( 5 )
+
+[node name="PuertaDrLight" type="Spatial" parent="."]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.287, 0, 18.163 )
+script = ExtResource( 37 )
 
-[node name="Puerta4" parent="." instance=ExtResource( 10 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.287, 0, 20.3728 )
+[node name="Terminal" type="StaticBody" parent="PuertaDrLight"]
+script = ExtResource( 34 )
 
-[node name="Puerta5" parent="." instance=ExtResource( 10 )]
+[node name="MeshInstance" type="MeshInstance" parent="PuertaDrLight/Terminal"]
+mesh = ExtResource( 18 )
+material/0 = ExtResource( 31 )
+material/1 = ExtResource( 31 )
+material/2 = ExtResource( 32 )
+material/3 = ExtResource( 32 )
+material/4 = ExtResource( 32 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PuertaDrLight/Terminal"]
+transform = Transform( 0.05, 0, 0, 0, 1.072, 0, 0, 0, 0.55, 0, 1.07223, 0 )
+shape = SubResource( 5 )
+
+[node name="Tween" type="Tween" parent="PuertaDrLight/Terminal"]
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="PuertaDrLight/Terminal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98221, 0 )
+stream = ExtResource( 33 )
+
+[node name="PuertaDrWattson" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.287, 0, 20.3946 )
+script = ExtResource( 35 )
+
+[node name="Terminal" type="StaticBody" parent="PuertaDrWattson"]
+script = ExtResource( 39 )
+
+[node name="MeshInstance" type="MeshInstance" parent="PuertaDrWattson/Terminal"]
+mesh = ExtResource( 18 )
+material/0 = ExtResource( 31 )
+material/1 = ExtResource( 31 )
+material/2 = ExtResource( 32 )
+material/3 = ExtResource( 32 )
+material/4 = ExtResource( 32 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PuertaDrWattson/Terminal"]
+transform = Transform( 0.05, 0, 0, 0, 1.072, 0, 0, 0, 0.55, 0, 1.07223, 0 )
+shape = SubResource( 5 )
+
+[node name="Tween" type="Tween" parent="PuertaDrWattson/Terminal"]
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="PuertaDrWattson/Terminal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98221, 0 )
+stream = ExtResource( 33 )
+
+[node name="PuertaDrJohn" type="Spatial" parent="."]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.907, 0, 18.163 )
+script = ExtResource( 36 )
+
+[node name="Terminal" type="StaticBody" parent="PuertaDrJohn"]
+script = ExtResource( 38 )
+
+[node name="MeshInstance" type="MeshInstance" parent="PuertaDrJohn/Terminal"]
+mesh = ExtResource( 18 )
+material/0 = ExtResource( 31 )
+material/1 = ExtResource( 31 )
+material/2 = ExtResource( 32 )
+material/3 = ExtResource( 32 )
+material/4 = ExtResource( 32 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PuertaDrJohn/Terminal"]
+transform = Transform( 0.05, 0, 0, 0, 1.072, 0, 0, 0, 0.55, 0, 1.07223, 0 )
+shape = SubResource( 5 )
+
+[node name="Tween" type="Tween" parent="PuertaDrJohn/Terminal"]
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="PuertaDrJohn/Terminal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98221, 0 )
+stream = ExtResource( 33 )
 
 [connection signal="timeout" from="Beginning/Timer" to="Beginning" method="_on_Timer_timeout"]

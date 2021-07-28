@@ -7,7 +7,7 @@
 [ext_resource path="res://Resources/Sounds/Door_Open.wav" type="AudioStream" id=5]
 [ext_resource path="res://Scripts/Objects/Dimension1/Puerta.gd" type="Script" id=6]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape" id=5]
 
 [node name="Puerta1" type="Spatial"]
 script = ExtResource( 4 )
@@ -25,7 +25,7 @@ material/4 = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Terminal"]
 transform = Transform( 0.05, 0, 0, 0, 1.072, 0, 0, 0, 0.55, 0, 1.07223, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [node name="Tween" type="Tween" parent="Terminal"]
 
