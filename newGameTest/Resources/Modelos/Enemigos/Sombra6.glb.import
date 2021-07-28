@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/AnimacionSombra2.fbx-cf3bce6a44e00e8646da1872ebf5b4fb.scn"
+path="res://.import/Sombra6.glb-80e9eb0def6de26556f6bc62d1a9cc68.scn"
 
 [deps]
 
-source_file="res://Resources/Modelos/Enemigos/AnimacionSombra2.fbx"
-dest_files=[ "res://.import/AnimacionSombra2.fbx-cf3bce6a44e00e8646da1872ebf5b4fb.scn" ]
+source_file="res://Resources/Modelos/Enemigos/Sombra6.glb"
+dest_files=[ "res://.import/Sombra6.glb-80e9eb0def6de26556f6bc62d1a9cc68.scn" ]
 
 [params]
 
