@@ -2,24 +2,23 @@ extends KinematicBody
 
 var path = []
 var path_node = 0
-
-var speed = 8
-var chase_speed = 15
+var speed = 3
+var chase_speed = 6
 
 onready var nav = get_parent()
-onready var player = $"../../Player"
+onready var world = $"../NavigationMeshInstance/World"
 onready var dynamic_raycast_node = $"RayCast"
 onready var dynamic_raycast = $"RayCast/RayCast"
 onready var interest_nodes = [
-	$"../Interest_Point_1",
-	$"../Interest_Point_2",
-	$"../Interest_Point_3",
-	$"../Interest_Point_4",
-	$"../Interest_Point_5",
-	$"../Interest_Point_6",
-	$"../Interest_Point_7",
-	$"../Interest_Point_8",
-	$"../Interest_Point_9"
+	$"../InterestPoints/1",
+	$"../InterestPoints/2",
+	$"../InterestPoints/3",
+	$"../InterestPoints/4",
+	$"../InterestPoints/5",
+	$"../InterestPoints/6",
+	$"../InterestPoints/7",
+	$"../InterestPoints/8",
+	$"../InterestPoints/9"
 ]
 
 ## REFERENCIAS A BORRAR ##
@@ -28,8 +27,8 @@ onready var bar2 = $"Bar2"
 onready var vision_pointer = $"RayCast/MeshInstance"
 onready var hearing_area = $"CloseArea"
 onready var vision_area = $"Vision/Area"
-onready var vision_marker_1 = $"Vision/Spatial/MeshInstance2"
-onready var vision_marker_2 = $"Vision/Spatial2/MeshInstance2"
+onready var vision_marker_1 = $"Vision/Spatial/MeshInstance"
+onready var vision_marker_2 = $"Vision/Spatial2/MeshInstance"
 onready var vision_marker_1_node = $"Vision/Spatial"
 onready var vision_marker_2_node = $"Vision/Spatial2"
 onready var grin_hearing_marker = $"Bar1/MeshInstance"
@@ -79,8 +78,8 @@ var before_searching = Vector2()
 var search_direction = 0
 var look_state = 0
 
-var calm_rotation = 0.05
-var agresive_rotation = 0.15
+var calm_rotation = 0.02
+var agresive_rotation = 0.1
 var search_depth = 4*PI/5
 
 
@@ -103,6 +102,7 @@ func _ready():
 	penk_hearing_marker.get_mesh().mid_height = hearing_range
 	penk_hearing_marker.set_translation(Vector3(0,0,hearing_range/2))
 	vision_dot = facing_direction.dot(facing_direction.rotated(vision_angle))
+	dynamic_raycast.set_scale(Vector3(1,1,vision_range))
 
 
 func _physics_process(delta):
@@ -111,10 +111,12 @@ func _physics_process(delta):
 	if on_chase:
 		timer_lock_on += delta
 	if seeing_player():
-		if timer_lock_on > 0.1:
+		if timer_lock_on > 0.05:
+			var player = world.get_node("Spatial/Player")
 			move_to(player.global_transform.origin)
 			timer_lock_on = 0
 		if not on_chase:
+			var player = world.get_node("Spatial/Player")
 			state = CHASING
 			on_chase = true
 			move_to(player.global_transform.origin)
@@ -148,6 +150,7 @@ func _physics_process(delta):
 				else:
 					move_and_slide(Vector3(actual_direction.x, 0, actual_direction.y) * chase_speed, Vector3.UP)
 			else:
+				var player = world.get_node("Spatial/Player")
 				move_to(player.global_transform.origin)
 		OBJECTIVE_LOST:
 			body.get_active_material(0).albedo_color = Color(1,0.5,0)
@@ -210,6 +213,7 @@ func move_to_node():
 
 
 func seeing_player():
+	var player = world.get_node("Spatial/Player")
 	var player_pos = player.get_translation()
 	var player_2d = Vector2(player_pos.x, player_pos.z)
 	var self_pos = get_translation()

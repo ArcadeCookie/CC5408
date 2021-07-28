@@ -7,14 +7,14 @@ onready var raycast = camera.get_node("RayCast")
 onready var right_hand = camera.get_node("RightHand")
 onready var left_hand = camera.get_node("LeftHand")
 onready var drop_node = camera.get_node("Drop")
-onready var sub_viewport = get_parent().get_parent().get_parent().get_node("CanvasLayer/ViewportContainer/Viewport")
+onready var sub_viewport = get_tree().root.get_node("Game/CanvasLayer/ViewportContainer/Viewport")
 onready var viewport_rh = sub_viewport.get_node("Camera/RightHand")
 onready var viewport_lh = sub_viewport.get_node("Camera/LeftHand")
 
 # parent nodes reference
 onready var world = get_parent()
 
-var mouse_sensitivity = 0.2
+var mouse_sensitivity = 0.15
 var speed = 5
 var sprinting_speed = 10
 var stamina = 3
@@ -34,6 +34,7 @@ var velocity = Vector3()
 
 # This method set up the node
 func _ready() -> void:
+	print(self)
 	if not DataManager.State.Player.empty():
 		set_translation(DataManager.State.Player.translation)
 		set_rotation(DataManager.State.Player.rotation)
@@ -131,6 +132,11 @@ func _process(delta : float) -> void:
 		var collision = raycast.get_collider()
 		if collision.has_method("enable_interaction"):
 			collision.enable_interaction(collision)
+			DataManager.showKeys()
+		else:
+			DataManager.hideKeys()
+	else:
+		DataManager.hideKeys()
 
 
 # Response method to a grabed object
@@ -197,12 +203,12 @@ func crouch():
 	var collision_shape = $CollisionShape
 	var collision_shape2 = $CollisionShape2
 	if is_crouching:
-		collision_shape.disabled = false
-		collision_shape2.disabled = true
-		cam_pos.y = -0.2
-	else:
 		collision_shape.disabled = true
 		collision_shape2.disabled = false
+		cam_pos.y = -0.2
+	else:
+		collision_shape.disabled = false
+		collision_shape2.disabled = true
 		cam_pos.y = 0.8
 	camera.set_translation(cam_pos)
 

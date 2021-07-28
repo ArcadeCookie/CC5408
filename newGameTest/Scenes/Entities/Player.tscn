@@ -5,11 +5,11 @@
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.5
-height = 1.0
+height = 1.2
 
 [sub_resource type="CylinderShape" id=2]
 radius = 0.5
-height = 0.4
+height = 1.2
 
 [node name="KinematicBody" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -21,7 +21,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 shape = SubResource( 2 )
 disabled = true
 
@@ -32,6 +32,7 @@ fov = 75.0
 [node name="RayCast" type="RayCast" parent="Camera"]
 transform = Transform( 0.1, 0, 0, 0, -8.74228e-08, -0.1, 0, 2, -4.37114e-09, 0, 0, 0 )
 enabled = true
+exclude_parent = false
 collision_mask = 5
 collide_with_areas = true
 

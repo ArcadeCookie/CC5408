@@ -123,3 +123,11 @@ func changeObjective(objective):
 
 func showObjective():
 	Game.showObjective()
+
+
+func showKeys():
+	Game.showKeys()
+
+
+func hideKeys():
+	Game.hideKeys()

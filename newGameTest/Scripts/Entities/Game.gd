@@ -11,12 +11,16 @@ var showing_stamina = false
 
 onready var fade = $CanvasLayer/Fade
 onready var stamina_bar = $CanvasLayer/Stamina/ProgressBar
+onready var Q_key = $CanvasLayer/Q
+onready var E_key = $CanvasLayer/E
+onready var nav = $Navigation
+onready var world = $Navigation/NavigationMeshInstance/World
 
 func _ready():
 	fade.connect("faded", self, "on_faded")
 	current_world = load("res://Scenes/Map/MapaExp.tscn").instance()
 	#current_world = load("res://Scenes/Demo/DemoMap1.tscn").instance()
-	$World.add_child(current_world)
+	world.add_child(current_world)
 	set_process(false)
 	ResourceQueue.start()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -32,7 +36,7 @@ func change_scene(scene):
 
 func on_faded():
 	if loading:
-		$World.remove_child(current_world)
+		world.remove_child(current_world)
 		current_world.queue_free()
 		ResourceQueue.queue_resource(loading_world)
 		set_process(true)
@@ -43,7 +47,7 @@ func _process(delta: float) -> void:
 	if ResourceQueue.is_ready(loading_world):
 		var new_world = ResourceQueue.get_resource(loading_world)
 		current_world = new_world.instance()
-		$World.add_child(current_world)
+		world.add_child(current_world)
 		loading = false
 		# linea nueva
 		DataManager.removeScenes()
@@ -82,14 +86,14 @@ func removeScenes():
 
 
 func player_stop():
-	var player = $World/Spatial/Player
+	var player = world.get_node("/Spatial/Player")
 	if player != null:
 		player.speed = 0
 		player.sprinting_speed = 0
 
 
 func player_play():
-	var player = $World/Spatial/Player
+	var player = world.get_node("/Spatial/Player")
 	if player != null:
 		player.speed = 5
 		player.sprinting_speed = 10
@@ -100,16 +104,14 @@ func update_stamina(val, maximum, going_up):
 		stamina_bar.visible = true
 		showing_stamina = true
 		stamina_bar.get_node("AnimationPlayer").play("In")
-	stamina_bar.anchor_left = 0.49 - 0.4 * val / maximum
-	stamina_bar.anchor_right = 0.51 + 0.4 * val / maximum
+	stamina_bar.anchor_left = 0.49 - 0.3 * val / maximum
+	stamina_bar.anchor_right = 0.51 + 0.3 * val / maximum
 	if val == maximum and going_up:
 		hide_stamina()
 
 
 func hide_stamina():
 	stamina_bar.get_node("AnimationPlayer").play("Fade")
-	#stamina_bar.visible = false
-	#showing_stamina = false
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -123,3 +125,13 @@ func changeObjective(objective):
 	
 func showObjective():
 	$CanvasLayer/Objective/Text/ObjectiveAnim.play("display")
+
+
+func showKeys():
+	Q_key.visible = true
+	E_key.visible = true
+
+
+func hideKeys():
+	Q_key.visible = false
+	E_key.visible = false
