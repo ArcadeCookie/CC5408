@@ -2,8 +2,8 @@ extends KinematicBody
 
 var path = []
 var path_node = 0
-var speed = 3
-var chase_speed = 6
+var speed = 3.2
+var chase_speed = 7.3
 
 onready var nav = get_parent()
 onready var world = $"../NavigationMeshInstance/World"
@@ -277,9 +277,3 @@ func swap_anim():
 		$"Sombra6/Pasivo".play("CaminarPasivo")
 		$"Idle".play()
 		$"Chase".stop()
-
-func _on_Pasivo_animation_finished(anim_name):
-	$"Sombra6/Pasivo".play("CaminarPasivo")
-
-func _on_Angy_animation_finished(anim_name):
-	$"Sombra6/Angy".play("CaminarPasivo")

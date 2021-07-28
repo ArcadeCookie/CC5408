@@ -1,16 +1,17 @@
-extends StaticBody
+extends "res://Scripts/Objects/Terminal.gd"
+# Specific instance of a Terminal object
+# Hierarchy: This -> Terminal -> Node -> ...
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+# Exectuted on generation of the instance, giving the object this values for id and req_object_id
+func _init():
+	id = 203
+	req_object_id = -2
+	# After this, the object gets instanciated with Terminal._ready()
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func on_terminal_interaction(terminal_node : Node, object : Node) -> void:
+	is_active = true
+	DataManager.State.Terminals[id] = true
+	terminal_body.on_terminal_active()
+	is_active = false
+	DataManager.State.Terminals[id] = false

@@ -22,11 +22,11 @@ func _openDoor():
 	var rot = Vector3()
 	var transl = Vector3()
 	rot.x = self.rotation_degrees.x
-	rot.y = self.rotation_degrees.y -90
+	rot.y = self.rotation_degrees.y +90
 	rot.z = self.rotation_degrees.z
 	transl.x = self.translation.x + 0.549
 	transl.y = self.translation.y
-	transl.z = self.translation.z - 0.527
+	transl.z = self.translation.z + 0.527
 	$Terminal/Tween.interpolate_property(self, "rotation_degrees", self.rotation_degrees, rot, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	$Terminal/Tween.interpolate_property(self, "translation", self.translation, transl, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	#$Terminal/Tween.interpolate_property(Puerta, "rotation_degrees", Puerta.rotation_degrees, rot, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
@@ -39,11 +39,11 @@ func _closeDoor():
 	var rot = Vector3()
 	var transl = Vector3()
 	rot.x = self.rotation_degrees.x
-	rot.y = self.rotation_degrees.y + 90
+	rot.y = self.rotation_degrees.y - 90
 	rot.z = self.rotation_degrees.z
 	transl.x = self.translation.x - 0.549
 	transl.y = self.translation.y
-	transl.z = self.translation.z + 0.527
+	transl.z = self.translation.z - 0.527
 	$Terminal/Tween.interpolate_property(self, "rotation_degrees", self.rotation_degrees, rot, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	$Terminal/Tween.interpolate_property(self, "translation", self.translation, transl, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	#$Terminal/Tween.interpolate_property(Puerta, "rotation_degrees", Puerta.rotation_degrees, rot, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
