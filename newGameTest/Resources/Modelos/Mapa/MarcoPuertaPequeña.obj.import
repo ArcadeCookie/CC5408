@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/MarcoPuertaPequeña.obj-3b741458cd80d29c0604df5fbc040be2.mesh"
+
+[deps]
+
+files=[ "res://.import/MarcoPuertaPequeña.obj-3b741458cd80d29c0604df5fbc040be2.mesh" ]
+
+source_file="res://Resources/Modelos/Mapa/MarcoPuertaPequeña.obj"
+dest_files=[ "res://.import/MarcoPuertaPequeña.obj-3b741458cd80d29c0604df5fbc040be2.mesh", "res://.import/MarcoPuertaPequeña.obj-3b741458cd80d29c0604df5fbc040be2.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
