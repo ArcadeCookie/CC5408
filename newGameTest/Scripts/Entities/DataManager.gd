@@ -23,12 +23,19 @@ var State = {
 	"D2" : {},
 	"D3" : {},
 	
+	"Enemies" : {
+		"0" : ["Hallway.gd", "Hallway.gd", "Hallway.gd", "Hallway.gd"],
+		"1" : ["Hallway.gd"],
+		"2" : ["Hallway.gd"],
+		"3" : ["Hallway.gd"]
+	},
+	
 	# At the moment is strictly necesary this structure in order to the correct execution of the game
 	# in scenes DemoMap1, DemoMap2 and DemoMap3.
 	
 	"Available_Dimensions" : ["1", "2"],
 	"Disabled_Dimensions" : [],
-	"Current_Dimension" : "1"
+	"Current_Dimension" : "0"
 }
 
 
@@ -138,3 +145,13 @@ func camera_stop():
 
 func camera_play():
 	Game.camera_play()
+
+
+func clean_enemies():
+	Game.clean_enemies()
+
+
+func init_enemies():
+	var enemies_sripts = State["Enemies"][State["Current_Dimension"]]
+	Game.init_enemies(enemies_sripts)
+	

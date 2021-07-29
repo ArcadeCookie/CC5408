@@ -145,3 +145,20 @@ func camera_play():
 	var player = world.get_node("Spatial/Player")
 	if player != null:
 		player.camera_free = true
+
+
+func clean_enemies():
+	if nav != null:
+		var node = nav.get_node("Enemies")
+		for n in node.get_children():
+			node.remove_child(n)
+			n.queue_free()
+
+
+func init_enemies(scripts):
+	var node = nav.get_node("Enemies")
+	for script in scripts:
+		var enemy = load("res://Scenes/Entities/EnemyVisual.tscn").instance()
+		print(enemy)
+		#enemy.set_script(load("res://Scripts/Entities/Enemies/" + script))
+		node.add_child(enemy)

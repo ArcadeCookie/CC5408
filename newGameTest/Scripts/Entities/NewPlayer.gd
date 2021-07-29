@@ -85,9 +85,11 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 	if Input.is_action_just_pressed("crouch"):
 		is_crouching = true
 		crouch()
+		DataManager.clean_enemies()
 	if Input.is_action_just_released("crouch"):
 		is_crouching = false
 		crouch()
+		DataManager.init_enemies()
 	if Input.is_action_just_pressed("right_action"):
 		hand_action(right_hand)
 	if Input.is_action_just_pressed("left_action"):

@@ -2,15 +2,25 @@ extends KinematicBody
 
 var path = []
 var path_node = 0
-var speed = 3.2
-var chase_speed = 7.3
+var speed = 3
+var chase_speed = 6
 
-onready var nav = $"../.."
-onready var world = $"../../NavigationMeshInstance/World"
+onready var nav = get_parent()
+onready var world = $"../NavigationMeshInstance/World"
 onready var dynamic_raycast_node = $"RayCast"
 onready var dynamic_raycast = $"RayCast/RayCast"
-var interest_nodes
-var nodes_relations 
+onready var interest_nodes 
+#= [
+#	$"../InterestPoints/1",
+#	$"../InterestPoints/2",
+#	$"../InterestPoints/3",
+#	$"../InterestPoints/4",
+#	$"../InterestPoints/5",
+#	$"../InterestPoints/6",
+#	$"../InterestPoints/7",
+#	$"../InterestPoints/8",
+#	$"../InterestPoints/9"
+#]
 
 ## REFERENCIAS A BORRAR ##
 onready var bar1 = $"Bar1"
@@ -24,7 +34,7 @@ onready var vision_marker_1_node = $"Vision/Spatial"
 onready var vision_marker_2_node = $"Vision/Spatial2"
 onready var grin_hearing_marker = $"Bar1/MeshInstance"
 onready var penk_hearing_marker = $"Bar2/MeshInstance"
-onready var body = $"Sombra6"
+onready var body = $"MeshInstance"
 ##########################
 
 ## ENVIROnMENTAL VARIABLES ##
@@ -33,9 +43,21 @@ var vision_angle = PI/4
 var vision_dot
 var hearing_range = 10
 var hearing_factor = 1
-var is_angry = false
 #############################
 
+
+var nodes_relations
+# = {
+#	0 : [1,3],
+#	1 : [0,4],
+#	2 : [5],
+#	3 : [0,4],
+#	4 : [1,3,5,7],
+#	5 : [2,4],
+#	6 : [7],
+#	7 : [4,6,8],
+#	8 : [7]
+#}
 
 enum {
 	IDLE
@@ -83,7 +105,6 @@ func _ready():
 	penk_hearing_marker.set_translation(Vector3(0,0,hearing_range/2))
 	vision_dot = facing_direction.dot(facing_direction.rotated(vision_angle))
 	dynamic_raycast.set_scale(Vector3(1,1,vision_range))
-	$"Sombra6/Pasivo".play("CaminarPasivo")
 
 
 func _physics_process(delta):
@@ -92,9 +113,6 @@ func _physics_process(delta):
 	if on_chase:
 		timer_lock_on += delta
 	if seeing_player():
-		if not is_angry:
-			is_angry = true
-			swap_anim()
 		if timer_lock_on > 0.05:
 			var player = world.get_node("Spatial/Player")
 			move_to(player.global_transform.origin)
@@ -112,7 +130,7 @@ func _physics_process(delta):
 	match state:
 		# APARENTLY IDLE IS DONE
 		IDLE:
-			#body.get_active_material(0).albedo_color = Color(1,1,1)
+			body.get_active_material(0).albedo_color = Color(1,1,1)
 			if abs(facing_direction.angle_to(actual_direction)) < PI/8:
 				if path_node < path.size():
 					var direction = (path[path_node] - global_transform.origin)
@@ -125,7 +143,7 @@ func _physics_process(delta):
 				else:
 					move_to_node()
 		CHASING:
-			#body.get_active_material(0).albedo_color = Color(1,0,0)
+			body.get_active_material(0).albedo_color = Color(1,0,0)
 			if path_node < path.size():
 				var direction = (path[path_node] - global_transform.origin)
 				actual_direction = Vector2(direction.x, direction.z).normalized()
@@ -137,7 +155,7 @@ func _physics_process(delta):
 				var player = world.get_node("Spatial/Player")
 				move_to(player.global_transform.origin)
 		OBJECTIVE_LOST:
-			#body.get_active_material(0).albedo_color = Color(1,0.5,0)
+			body.get_active_material(0).albedo_color = Color(1,0.5,0)
 			if path_node < path.size():
 				var direction = (path[path_node] - global_transform.origin)
 				actual_direction = Vector2(direction.x, direction.z).normalized()
@@ -153,7 +171,7 @@ func _physics_process(delta):
 				on_chase = false
 				look_state = 1
 		SEARCHING:
-			#body.get_active_material(0).albedo_color = Color(1,1,0)
+			body.get_active_material(0).albedo_color = Color(1,1,0)
 			match look_state:
 				1:
 					var rng = RandomNumberGenerator.new()
@@ -178,9 +196,6 @@ func _physics_process(delta):
 				5:
 					if abs(facing_direction.angle_to(actual_direction)) < PI/32:
 						state = IDLE
-						if is_angry:
-							is_angry = false
-							swap_anim()
 						move_to_node()
 
 
@@ -240,22 +255,6 @@ func _look_at(direction):
 	var new_angle = interpolated_direction.angle_to(Vector2(0,1))
 	facing_direction = interpolated_direction
 	set_rotation(Vector3(0, new_angle, 0))
-
-func swap_anim():
-	if is_angry:
-		$"Sombra6/Armature/Skeleton2".show()
-		$"Sombra6/Armature/Skeleton".hide()
-		$"Sombra6/Pasivo".stop()		
-		$"Sombra6/Angy".play("CaminarPasivo")
-		$"Idle".stop()
-		$"Chase".play()
-	else:
-		$"Sombra6/Armature/Skeleton".show()
-		$"Sombra6/Armature/Skeleton2".hide()
-		$"Sombra6/Angy".stop()		
-		$"Sombra6/Pasivo".play("CaminarPasivo")
-		$"Idle".play()
-		$"Chase".stop()
 
 
 func set_routes():

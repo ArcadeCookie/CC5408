@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://Scripts/Entities/Enemies/Hallway.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Entities/EnemyVisual.tscn" type="PackedScene" id=92]
 
 [sub_resource type="NavigationMesh" id=1]
@@ -18,35 +19,71 @@ navmesh = SubResource( 1 )
 
 [node name="World" type="Spatial" parent="NavigationMeshInstance"]
 
-[node name="EnemyVisual" parent="." instance=ExtResource( 92 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.186, 1.5, -18.116 )
-
 [node name="InterestPoints" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 
-[node name="1" type="Spatial" parent="InterestPoints"]
+[node name="P1" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.9404, 0, -24.2973 )
+
+[node name="P2" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -23.9447 )
+
+[node name="P3" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.9332, 0, 2.76993 )
+
+[node name="P4" type="Spatial" parent="InterestPoints"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 2.76993 )
 
-[node name="2" type="Spatial" parent="InterestPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1013, 0, 0 )
+[node name="P5" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2845, 0, -7.85482 )
 
-[node name="3" type="Spatial" parent="InterestPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1686, 0, -12.1267 )
+[node name="P6" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9922, 0, -7.61908 )
 
-[node name="4" type="Spatial" parent="InterestPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4409, 0, 30.0058 )
+[node name="A1" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1907, 0, 8.4687 )
 
-[node name="5" type="Spatial" parent="InterestPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.3276 )
+[node name="A2" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0658, 0, 6.59362 )
 
-[node name="6" type="Spatial" parent="InterestPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.53, 0, -29.9689 )
+[node name="B1" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64135, 0, -33.5948 )
 
-[node name="7" type="Spatial" parent="InterestPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3495, 0, -22.7163 )
+[node name="B2" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06818, 0, -32.9609 )
 
-[node name="8" type="Spatial" parent="InterestPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6255, 0, 2.25478 )
+[node name="LE11" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0288, 0, -30.5603 )
 
-[node name="9" type="Spatial" parent="InterestPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3368, 0, -24.449 )
+[node name="LE12" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7614, 0, -30.1617 )
+
+[node name="LE21" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.0244, 0, -26.211 )
+
+[node name="LE22" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.669, 0, -15.8031 )
+
+[node name="LE31" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3616, 0, -6.7865 )
+
+[node name="LE32" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4415, 0, 2.75261 )
+
+[node name="LC1" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7472, 0, -18.7749 )
+
+[node name="LC2" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0744, 0, -19.5748 )
+
+[node name="LCE1" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4796, 0, -20.6787 )
+
+[node name="LCE2" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2315, 0, -11.8625 )
+
+[node name="Enemies" type="Spatial" parent="."]
+
+[node name="EnemyVisual" parent="Enemies" instance=ExtResource( 92 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.186, 1.5, -18.116 )
+script = ExtResource( 1 )
