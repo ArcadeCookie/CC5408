@@ -34,7 +34,7 @@ func _ready() -> void:
 	#mesh.flip_faces = true
 	
 	var mat = SpatialMaterial.new()
-	mat.albedo_color = Color(1,1,0,0.6)
+	mat.albedo_color = Color(1,1,0,0.03)
 	mat.flags_transparent = true
 	mat.flags_unshaded = true
 	

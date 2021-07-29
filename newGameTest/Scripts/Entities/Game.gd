@@ -28,6 +28,7 @@ func _ready():
 
 
 func change_scene(scene):
+	clean_enemies()
 	loading_world = scene
 	print(loading_world)
 	loading = true
@@ -161,11 +162,9 @@ func init_enemies(scripts):
 	for script in scripts:
 		var enemy = load("res://Scenes/Entities/EnemyVisual.tscn").instance()
 		node.add_child(enemy)
-		print(enemy.get_parent().get_parent())
 		enemy.set_script(load("res://Scripts/Entities/Enemies/" + script))
 		enemy._ready()
 		enemy.init()
-		print(enemy.interest_nodes)
 
 func load_intro_map():
 	#loading_world = "res://Scenes/Map/MapaIntro.tscn"

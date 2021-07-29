@@ -20,7 +20,7 @@ func _ready() -> void:
 	var mesh = og_mesh.duplicate()
 	
 	var mat = SpatialMaterial.new()
-	mat.albedo_color = Color(1,1,1,0.6)
+	mat.albedo_color = Color(1,1,1,0.03)
 	mat.flags_transparent = true
 	mat.flags_unshaded = true
 	

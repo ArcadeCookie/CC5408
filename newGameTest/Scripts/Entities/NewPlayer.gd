@@ -32,6 +32,9 @@ var camera_free = true
 var direction = Vector3()
 var velocity = Vector3()
 
+var actions_1 = [1, 2]
+var actions_2 = [1,2,3,4]
+
 
 # This method set up the node
 func _ready() -> void:
@@ -99,6 +102,31 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 		if left_hand.get_child_count() > 0:
 			drop_object(left_hand)
 		change_map()
+	if Input.is_action_just_pressed("change1"):
+		if actions_1.size() > 0:
+			var action = actions_1.pop_front()
+			match action:
+				1:
+					DataManager.special_summon("Warehouse.gd")
+				2:
+					DataManager.change_to_specific_map("1")
+	if Input.is_action_just_pressed("change2"):
+		if actions_2.size() > 0:
+			var action = actions_2.pop_front()
+			match action:
+				1:
+					DataManager.special_summon("Killer1.gd")
+				2:
+					DataManager.special_summon("Killer2.gd")
+				3:
+					DataManager.special_summon("Killer3.gd")
+				4:
+					DataManager.change_to_specific_map("2")
+		
+	#if Input.is_action_just_pressed("change1"):
+	#	DataManager.change_to_specific_map("1")
+	#if Input.is_action_just_pressed("change2"):
+	#	DataManager.change_to_specific_map("2")
 
 
 # Standard function that executes fixed amount of times per frame

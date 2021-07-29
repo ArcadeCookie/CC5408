@@ -24,7 +24,7 @@ var State = {
 	"D3" : {},
 	
 	"Enemies" : {
-		"0" : [],
+		"0" : ["Hallway.gd"],
 		"1" : ["Hallway.gd"],
 		"2" : ["Hallway.gd"],
 		"3" : ["Hallway.gd"]
@@ -157,3 +157,7 @@ func init_enemies():
 	
 func load_intro_map():
 	Game.load_intro_map()
+
+
+func special_summon(script):
+	Game.init_enemies([script])
