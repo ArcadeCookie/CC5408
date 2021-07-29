@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/LlaveInglesa.obj-a0075c95a602125cb7f31afd17fcd723.mesh"
+
+[deps]
+
+files=[ "res://.import/LlaveInglesa.obj-a0075c95a602125cb7f31afd17fcd723.mesh" ]
+
+source_file="res://Resources/Modelos/Cosas/LlaveInglesa.obj"
+dest_files=[ "res://.import/LlaveInglesa.obj-a0075c95a602125cb7f31afd17fcd723.mesh", "res://.import/LlaveInglesa.obj-a0075c95a602125cb7f31afd17fcd723.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Pronbeta2.obj-78fd5b9c1d9e41b2ea74825d8015c11a.mesh"
+
+[deps]
+
+files=[ "res://.import/Pronbeta2.obj-78fd5b9c1d9e41b2ea74825d8015c11a.mesh" ]
+
+source_file="res://Resources/Modelos/Cosas/Pronbeta2.obj"
+dest_files=[ "res://.import/Pronbeta2.obj-78fd5b9c1d9e41b2ea74825d8015c11a.mesh", "res://.import/Pronbeta2.obj-78fd5b9c1d9e41b2ea74825d8015c11a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
