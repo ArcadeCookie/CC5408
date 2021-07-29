@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Computador2.obj-bb929cf3c3724f8275df619f225711ec.mesh"
+
+[deps]
+
+files=[ "res://.import/Computador2.obj-bb929cf3c3724f8275df619f225711ec.mesh" ]
+
+source_file="res://Resources/Modelos/Amueblado/Computador2.obj"
+dest_files=[ "res://.import/Computador2.obj-bb929cf3c3724f8275df619f225711ec.mesh", "res://.import/Computador2.obj-bb929cf3c3724f8275df619f225711ec.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

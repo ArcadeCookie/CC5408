@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Silla2.obj-1809e4ff5f23bc31535cb098c0095f3d.mesh"
+
+[deps]
+
+files=[ "res://.import/Silla2.obj-1809e4ff5f23bc31535cb098c0095f3d.mesh" ]
+
+source_file="res://Resources/Modelos/Amueblado/Silla2.obj"
+dest_files=[ "res://.import/Silla2.obj-1809e4ff5f23bc31535cb098c0095f3d.mesh", "res://.import/Silla2.obj-1809e4ff5f23bc31535cb098c0095f3d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
