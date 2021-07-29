@@ -2,7 +2,7 @@ extends KinematicBody
 
 var path = []
 var path_node = 0
-var speed = 3
+var speed = 0
 var chase_speed = 6
 
 onready var nav = get_parent()
@@ -268,3 +268,13 @@ func set_routes():
 	while i < interest_nodes.size():
 		nodes_relations[i] = indexes
 		i += 1
+
+
+func init():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var number = rng.randi_range(0, interest_nodes.size() - 1)
+	var node = interest_nodes[number]
+	var node_pos = self.to_global(node.get_translation())
+	node_pos.y = 1.5 
+	set_translation(node_pos)

@@ -40,6 +40,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2845, 0, -7.85482 )
 [node name="P6" type="Spatial" parent="InterestPoints"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9922, 0, -7.61908 )
 
+[node name="P7" type="Spatial" parent="InterestPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39183, 0, -24.3132 )
+
 [node name="A1" type="Spatial" parent="InterestPoints"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1907, 0, 8.4687 )
 

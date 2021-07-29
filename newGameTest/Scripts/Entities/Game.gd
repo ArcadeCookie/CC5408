@@ -29,7 +29,6 @@ func _ready():
 
 func change_scene(scene):
 	loading_world = scene
-	print(loading_world)
 	loading = true
 	fade.fade_in()
 
@@ -159,6 +158,9 @@ func init_enemies(scripts):
 	var node = nav.get_node("Enemies")
 	for script in scripts:
 		var enemy = load("res://Scenes/Entities/EnemyVisual.tscn").instance()
-		print(enemy)
-		#enemy.set_script(load("res://Scripts/Entities/Enemies/" + script))
 		node.add_child(enemy)
+		print(enemy.get_parent().get_parent())
+		enemy.set_script(load("res://Scripts/Entities/Enemies/" + script))
+		enemy._ready()
+		enemy.init()
+		print(enemy.interest_nodes)

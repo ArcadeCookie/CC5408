@@ -87,6 +87,8 @@ func _ready():
 
 
 func _physics_process(delta):
+	print("OMG")
+	print(get_translation())
 	# CHECK STIMULI
 	_look_at(actual_direction)
 	if on_chase:
@@ -197,6 +199,7 @@ func move_to_node():
 	var node_index = nodes[number]
 	actual_node = node_index
 	move_to(interest_nodes[node_index].get_translation())
+	print(interest_nodes)
 
 
 func seeing_player():
@@ -245,14 +248,14 @@ func swap_anim():
 	if is_angry:
 		$"Sombra6/Armature/Skeleton2".show()
 		$"Sombra6/Armature/Skeleton".hide()
-		$"Sombra6/Pasivo".stop()		
+		$"Sombra6/Pasivo".stop()
 		$"Sombra6/Angy".play("CaminarPasivo")
 		$"Idle".stop()
 		$"Chase".play()
 	else:
 		$"Sombra6/Armature/Skeleton".show()
 		$"Sombra6/Armature/Skeleton2".hide()
-		$"Sombra6/Angy".stop()		
+		$"Sombra6/Angy".stop()
 		$"Sombra6/Pasivo".play("CaminarPasivo")
 		$"Idle".play()
 		$"Chase".stop()
@@ -269,3 +272,15 @@ func set_routes():
 	while i < interest_nodes.size():
 		nodes_relations[i] = indexes
 		i += 1
+
+
+func init():
+	print(interest_nodes)
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var number = rng.randi_range(0, interest_nodes.size() - 1)
+	var node = interest_nodes[number]
+	var node_pos = self.to_global(node.get_translation())
+	node_pos.y = 1.5 
+	set_translation(node_pos)
+	set_physics_process(true)

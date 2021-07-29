@@ -9,5 +9,5 @@ func _init():
 	nodes_relations = {}
 
 func _ready():
+	._ready()
 	set_routes()
-	DataManager.clean_enemies()

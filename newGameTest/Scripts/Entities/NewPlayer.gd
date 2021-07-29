@@ -35,7 +35,6 @@ var velocity = Vector3()
 
 # This method set up the node
 func _ready() -> void:
-	print(self)
 	if not DataManager.State.Player.empty():
 		set_translation(DataManager.State.Player.translation)
 		set_rotation(DataManager.State.Player.rotation)

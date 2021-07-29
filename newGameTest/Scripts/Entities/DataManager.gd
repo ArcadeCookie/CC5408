@@ -24,7 +24,7 @@ var State = {
 	"D3" : {},
 	
 	"Enemies" : {
-		"0" : ["Hallway.gd", "Hallway.gd", "Hallway.gd", "Hallway.gd"],
+		"0" : [],
 		"1" : ["Hallway.gd"],
 		"2" : ["Hallway.gd"],
 		"3" : ["Hallway.gd"]
