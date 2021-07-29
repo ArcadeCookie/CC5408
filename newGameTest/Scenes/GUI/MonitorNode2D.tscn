@@ -3,7 +3,7 @@
 [ext_resource path="res://Resources/Images/Menus/ScreenWarning.png" type="Texture" id=1]
 [ext_resource path="res://Resources/Images/Menus/ScreenOkay.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=1]
 resource_name = "show"
 length = 3.0
 tracks/0/type = "value"
@@ -19,14 +19,14 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFontData" id=22]
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://Resources/Fonts/TheSnowday.ttf"
 
-[sub_resource type="DynamicFont" id=23]
+[sub_resource type="DynamicFont" id=3]
 size = 42
-font_data = SubResource( 22 )
+font_data = SubResource( 2 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=4]
 resource_name = "text1"
 length = 2.0
 tracks/0/type = "value"
@@ -46,8 +46,8 @@ X-07 Levels : 15%
 V-3234: Stable
 Dimensional Rift: Low
 T-97 : 7%
-Substance 1 : Stable
-Substance 2 : Stable
+Substance W-23 : Stable
+Substance S-P2 : Stable
 
 Completion : 0%", "Experiment ongoing
 
@@ -56,8 +56,8 @@ X-07 Levels : 15%
 V-3234: Stable
 Dimensional Rift: Low
 T-97 : 7%
-Substance 1 : Stable
-Substance 2 : Stable
+Substance W-23 : Stable
+Substance S-P2 : Stable
 
 Completion : 0%", "Experiment ongoing
 
@@ -66,8 +66,8 @@ X-07 Levels : 18%
 V-3234: Stable
 Dimensional Rift: Low
 T-97 : 8%
-Substance 1 : Stable
-Substance 2 : Stable
+Substance W-23 : Stable
+Substance S-P2 : Stable
 
 Completion : 4%", "Experiment ongoing
 
@@ -76,8 +76,8 @@ X-07 Levels : 18%
 V-3234: Stable
 Dimensional Rift: Low
 T-97 : 8%
-Substance 1 : Stable
-Substance 2 : Stable
+Substance W-23 : Stable
+Substance S-P2 : Stable
 
 Completion : 4%", "Experiment ongoing
 
@@ -86,13 +86,13 @@ X-07 Levels : 21%
 V-3234: Unstable
 Dimensional Rift: Low
 T-97 : 8%
-Substance 1 : Stable
-Substance 2 : Stable
+Substance W-23 : Stable
+Substance S-P2 : Stable
 
 Completion : 10%" ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=5]
 resource_name = "text2"
 length = 4.5
 tracks/0/type = "value"
@@ -112,8 +112,8 @@ X-07 Levels : 21%
 V-3234: Unstable
 Dimensional Rift: Low
 T-97 : 8%
-Substance 1 : Stable
-Substance 2 : Stable
+Substance W-23 : Stable
+Substance S-P2 : Stable
 
 Completion : 10%", "Experiment ongoing
 
@@ -122,8 +122,8 @@ X-07 Levels : 21%
 V-3234: Unstable
 Dimensional Rift: Low
 T-97 : 8%
-Substance 1 : Stable
-Substance 2 : Stable
+Substance W-23 : Stable
+Substance S-P2 : Stable
 
 Completion : 10%", "Experiment ongoing
 
@@ -132,8 +132,8 @@ X-07 Levels : 30%
 V-3234: Unstable
 Dimensional Rift: Medium
 T-97 : 12%
-Substance 1 : Stable
-Substance 2 : Stable
+Substance W-23 : Stable
+Substance S-P2 : Stable
 
 Completion : 16%", "Experiment ongoing
 
@@ -142,8 +142,8 @@ X-07 Levels : 30%
 V-3234: Unstable
 Dimensional Rift: Medium
 T-97 : 12%
-Substance 1 : Stable
-Substance 2 : Stable
+Substance W-23 : Stable
+Substance S-P2 : Stable
 
 Completion : 16%", "Experiment ongoing
 
@@ -152,8 +152,8 @@ X-07 Levels : 40%
 V-3234: Unstable
 Dimensional Rift: Medium
 T-97 : 18%
-Substance 1 : Unstable
-Substance 2 : Stable
+Substance W-23 : Unstable
+Substance S-P2 : Stable
 
 Completion : 25%", "Experiment ongoing
 
@@ -162,8 +162,8 @@ X-07 Levels : 40%
 V-3234: Unstable
 Dimensional Rift: Medium
 T-97 : 18%
-Substance 1 : Unstable
-Substance 2 : Stable
+Substance W-23 : Unstable
+Substance S-P2 : Stable
 
 Completion : 25%", "Experiment ongoing
 
@@ -172,8 +172,8 @@ X-07 Levels : 50%
 V-3234: Unstable
 Dimensional Rift: High
 T-97 : 23%
-Substance 1 : Unstable
-Substance 2 : Unstable
+Substance W-23 : Unstable
+Substance S-P2 : Unstable
 
 Completion : 32%", "Experiment ongoing
 
@@ -182,13 +182,13 @@ X-07 Levels : 50%
 V-3234: Unstable
 Dimensional Rift: High
 T-97 : 23%
-Substance 1 : Unstable
-Substance 2 : Unstable
+Substance W-23 : Unstable
+Substance S-P2 : Unstable
 
 Completion : 32%" ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=6]
 resource_name = "text3"
 length = 2.0
 tracks/0/type = "value"
@@ -208,8 +208,8 @@ X-07 Levels : 50%
 V-3234: Unstable
 Dimensional Rift: High
 T-97 : 23%
-Substance 1 : Unstable
-Substance 2 : Unstable
+Substance W-23 : Unstable
+Substance S-P2 : Unstable
 
 Completion : 32%", "Experiment ongoing
 
@@ -218,8 +218,8 @@ X-07 Levels : 50%
 V-3234: Unstable
 Dimensional Rift: High
 T-97 : 23%
-Substance 1 : Unstable
-Substance 2 : Unstable
+Substance W-23 : Unstable
+Substance S-P2 : Unstable
 
 Completion : 32%", "Experiment ongoing
 
@@ -228,8 +228,8 @@ X-07 Levels : 60%
 V-3234: Warning
 Dimensional Rift: Warning
 T-97 : 35%
-Substance 1 : Warning
-Substance 2 : Warning
+Substance W-23 : Warning
+Substance S-P2 : Warning
 
 Completion : 40%", "Experiment ongoing
 
@@ -238,13 +238,13 @@ X-07 Levels : 60%
 V-3234: Warning
 Dimensional Rift: Warning
 T-97 : 35%
-Substance 1 : Warning
-Substance 2 : Warning
+Substance W-23 : Warning
+Substance S-P2 : Warning
 
 Completion : 40%" ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=7]
 resource_name = "text4"
 length = 1.5
 tracks/0/type = "value"
@@ -264,8 +264,8 @@ X-07 Levels : 60%
 V-3234: Warning
 Dimensional Rift: Warning
 T-97 : 35%
-Substance 1 : Warning
-Substance 2 : Warning
+Substance W-23 : Warning
+Substance S-P2 : Warning
 
 Completion : 40%", "Experiment ongoing
 
@@ -274,8 +274,8 @@ X-07 Levels : 60%
 V-3234: Warning
 Dimensional Rift: Warning
 T-97 : 35%
-Substance 1 : Warning
-Substance 2 : Warning
+Substance W-23 : Warning
+Substance S-P2 : Warning
 
 Completion : 40%", "Experiment ongoing
 
@@ -284,8 +284,8 @@ X-07 Levels : ???%
 V-3234: Warning
 Dimensional Rift: Warning
 T-97 : ???%
-Substance 1 : Warning
-Substance 2 : Warning
+Substance W-23 : Warning
+Substance S-P2 : Warning
 
 Completion : ???%", "Experiment ongoing
 
@@ -294,13 +294,13 @@ X-07 Levels : ???%
 V-3234: Warning
 Dimensional Rift: Warning
 T-97 : ???%
-Substance 1 : Warning
-Substance 2 : Warning
+Substance W-23 : Warning
+Substance S-P2 : Warning
 
 Completion : ???%" ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=8]
 length = 1.8
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -315,14 +315,14 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFontData" id=25]
+[sub_resource type="DynamicFontData" id=9]
 font_path = "res://Resources/Fonts/TheSnowday.ttf"
 
-[sub_resource type="DynamicFont" id=26]
+[sub_resource type="DynamicFont" id=10]
 size = 42
-font_data = SubResource( 25 )
+font_data = SubResource( 9 )
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=11]
 resource_name = "stop"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:percent_visible")
@@ -337,7 +337,7 @@ tracks/0/keys = {
 "values": [ 1.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=12]
 length = 1.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:percent_visible")
@@ -352,14 +352,14 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0, 1.0 ]
 }
 
-[sub_resource type="DynamicFontData" id=29]
+[sub_resource type="DynamicFontData" id=13]
 font_path = "res://Resources/Fonts/TheSnowday.ttf"
 
-[sub_resource type="DynamicFont" id=30]
+[sub_resource type="DynamicFont" id=14]
 size = 42
-font_data = SubResource( 29 )
+font_data = SubResource( 13 )
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=15]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:percent_visible")
@@ -374,7 +374,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=16]
 resource_name = "Stop"
 length = 0.8
 tracks/0/type = "value"
@@ -390,19 +390,19 @@ tracks/0/keys = {
 "values": [ 1.0, 1.0 ]
 }
 
-[sub_resource type="DynamicFontData" id=13]
+[sub_resource type="DynamicFontData" id=17]
 font_path = "res://Resources/Fonts/TheSnowday.ttf"
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=18]
 size = 42
-font_data = SubResource( 13 )
+font_data = SubResource( 17 )
 
-[sub_resource type="DynamicFontData" id=15]
+[sub_resource type="DynamicFontData" id=19]
 font_path = "res://Resources/Fonts/TheSnowday.ttf"
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=20]
 size = 42
-font_data = SubResource( 15 )
+font_data = SubResource( 19 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -424,7 +424,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Warning"]
-anims/show = SubResource( 21 )
+anims/show = SubResource( 1 )
 
 [node name="ExpData" type="Label" parent="."]
 visible = false
@@ -434,7 +434,7 @@ margin_left = 89.7327
 margin_top = 67.8443
 margin_right = 360.733
 margin_bottom = 471.844
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 3 )
 text = "Experiment ongoing
 
 H-23 Levels : 10%
@@ -442,8 +442,8 @@ X-07 Levels : 15%
 V-3234: Stable
 Dimensional Rift: Low
 T-97 : 7%
-Substance 1 : Stable
-Substance 2 : Stable
+Substance W-23 : Stable
+Substance S-P2 : Stable
 
 Completion : 0%"
 valign = 2
@@ -452,10 +452,10 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ExpData"]
-anims/text1 = SubResource( 17 )
-anims/text2 = SubResource( 18 )
-anims/text3 = SubResource( 19 )
-anims/text4 = SubResource( 20 )
+anims/text1 = SubResource( 4 )
+anims/text2 = SubResource( 5 )
+anims/text3 = SubResource( 6 )
+anims/text4 = SubResource( 7 )
 
 [node name="Warning2" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -465,10 +465,13 @@ margin_left = 690.955
 margin_top = 119.468
 margin_right = 1274.96
 margin_bottom = 292.468
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Warning : High levels of Sustance V-3234
-present in the machine's fluids
+text = "
+
+Warning : 
+High levels of Substance V-3234
+present in the machine
 "
 valign = 2
 __meta__ = {
@@ -476,7 +479,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Warning2"]
-anims/Warning = SubResource( 24 )
+anims/Warning = SubResource( 8 )
 
 [node name="Proceed" type="Label" parent="."]
 anchor_right = 1.0
@@ -485,7 +488,7 @@ margin_left = 694.731
 margin_top = 334.672
 margin_right = 1278.73
 margin_bottom = 507.672
-custom_fonts/font = SubResource( 26 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Do you want to proceed?
 "
@@ -496,8 +499,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Proceed"]
-anims/stop = SubResource( 27 )
-anims/text = SubResource( 28 )
+anims/stop = SubResource( 11 )
+anims/text = SubResource( 12 )
 
 [node name="Commence" type="Label" parent="."]
 anchor_right = 1.0
@@ -506,7 +509,7 @@ margin_left = 694.731
 margin_top = 298.805
 margin_right = 1278.73
 margin_bottom = 471.805
-custom_fonts/font = SubResource( 30 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Begin the experiment?"
 valign = 2
@@ -516,8 +519,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Commence"]
-anims/Begin = SubResource( 31 )
-anims/Stop = SubResource( 32 )
+anims/Begin = SubResource( 15 )
+anims/Stop = SubResource( 16 )
 
 [node name="Yes" type="Label" parent="."]
 visible = false
@@ -527,7 +530,7 @@ margin_left = 694.731
 margin_top = 345.998
 margin_right = 1278.73
 margin_bottom = 518.998
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Yes"
 valign = 2
@@ -543,9 +546,9 @@ margin_left = 100.09
 margin_top = 476.253
 margin_right = 382.09
 margin_bottom = 649.253
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 20 )
 text = "Dimensional Experiment - Final Test
-Lead by Dr. X"
+Lead by Dr. Light"
 valign = 2
 __meta__ = {
 "_edit_use_anchors_": false

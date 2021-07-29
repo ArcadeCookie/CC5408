@@ -46,3 +46,10 @@ transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -0.5, -
 
 [node name="Drop" type="Spatial" parent="Camera"]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 0, -1 )
+
+[node name="Lantern" type="SpotLight" parent="Camera"]
+visible = false
+spot_range = 45.0
+spot_attenuation = 8.57418
+spot_angle = 40.0
+spot_angle_attenuation = 0.535887

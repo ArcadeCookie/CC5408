@@ -19,4 +19,6 @@ func _init():
 # Overriden method so this specific instance of a whole terminal node can have
 # specific desired behaviour
 func on_activation():
-	DataManager.call_unique_HUD("res://Scenes/GUI/LabMixer/LabMixer_Create.tscn")
+	var world = get_parent()
+	world.get_node("Tubo1").show()
+	#DataManager.call_unique_HUD("res://Scenes/GUI/LabMixer/LabMixer_Create.tscn")

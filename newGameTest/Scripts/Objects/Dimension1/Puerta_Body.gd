@@ -29,10 +29,9 @@ func _openDoor():
 	transl.z = self.translation.z + 0.527
 	$Terminal/Tween.interpolate_property(self, "rotation_degrees", self.rotation_degrees, rot, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	$Terminal/Tween.interpolate_property(self, "translation", self.translation, transl, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	#$Terminal/Tween.interpolate_property(Puerta, "rotation_degrees", Puerta.rotation_degrees, rot, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	#$Terminal/Tween.interpolate_property(Puerta, "translation", Puerta.translation, transl, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	$Terminal/Tween.start()
 	$Terminal/Sound.play()
+	$Terminal/Timer.start()
 	status = 1
 
 func _closeDoor():
@@ -46,8 +45,10 @@ func _closeDoor():
 	transl.z = self.translation.z - 0.527
 	$Terminal/Tween.interpolate_property(self, "rotation_degrees", self.rotation_degrees, rot, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	$Terminal/Tween.interpolate_property(self, "translation", self.translation, transl, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	#$Terminal/Tween.interpolate_property(Puerta, "rotation_degrees", Puerta.rotation_degrees, rot, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	#$Terminal/Tween.interpolate_property(Puerta, "translation", Puerta.translation, transl, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	$Terminal/Tween.start()
 	$Terminal/Sound.play()
+	$Terminal/Timer.start()
 	status = 0
+
+func _on_Timer_timeout():
+	$Terminal.reactivate()

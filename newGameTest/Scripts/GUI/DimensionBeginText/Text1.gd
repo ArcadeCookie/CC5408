@@ -20,8 +20,8 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 			TextoAnim.stop(true)
 			Texto.hide()
 			if textnum == 5: # indicacion maquina
-				DataManager.player_play()
-				DataManager.camera_play()
+				#DataManager.player_play()
+				#DataManager.camera_play()
 				#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				DataManager.remove_unique_HUD(self)
 			else:

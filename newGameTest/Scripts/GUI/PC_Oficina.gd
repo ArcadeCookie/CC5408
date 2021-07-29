@@ -20,7 +20,7 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 			$Texto.hide()
 			if textnum == 5: # indicacion maquina
 				DataManager.player_play()
-				DataManager.changeObjective("I have to go to Dr. Light's laboratory to prepare a tube of V-3234.")
+				DataManager.changeObjective("I have to go to Dr. Light's laboratory to prepare a tube of V-3234.", false)
 				DataManager.remove_unique_HUD(self)
 			else:
 				$Texto.text = newtext

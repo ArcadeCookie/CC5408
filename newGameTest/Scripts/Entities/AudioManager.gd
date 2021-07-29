@@ -9,6 +9,7 @@ var track_loaded = false
 
 func play_music():
 	if track_loaded:
+		MusicStream.volume_db = -15.0
 		MusicStream.play()
 
 

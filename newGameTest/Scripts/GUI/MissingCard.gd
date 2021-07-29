@@ -8,4 +8,5 @@ func _ready():
 	RichLabel.bbcode_text = "\n You're missing your [color=#209f88]card[/color]. \n Go to your office and find it."
 	RichAnimPlayer.play("items")
 	yield(RichAnimPlayer, "animation_finished")
+	DataManager.changeObjective("I need my card.", false)
 	DataManager.remove_HUD(self)

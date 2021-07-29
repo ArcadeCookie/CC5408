@@ -10,6 +10,7 @@ func _init():
 	# After this, the object gets instanciated with Terminal._ready()
 
 func on_terminal_interaction(terminal_node : Node, object : Node) -> void:
-	is_active = true
-	DataManager.State.Terminals[id] = true
-	terminal_body.on_terminal_active()
+	if not is_active:
+		is_active = true
+		DataManager.State.Terminals[id] = true
+		terminal_body.on_terminal_active()

@@ -12,6 +12,7 @@ var SpaceBar
 
 func _ready():
 	TextoAnim.play("showText")
+	DataManager.player_stop()
 	playing = true
 	animReady = false
 	textnum = 0
@@ -27,7 +28,8 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 			if textnum == 4: # indicacion maquina
 				$TextocFormato.show()
 				$TextocFormato.bbcode_text = newtext
-				$TextocFormato/AnimF.play("items")
+				$TextocFormato/AnimF.play("wait")
+				DataManager.player_play()
 				$SpaceBar.showing = 0
 				$SpaceBar.hide()
 				textnum += 1
@@ -37,13 +39,6 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 				playing = true
 				TextoAnim.play("showText")
 			animReady=false
-
-func missing_card():
-	newtext = "\n You're missing your [color=#209f88]card[/color]. \n Go to your office and find it."
-	$TextocFormato.show()
-	$TextocFormato.bbcode_text = newtext
-	$TextocFormato/AnimF.play("items")
-
 
 func _on_Anim_animation_finished(anim_name):
 	playing = false	
@@ -59,12 +54,10 @@ func _on_Anim_animation_finished(anim_name):
 		newtext = "\n Imagine being the one starting up the machine, \n I envy you. You better hurry up, it's starting soon!"
 	elif textnum == 4:
 		newtext = "\n Go and activate the [color=#209f88]machine[/color]."
-		#$TextocFormato.show()
-		#$TextocFormato.bbcode_text = newtext
-		#$TextocFormato/AnimF.play("items")
 	animReady=true
 
 
 func _on_AnimF_animation_finished(anim_name):
-	playing = false	
-	textnum += 1
+	if anim_name == "wait":
+		DataManager.changeObjective("I have to activate the machine.", false)
+		DataManager.remove_HUD(self)

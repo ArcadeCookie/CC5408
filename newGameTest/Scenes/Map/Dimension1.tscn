@@ -1,26 +1,26 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=125 format=2]
 
-[ext_resource path="res://Scenes/Map/Zonas/LabCentral.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Map/Zonas/LabCentral2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Zonas/Casino.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Map/Zonas/LabEste.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Map/Zonas/Oficinas.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Map/Zonas/LabOeste.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Map/Zonas/MaquinaLab.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Objects/PapelesPiezasMaquina.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Entities/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Map/Zonas/Recepcion.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Map/Decoracion/Gabinete.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/Map/Decoracion/PuertaSingle.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/GUI/MonitorNode2D.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Objects/Dimension1/PuertaDrWattson.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scripts/GUI/Dimension1/Beginning.gd" type="Script" id=11]
 [ext_resource path="res://Scenes/Map/Decoracion/Luz.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scenes/Map/Decoracion/Escritorio.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scenes/Map/Decoracion/Estanteria.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Scenes/Map/Decoracion/OfficeDecoration.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Scenes/Objects/MonitorIntro.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scripts/Objects/LabMixer_i2.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/Objects/LabMixer_i1.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/Objects/LabMixer_Body.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/Objects/LabMixer_i4.gd" type="Script" id=16]
 [ext_resource path="res://Scenes/Map/Decoracion/MarcoPuerta.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Resources/Modelos/Mapa/PuertaPequeña.obj" type="ArrayMesh" id=18]
-[ext_resource path="res://Scenes/Map/Decoracion/Oficina/MonitorPC.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scripts/Objects/LabMixer_i3.gd" type="Script" id=19]
 [ext_resource path="res://Scenes/Map/Decoracion/LabCentral/PuertasLabCentral.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Scenes/Map/Decoracion/LabCentral/BarandasMaquina.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Objects/Dimension1/Tubo1.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Scenes/Objects/Papeles1.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Scenes/Objects/PapelesArchive1.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Scenes/Objects/Papeles3.tscn" type="PackedScene" id=24]
@@ -32,40 +32,230 @@
 [ext_resource path="res://Scenes/Objects/Dimension1/Puerta1.tscn" type="PackedScene" id=30]
 [ext_resource path="res://Resources/Materials/Texturas/Madera1.tres" type="Material" id=31]
 [ext_resource path="res://Resources/Materials/Texturas/MetalPerillas.tres" type="Material" id=32]
-[ext_resource path="res://Scenes/Objects/Dimension1/PuertaDrWattson.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Resources/Sounds/Door_Open.wav" type="AudioStream" id=33]
 [ext_resource path="res://Scenes/Objects/Dimension1/PuertaDrJohn.tscn" type="PackedScene" id=34]
-[ext_resource path="res://Scenes/Objects/Dimension1/PanelPuertaOficina.tscn" type="PackedScene" id=35]
+[ext_resource path="res://Resources/Modelos/Cosas/CajaFuerte.obj" type="ArrayMesh" id=35]
 [ext_resource path="res://Scenes/Objects/Dimension1/PuertaDrLight.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Scripts/Objects/PanelPuerta_Body.gd" type="Script" id=37]
 [ext_resource path="res://Scripts/Objects/PanelPuerta.gd" type="Script" id=38]
+[ext_resource path="res://Scripts/Objects/CajaFuerte_Body.gd" type="Script" id=39]
+[ext_resource path="res://Scripts/Objects/CajaFuerte.gd" type="Script" id=40]
+[ext_resource path="res://Resources/Modelos/Cosas/CajaFuertePuerta.obj" type="ArrayMesh" id=41]
+[ext_resource path="res://Resources/Materials/Archivos/Metal1/Metal012_4K_Roughness.jpg" type="Texture" id=42]
+[ext_resource path="res://Resources/Materials/Archivos/Metal1/Metal012_4K_Normal.jpg" type="Texture" id=43]
+[ext_resource path="res://Resources/Materials/Archivos/Metal1/Metal012_4K_Metalness.jpg" type="Texture" id=44]
+[ext_resource path="res://Resources/Materials/Archivos/Metal1/Metal012_4K_Color.jpg" type="Texture" id=45]
+[ext_resource path="res://Resources/Materials/Archivos/Metal1/Metal012_4K_Displacement.jpg" type="Texture" id=46]
+[ext_resource path="res://Resources/Materials/Texturas/SafeBox.tres" type="Material" id=47]
+[ext_resource path="res://Resources/Modelos/Cosas/LetreroPuerta.obj" type="ArrayMesh" id=48]
+[ext_resource path="res://Resources/Images/Objects/CajaFuerte_Panel.png" type="Texture" id=49]
+[ext_resource path="res://Resources/Sounds/Safe_Opened.wav" type="AudioStream" id=50]
+[ext_resource path="res://Scripts/Objects/LabMixer/Item2.gd" type="Script" id=51]
+[ext_resource path="res://Resources/Images/Objects/hard_disk.png" type="Texture" id=52]
+[ext_resource path="res://Scripts/Objects/Dimension1/HardDisk.gd" type="Script" id=53]
+[ext_resource path="res://Scripts/Objects/LabMixer/Decoy1.gd" type="Script" id=54]
+[ext_resource path="res://Scripts/Objects/LabMixer/Item3.gd" type="Script" id=55]
+[ext_resource path="res://Scripts/Objects/LabMixer/Decoy2.gd" type="Script" id=56]
+[ext_resource path="res://Scripts/Objects/LabMixer/Oil.gd" type="Script" id=57]
+[ext_resource path="res://Scripts/Objects/Dimension1/Linterna.gd" type="Script" id=58]
+[ext_resource path="res://Scripts/Objects/Dimension1/PC_Oficina_Body.gd" type="Script" id=76]
+[ext_resource path="res://Scripts/Objects/Dimension1/PC_Oficina.gd" type="Script" id=77]
+[ext_resource path="res://Resources/Sounds/Keyboard_Typing.wav" type="AudioStream" id=78]
+[ext_resource path="res://Scripts/Objects/Dimension1/MonitorMaquina.gd" type="Script" id=79]
+[ext_resource path="res://Scripts/Objects/Dimension1/MonitorMaquina_Body.gd" type="Script" id=80]
 
 [sub_resource type="Environment" id=1]
 background_energy = 0.0
-ambient_light_color = Color( 0.152941, 0.152941, 0.152941, 1 )
+ambient_light_color = Color( 0.180392, 0.180392, 0.180392, 1 )
+
+[sub_resource type="BoxShape" id=2]
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="BoxShape" id=4]
 
 [sub_resource type="BoxShape" id=5]
 
-[sub_resource type="CubeMesh" id=6]
+[sub_resource type="BoxShape" id=6]
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="CylinderShape" id=7]
+
+[sub_resource type="BoxShape" id=8]
+
+[sub_resource type="CubeMesh" id=9]
+
+[sub_resource type="SpatialMaterial" id=10]
 flags_unshaded = true
 vertex_color_use_as_albedo = true
 albedo_color = Color( 0.619608, 0.619608, 0.619608, 1 )
 
-[sub_resource type="ConvexPolygonShape" id=8]
+[sub_resource type="ConvexPolygonShape" id=11]
 points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
-[sub_resource type="BoxShape" id=9]
+[sub_resource type="BoxShape" id=12]
 extents = Vector3( 0.0831871, 1.09131, 0.587968 )
+
+[sub_resource type="SpatialMaterial" id=13]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 45 )
+metallic = 0.3
+metallic_texture = ExtResource( 44 )
+roughness_texture = ExtResource( 42 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 43 )
+depth_enabled = true
+depth_scale = 0.05
+depth_deep_parallax = false
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = ExtResource( 46 )
+uv1_triplanar = true
+
+[sub_resource type="BoxShape" id=14]
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_texture = ExtResource( 49 )
+uv1_scale = Vector3( 1, 2.5, 1.25 )
+uv1_offset = Vector3( 0, 0, 1.5 )
+uv1_triplanar = true
+
+[sub_resource type="ConvexPolygonShape" id=16]
+points = PoolVector3Array( -0.008523, 0.4, -0.4, 0.008523, 0.4, -0.4, -0.008523, 0.4, 0.4, 0.008523, 0.4, 0.4, 0.008523, 0.4, 0.4, 0.008523, 0, 0.4, -0.008523, 0.4, 0.4, -0.008523, 0, 0.4, 0.008523, 0, -0.4, -0.008523, 0, -0.4, 0.008523, 0, 0.4, -0.008523, 0, 0.4, -0.008523, 0.4, -0.4, -0.008523, 0, -0.4, 0.008523, 0.4, -0.4, 0.008523, 0, -0.4, 0.008523, 0.4, -0.4, 0.008523, 0, -0.4, 0.008523, 0.4, 0.4, 0.008523, 0, 0.4 )
+
+[sub_resource type="CubeMesh" id=17]
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_color = Color( 0.156863, 0.164706, 0.341176, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=19]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=20]
+
+[sub_resource type="ConvexPolygonShape" id=21]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=22]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=23]
+albedo_color = Color( 0.431373, 0.431373, 0.431373, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=24]
+points = PoolVector3Array( -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5 )
+
+[sub_resource type="QuadMesh" id=25]
+size = Vector2( 3, 2 )
+
+[sub_resource type="ViewportTexture" id=26]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="SpatialMaterial" id=27]
+resource_local_to_scene = true
+albedo_texture = SubResource( 26 )
+
+[sub_resource type="BoxShape" id=28]
+extents = Vector3( 1.5, 1, 0.01 )
+
+[sub_resource type="CubeMesh" id=29]
+
+[sub_resource type="SpatialMaterial" id=30]
+flags_unshaded = true
+albedo_color = Color( 0.341176, 0.0509804, 0.0509804, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=31]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=32]
+
+[sub_resource type="SpatialMaterial" id=33]
+flags_unshaded = true
+albedo_color = Color( 0.0823529, 0.0784314, 0.905882, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=34]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=35]
+
+[sub_resource type="SpatialMaterial" id=36]
+flags_unshaded = true
+albedo_color = Color( 0.235294, 0.486275, 0.105882, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=37]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=38]
+
+[sub_resource type="SpatialMaterial" id=39]
+flags_unshaded = true
+albedo_color = Color( 0.2, 0.247059, 0.270588, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=40]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CylinderMesh" id=41]
+
+[sub_resource type="SpatialMaterial" id=42]
+albedo_color = Color( 0.584314, 0.333333, 0.356863, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=43]
+points = PoolVector3Array( -0.982432, -0.982623, -0.184098, -0.982432, -0.982623, 0.184098, -0.982432, 0.982623, -0.184098, -0.982432, 0.982623, 0.184098, -0.951084, -0.981837, -0.306584, -0.951084, 0.981837, 0.306584, -0.917023, -0.978309, -0.397223, -0.917023, -0.978309, 0.397223, -0.917023, 0.978309, -0.397223, -0.853813, -0.975892, -0.518323, -0.853813, -0.975892, 0.518323, -0.853813, 0.975892, -0.518323, -0.853813, 0.975892, 0.518323, -0.79176, -0.974761, -0.60913, -0.79176, -0.974761, 0.60913, -0.707103, -0.983887, -0.707097, -0.707103, -0.983887, 0.707097, -0.707103, 0.983887, -0.707097, -0.707103, 0.983887, 0.707097, -0.609138, 0.97476, -0.791754, -0.609138, 0.97476, 0.791754, -0.518332, -0.975889, -0.853807, -0.518332, -0.975889, 0.853807, -0.518332, 0.975889, -0.853807, -0.397393, 0.978225, -0.916943, -0.397393, 0.978225, 0.916943, -0.306598, -0.981834, -0.951079, -0.306598, -0.981834, 0.951079, -0.18408, -0.982434, -0.982434, -0.18408, -0.982434, 0.982434, -0.18408, 0.982434, -0.982434, -0.18408, 0.982434, 0.982434, 0.184038, -0.982441, -0.982441, 0.184038, -0.982441, 0.982441, 0.184038, 0.982441, -0.982441, 0.184038, 0.982441, 0.982441, 0.306731, -0.981785, 0.951032, 0.306731, 0.981785, -0.951032, 0.306731, 0.981785, 0.951032, 0.397198, -0.978324, -0.917035, 0.397198, 0.978324, 0.917035, 0.459081, -0.979594, 0.887733, 0.459081, 0.979594, -0.887733, 0.5183, -0.975911, -0.853827, 0.5183, 0.975911, -0.853827, 0.5183, 0.975911, 0.853827, 0.609111, -0.974785, 0.791775, 0.642894, -0.979738, -0.765301, 0.642894, 0.979738, -0.765301, 0.642894, 0.979738, 0.765301, 0.791813, -0.974646, -0.609058, 0.791813, -0.974646, 0.609058, 0.791813, 0.974646, -0.609058, 0.791813, 0.974646, 0.609058, 0.853885, -0.976024, -0.518202, 0.853885, -0.976024, 0.518202, 0.917016, 0.978348, -0.397238, 0.917016, 0.978348, 0.397238, 0.95108, -0.981878, -0.306596, 0.95108, -0.981878, 0.306596, 0.98243, -0.982666, -0.184106, 0.98243, -0.982666, 0.184106, 0.98243, 0.982666, -0.184106, 0.98243, 0.982666, 0.184106 )
+
+[sub_resource type="CylinderMesh" id=44]
+
+[sub_resource type="SpatialMaterial" id=45]
+albedo_color = Color( 0.407843, 0.180392, 0.533333, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=46]
+points = PoolVector3Array( -0.982432, -0.982623, -0.184098, -0.982432, -0.982623, 0.184098, -0.982432, 0.982623, -0.184098, -0.982432, 0.982623, 0.184098, -0.951084, -0.981837, -0.306584, -0.951084, 0.981837, 0.306584, -0.917023, -0.978309, -0.397223, -0.917023, -0.978309, 0.397223, -0.917023, 0.978309, -0.397223, -0.853813, -0.975892, -0.518323, -0.853813, -0.975892, 0.518323, -0.853813, 0.975892, -0.518323, -0.853813, 0.975892, 0.518323, -0.79176, -0.974761, -0.60913, -0.79176, -0.974761, 0.60913, -0.707103, -0.983887, -0.707097, -0.707103, -0.983887, 0.707097, -0.707103, 0.983887, -0.707097, -0.707103, 0.983887, 0.707097, -0.609138, 0.97476, -0.791754, -0.609138, 0.97476, 0.791754, -0.518332, -0.975889, -0.853807, -0.518332, -0.975889, 0.853807, -0.518332, 0.975889, -0.853807, -0.397393, 0.978225, -0.916943, -0.397393, 0.978225, 0.916943, -0.306598, -0.981834, -0.951079, -0.306598, -0.981834, 0.951079, -0.18408, -0.982434, -0.982434, -0.18408, -0.982434, 0.982434, -0.18408, 0.982434, -0.982434, -0.18408, 0.982434, 0.982434, 0.184038, -0.982441, -0.982441, 0.184038, -0.982441, 0.982441, 0.184038, 0.982441, -0.982441, 0.184038, 0.982441, 0.982441, 0.306731, -0.981785, 0.951032, 0.306731, 0.981785, -0.951032, 0.306731, 0.981785, 0.951032, 0.397198, -0.978324, -0.917035, 0.397198, 0.978324, 0.917035, 0.459081, -0.979594, 0.887733, 0.459081, 0.979594, -0.887733, 0.5183, -0.975911, -0.853827, 0.5183, 0.975911, -0.853827, 0.5183, 0.975911, 0.853827, 0.609111, -0.974785, 0.791775, 0.642894, -0.979738, -0.765301, 0.642894, 0.979738, -0.765301, 0.642894, 0.979738, 0.765301, 0.791813, -0.974646, -0.609058, 0.791813, -0.974646, 0.609058, 0.791813, 0.974646, -0.609058, 0.791813, 0.974646, 0.609058, 0.853885, -0.976024, -0.518202, 0.853885, -0.976024, 0.518202, 0.917016, 0.978348, -0.397238, 0.917016, 0.978348, 0.397238, 0.95108, -0.981878, -0.306596, 0.95108, -0.981878, 0.306596, 0.98243, -0.982666, -0.184106, 0.98243, -0.982666, 0.184106, 0.98243, 0.982666, -0.184106, 0.98243, 0.982666, 0.184106 )
+
+[sub_resource type="CubeMesh" id=47]
+
+[sub_resource type="SpatialMaterial" id=48]
+albedo_color = Color( 0.564706, 0.643137, 0.243137, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=49]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CylinderMesh" id=50]
+
+[sub_resource type="SpatialMaterial" id=51]
+albedo_color = Color( 0.0823529, 0.0705882, 0.223529, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=52]
+points = PoolVector3Array( -0.982432, -0.982623, -0.184098, -0.982432, -0.982623, 0.184098, -0.982432, 0.982623, -0.184098, -0.982432, 0.982623, 0.184098, -0.951084, -0.981837, -0.306584, -0.951084, 0.981837, 0.306584, -0.917023, -0.978309, -0.397223, -0.917023, -0.978309, 0.397223, -0.917023, 0.978309, -0.397223, -0.853813, -0.975892, -0.518323, -0.853813, -0.975892, 0.518323, -0.853813, 0.975892, -0.518323, -0.853813, 0.975892, 0.518323, -0.79176, -0.974761, -0.60913, -0.79176, -0.974761, 0.60913, -0.707103, -0.983887, -0.707097, -0.707103, -0.983887, 0.707097, -0.707103, 0.983887, -0.707097, -0.707103, 0.983887, 0.707097, -0.609138, 0.97476, -0.791754, -0.609138, 0.97476, 0.791754, -0.518332, -0.975889, -0.853807, -0.518332, -0.975889, 0.853807, -0.518332, 0.975889, -0.853807, -0.397393, 0.978225, -0.916943, -0.397393, 0.978225, 0.916943, -0.306598, -0.981834, -0.951079, -0.306598, -0.981834, 0.951079, -0.18408, -0.982434, -0.982434, -0.18408, -0.982434, 0.982434, -0.18408, 0.982434, -0.982434, -0.18408, 0.982434, 0.982434, 0.184038, -0.982441, -0.982441, 0.184038, -0.982441, 0.982441, 0.184038, 0.982441, -0.982441, 0.184038, 0.982441, 0.982441, 0.306731, -0.981785, 0.951032, 0.306731, 0.981785, -0.951032, 0.306731, 0.981785, 0.951032, 0.397198, -0.978324, -0.917035, 0.397198, 0.978324, 0.917035, 0.459081, -0.979594, 0.887733, 0.459081, 0.979594, -0.887733, 0.5183, -0.975911, -0.853827, 0.5183, 0.975911, -0.853827, 0.5183, 0.975911, 0.853827, 0.609111, -0.974785, 0.791775, 0.642894, -0.979738, -0.765301, 0.642894, 0.979738, -0.765301, 0.642894, 0.979738, 0.765301, 0.791813, -0.974646, -0.609058, 0.791813, -0.974646, 0.609058, 0.791813, 0.974646, -0.609058, 0.791813, 0.974646, 0.609058, 0.853885, -0.976024, -0.518202, 0.853885, -0.976024, 0.518202, 0.917016, 0.978348, -0.397238, 0.917016, 0.978348, 0.397238, 0.95108, -0.981878, -0.306596, 0.95108, -0.981878, 0.306596, 0.98243, -0.982666, -0.184106, 0.98243, -0.982666, 0.184106, 0.98243, 0.982666, -0.184106, 0.98243, 0.982666, 0.184106 )
+
+[sub_resource type="CylinderMesh" id=57]
+
+[sub_resource type="SpatialMaterial" id=58]
+albedo_color = Color( 0.0823529, 0.0705882, 0.223529, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=59]
+points = PoolVector3Array( -0.982432, -0.982623, -0.184098, -0.982432, -0.982623, 0.184098, -0.982432, 0.982623, -0.184098, -0.982432, 0.982623, 0.184098, -0.951084, -0.981837, -0.306584, -0.951084, 0.981837, 0.306584, -0.917023, -0.978309, -0.397223, -0.917023, -0.978309, 0.397223, -0.917023, 0.978309, -0.397223, -0.853813, -0.975892, -0.518323, -0.853813, -0.975892, 0.518323, -0.853813, 0.975892, -0.518323, -0.853813, 0.975892, 0.518323, -0.79176, -0.974761, -0.60913, -0.79176, -0.974761, 0.60913, -0.707103, -0.983887, -0.707097, -0.707103, -0.983887, 0.707097, -0.707103, 0.983887, -0.707097, -0.707103, 0.983887, 0.707097, -0.609138, 0.97476, -0.791754, -0.609138, 0.97476, 0.791754, -0.518332, -0.975889, -0.853807, -0.518332, -0.975889, 0.853807, -0.518332, 0.975889, -0.853807, -0.397393, 0.978225, -0.916943, -0.397393, 0.978225, 0.916943, -0.306598, -0.981834, -0.951079, -0.306598, -0.981834, 0.951079, -0.18408, -0.982434, -0.982434, -0.18408, -0.982434, 0.982434, -0.18408, 0.982434, -0.982434, -0.18408, 0.982434, 0.982434, 0.184038, -0.982441, -0.982441, 0.184038, -0.982441, 0.982441, 0.184038, 0.982441, -0.982441, 0.184038, 0.982441, 0.982441, 0.306731, -0.981785, 0.951032, 0.306731, 0.981785, -0.951032, 0.306731, 0.981785, 0.951032, 0.397198, -0.978324, -0.917035, 0.397198, 0.978324, 0.917035, 0.459081, -0.979594, 0.887733, 0.459081, 0.979594, -0.887733, 0.5183, -0.975911, -0.853827, 0.5183, 0.975911, -0.853827, 0.5183, 0.975911, 0.853827, 0.609111, -0.974785, 0.791775, 0.642894, -0.979738, -0.765301, 0.642894, 0.979738, -0.765301, 0.642894, 0.979738, 0.765301, 0.791813, -0.974646, -0.609058, 0.791813, -0.974646, 0.609058, 0.791813, 0.974646, -0.609058, 0.791813, 0.974646, 0.609058, 0.853885, -0.976024, -0.518202, 0.853885, -0.976024, 0.518202, 0.917016, 0.978348, -0.397238, 0.917016, 0.978348, 0.397238, 0.95108, -0.981878, -0.306596, 0.95108, -0.981878, 0.306596, 0.98243, -0.982666, -0.184106, 0.98243, -0.982666, 0.184106, 0.98243, 0.982666, -0.184106, 0.98243, 0.982666, 0.184106 )
+
+[sub_resource type="CylinderMesh" id=60]
+
+[sub_resource type="SpatialMaterial" id=61]
+
+[sub_resource type="CylinderMesh" id=56]
+
+[sub_resource type="CubeMesh" id=53]
+
+[sub_resource type="SpatialMaterial" id=54]
+albedo_color = Color( 0.643137, 0.243137, 0.290196, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=55]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
 [node name="Spatial" type="Spatial"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="Mapa" type="Spatial" parent="."]
+[node name="LabCentral" parent="." instance=ExtResource( 1 )]
 
-[node name="MaquinaLab" parent="Mapa" instance=ExtResource( 6 )]
+[node name="Mapa" type="Spatial" parent="."]
 
 [node name="LabEste" parent="Mapa" instance=ExtResource( 3 )]
 
@@ -73,33 +263,19 @@ environment = SubResource( 1 )
 
 [node name="LabOeste" parent="Mapa" instance=ExtResource( 5 )]
 
-[node name="Oficinas" parent="Mapa" instance=ExtResource( 4 )]
-
 [node name="Recepcion" parent="Mapa" instance=ExtResource( 8 )]
 
-[node name="LabCentral" parent="Mapa" instance=ExtResource( 1 )]
+[node name="Oficinas" parent="Mapa" instance=ExtResource( 4 )]
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77874, 1, -19.7405 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7174, 1, 23.9314 )
 
 [node name="Decoracion" type="Spatial" parent="."]
-
-[node name="Escritorio" parent="Decoracion" instance=ExtResource( 13 )]
-
-[node name="Estanteria" parent="Decoracion" instance=ExtResource( 14 )]
-
-[node name="Gabinete" parent="Decoracion" instance=ExtResource( 9 )]
 
 [node name="Luz" parent="Decoracion" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8917, 2.974, 24.0212 )
 
-[node name="OfficeDecoration" parent="Decoracion" instance=ExtResource( 15 )]
-
-[node name="MonitorPC" parent="Decoracion" instance=ExtResource( 19 )]
-
 [node name="PuertasLabCentral" parent="Decoracion" instance=ExtResource( 20 )]
-
-[node name="BarandasMaquina" parent="Decoracion" instance=ExtResource( 21 )]
 
 [node name="MarcoPuerta" parent="Decoracion" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3222, 0, 6.79692 )
@@ -119,7 +295,87 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.907,
 [node name="MarcoPuerta6" parent="Decoracion" instance=ExtResource( 17 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.907, 0, 20.373 )
 
-[node name="Monitor" parent="." instance=ExtResource( 16 )]
+[node name="LetreroArchive" type="MeshInstance" parent="Decoracion"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.2113, 1.55489, 7.95607 )
+mesh = ExtResource( 48 )
+material/0 = null
+material/1 = null
+
+[node name="OfficeDecoration2" type="StaticBody" parent="Decoracion"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Decoracion/OfficeDecoration2"]
+transform = Transform( 2.75, 0, 0, 0, 0.128, 0, 0, 0, 0.4, 19.2604, 0.735748, 27.8335 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Decoracion/OfficeDecoration2"]
+transform = Transform( 2.75, 0, 0, 0, 0.128, 0, 0, 0, 0.4, 19.26, 0.735666, 31.7229 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Decoracion/OfficeDecoration2"]
+transform = Transform( 3.25, 0, 0, 0, 0.8, 0, 0, 0, 0.6, 25.3868, 1.09648, 32.0044 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Decoracion/OfficeDecoration2"]
+transform = Transform( 3.25, 0, 0, 0, 0.8, 0, 0, 0, 0.6, 25.4174, 1.09648, 28.2339 )
+shape = SubResource( 3 )
+
+[node name="CajaFuerteBox" type="StaticBody" parent="Decoracion"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35.3453, -0.00810629, 11.9052 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Decoracion/CajaFuerteBox"]
+mesh = ExtResource( 35 )
+material/0 = ExtResource( 47 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Decoracion/CajaFuerteBox"]
+transform = Transform( 0.6, 0, 0, 0, 0.07, 0, 0, 0, 0.6, -0.0472736, 0.0738919, 0 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Decoracion/CajaFuerteBox"]
+transform = Transform( 0.6, 0, 0, 0, 0.07, 0, 0, 0, 0.6, -0.0472736, 0.950351, 0 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Decoracion/CajaFuerteBox"]
+transform = Transform( 0.6, 0, 0, 0, -2.18557e-09, -0.4, 0, 0.05, -1.74846e-08, -0.0472736, 0.506336, 0.547943 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Decoracion/CajaFuerteBox"]
+transform = Transform( 0.6, 0, 0, 0, -2.18557e-09, -0.4, 0, 0.05, -1.74846e-08, -0.0472736, 0.506336, -0.553543 )
+shape = SubResource( 5 )
+
+[node name="ColisionesEscritorio" type="StaticBody" parent="Decoracion"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3446, 1.18264, 24.897 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Decoracion/ColisionesEscritorio"]
+transform = Transform( 0.03, 0, 0, 0, 0.38, 0, 0, 0, 0.5, -0.915646, -0.800872, -6.29425e-05 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Decoracion/ColisionesEscritorio"]
+transform = Transform( 0.03, 0, 0, 0, 0.38, 0, 0, 0, 0.5, 0.919594, -0.800872, -6.29425e-05 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Decoracion/ColisionesEscritorio"]
+transform = Transform( 0.94, 0, 0, 0, 0.02, 0, 0, 0, 0.505, 0.00214577, -0.403399, 0.0089283 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Decoracion/ColisionesEscritorio"]
+transform = Transform( 0.07, 0, 0, 0, 0.1, 0, 0, 0, 0.07, 0.667589, -0.281895, -0.267103 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Decoracion/ColisionesEscritorio"]
+transform = Transform( 0.22, 0, 0, 0, 0.14, 0, 0, 0, 0.47, 0.659761, -0.573898, -0.0028019 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Decoracion/ColisionesEscritorio"]
+transform = Transform( 0.88, 0, 0, 0, 0.17, 0, 0, 0, 0.02, 0.00213623, -0.591427, -0.495333 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Decoracion/ColisionesEscritorio"]
+transform = Transform( 0.21836, 0, 0.0268113, 0, 0.05, 0, -0.0268113, 0, 0.21836, 0.50717, -0.573898, 1.77676 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Decoracion/ColisionesEscritorio"]
+transform = Transform( 0.217859, 0, 0.00835039, 0, 0.2, 0, -0.0306181, 0, 0.0594161, 0.50717, -0.137699, 2.07223 )
+shape = SubResource( 6 )
 
 [node name="Beginning" type="Control" parent="."]
 anchor_right = 1.0
@@ -131,20 +387,20 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="Beginning"]
-wait_time = 5.5
+wait_time = 4.0
 one_shot = true
 
 [node name="Papeles1" parent="." instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9005, 0.818742, 25.1668 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8079, 1.03954, 24.8586 )
 
 [node name="Papeles2" parent="." instance=ExtResource( 28 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7663, 0, 13.6403 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8909, 0.828049, 13.6019 )
 
 [node name="Papeles3" parent="." instance=ExtResource( 24 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0202, 0, 15.5775 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3427, 0.805403, 12.7556 )
 
 [node name="Papeles4" parent="." instance=ExtResource( 29 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4808, 0, 24.9295 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4853, 0.807817, 25.0221 )
 
 [node name="PapelesArchive1" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7663, 0, 8.71615 )
@@ -176,38 +432,32 @@ material/4 = ExtResource( 32 )
 
 [node name="CollisionShape" type="CollisionShape" parent="PuertaOficinaPlayer/Terminal"]
 transform = Transform( 0.05, 0, 0, 0, 1.072, 0, 0, 0, 0.55, 0, 1.07223, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 8 )
 
 [node name="PuertaDrLight" parent="." instance=ExtResource( 36 )]
 
-[node name="PuertaDrWattson" parent="." instance=ExtResource( 33 )]
+[node name="PuertaDrWattson" parent="." instance=ExtResource( 10 )]
 
 [node name="PuertaDrJohn" parent="." instance=ExtResource( 34 )]
 
-[node name="PanelPuertaOficina" parent="." instance=ExtResource( 35 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8823, 1.34104, 18.4802 )
-
-[node name="PanelPuertaOficina2" type="Spatial" parent="."]
+[node name="PanelPuertaOficina" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.965, 1.342, 18.477 )
 script = ExtResource( 37 )
 
-[node name="Terminal" type="StaticBody" parent="PanelPuertaOficina2"]
+[node name="Terminal" type="StaticBody" parent="PanelPuertaOficina"]
 transform = Transform( 0.01, 0, 0, 0, 0.15, 0, 0, 0, 0.1, 0, 0, 0 )
 script = ExtResource( 38 )
 
-[node name="MeshInstance" type="MeshInstance" parent="PanelPuertaOficina2/Terminal"]
-mesh = SubResource( 6 )
-material/0 = SubResource( 7 )
+[node name="MeshInstance" type="MeshInstance" parent="PanelPuertaOficina/Terminal"]
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
 
-[node name="CollisionShape" type="CollisionShape" parent="PanelPuertaOficina2/Terminal"]
-shape = SubResource( 8 )
+[node name="CollisionShape" type="CollisionShape" parent="PanelPuertaOficina/Terminal"]
+shape = SubResource( 11 )
 
-[node name="StaticBody" type="StaticBody" parent="PanelPuertaOficina2"]
+[node name="Door" type="StaticBody" parent="PanelPuertaOficina"]
 
-[node name="Puerta2" parent="PanelPuertaOficina2/StaticBody" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.101999, -1.342, 0.792 )
-
-[node name="PuertaPequeña" type="MeshInstance" parent="PanelPuertaOficina2/StaticBody"]
+[node name="MeshInstance" type="MeshInstance" parent="PanelPuertaOficina/Door"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102, -1.342, 0.792 )
 mesh = ExtResource( 18 )
 material/0 = ExtResource( 31 )
@@ -216,10 +466,266 @@ material/2 = ExtResource( 32 )
 material/3 = ExtResource( 32 )
 material/4 = ExtResource( 32 )
 
-[node name="StaticBody" type="StaticBody" parent="PanelPuertaOficina2/StaticBody/PuertaPequeña"]
+[node name="CollisionShape" type="CollisionShape" parent="PanelPuertaOficina/Door"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.101999, -0.242, 0.792 )
+shape = SubResource( 12 )
 
-[node name="CollisionShape" type="CollisionShape" parent="PanelPuertaOficina2/StaticBody/PuertaPequeña/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0 )
-shape = SubResource( 9 )
+[node name="Tween" type="Tween" parent="PanelPuertaOficina/Door"]
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="PanelPuertaOficina/Door"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0625401, -0.253155, 0.747343 )
+stream = ExtResource( 33 )
+
+[node name="CajaFuertePuerta" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35.345, -0.008, 11.905 )
+script = ExtResource( 39 )
+
+[node name="Door" type="StaticBody" parent="CajaFuertePuerta"]
+
+[node name="MeshInstance" type="MeshInstance" parent="CajaFuertePuerta/Door"]
+mesh = ExtResource( 41 )
+material/0 = ExtResource( 47 )
+material/1 = SubResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="CajaFuertePuerta/Door"]
+transform = Transform( 0.03, 0, 0, 0, 0.47, 0, 0, 0, 0.6, 0.580473, 0.511007, 0 )
+shape = SubResource( 14 )
+
+[node name="Terminal" type="StaticBody" parent="CajaFuertePuerta"]
+transform = Transform( 0.6, 0, 0, 0, 0.8, 0, 0, 0, 0.35, 0.615, 0.419, -0.199 )
+script = ExtResource( 40 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CajaFuertePuerta/Terminal"]
+mesh = ExtResource( 48 )
+material/0 = ExtResource( 47 )
+material/1 = SubResource( 15 )
+
+[node name="CollisionShape" type="CollisionShape" parent="CajaFuertePuerta/Terminal"]
+shape = SubResource( 16 )
+
+[node name="Tween" type="Tween" parent="CajaFuertePuerta/Terminal"]
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="CajaFuertePuerta/Terminal"]
+transform = Transform( 1.66667, 0, 7.10543e-15, 0, 1.25, 0, 0, 0, 2.85714, 0.0972633, 0.506696, 0 )
+stream = ExtResource( 50 )
+
+[node name="MonitorPC" type="Spatial" parent="."]
+transform = Transform( 0.942303, 0, 0.334761, 0, 1, 0, -0.334761, 0, 0.942303, 21.006, 1.1498, 24.6885 )
+script = ExtResource( 76 )
+
+[node name="Monitor" type="StaticBody" parent="MonitorPC"]
+transform = Transform( 0.35, 0, -6.98492e-10, 0, 0.22, 0, 2.23517e-08, 0, 0.01, 0, 0, 0 )
+script = ExtResource( 77 )
+
+[node name="MeshInstance" type="MeshInstance" parent="MonitorPC/Monitor"]
+visible = false
+mesh = SubResource( 17 )
+material/0 = SubResource( 18 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MonitorPC/Monitor"]
+shape = SubResource( 19 )
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="MonitorPC/Monitor"]
+stream = ExtResource( 78 )
+
+[node name="MonitorMaquina" type="Spatial" parent="."]
+transform = Transform( 0.72234, 0, -0.691538, 0, 1, 0, 0.691538, 0, 0.72234, -1.08047, 1.49479, -11.351 )
+script = ExtResource( 80 )
+
+[node name="Monitor" type="StaticBody" parent="MonitorMaquina"]
+transform = Transform( 1.1, 0, -4.65661e-10, 0, 0.7, 0, 5.96046e-08, 0, 0.01, -0.15252, 0.290178, 0.176747 )
+script = ExtResource( 79 )
+
+[node name="MeshInstance" type="MeshInstance" parent="MonitorMaquina/Monitor"]
+visible = false
+mesh = SubResource( 20 )
+material/0 = SubResource( 18 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MonitorMaquina/Monitor"]
+shape = SubResource( 21 )
+
+[node name="Card2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 35.2856, 0.290744, 12.1014 )
+script = ExtResource( 53 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Card2"]
+transform = Transform( 0.36, 0, 0, 0, 0.225, 0, 0, 0, 0.045, 0, 0, 0 )
+mesh = SubResource( 22 )
+material/0 = SubResource( 23 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Card2"]
+transform = Transform( 0.36, 0, 0, 0, 0.225, 0, 0, 6.66134e-16, 0.045, 0, 0, 0 )
+shape = SubResource( 24 )
+
+[node name="Sprite3D" type="Sprite3D" parent="Card2"]
+transform = Transform( -2.32107e-09, -0.0657, 0, 0.0531, -2.87184e-09, 0, -5.55112e-17, 3.30872e-24, 0.0225, 0.00130463, -0.000206947, 0.0225677 )
+texture = ExtResource( 52 )
+
+[node name="Screen" type="Spatial" parent="."]
+transform = Transform( -0.541755, 0, 0.691538, 0, 0.73, 0, -0.518654, 0, -0.72234, -1.28369, 1.75852, -11.3398 )
+visible = false
+
+[node name="Viewport" type="Viewport" parent="Screen"]
+size = Vector2( 1280, 720 )
+hdr = false
+usage = 0
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="Node2D" parent="Screen/Viewport" instance=ExtResource( 9 )]
+
+[node name="Quad" type="MeshInstance" parent="Screen"]
+mesh = SubResource( 25 )
+material/0 = SubResource( 27 )
+
+[node name="Area" type="Area" parent="Screen/Quad"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Screen/Quad/Area"]
+shape = SubResource( 28 )
+
+[node name="LabMixer" type="Spatial" parent="."]
+transform = Transform( -0.999757, 0, -0.0220592, 0, 1, 0, 0.0220592, 0, -0.999757, 23.2946, 1.51675, -13.2706 )
+script = ExtResource( 15 )
+
+[node name="Terminal" type="StaticBody" parent="LabMixer"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+script = ExtResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="LabMixer/Terminal"]
+mesh = SubResource( 29 )
+material/0 = SubResource( 30 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LabMixer/Terminal"]
+shape = SubResource( 31 )
+
+[node name="Terminal2" type="StaticBody" parent="LabMixer"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.3, 0, 0 )
+script = ExtResource( 13 )
+
+[node name="MeshInstance" type="MeshInstance" parent="LabMixer/Terminal2"]
+mesh = SubResource( 32 )
+material/0 = SubResource( 33 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LabMixer/Terminal2"]
+shape = SubResource( 34 )
+
+[node name="Terminal3" type="StaticBody" parent="LabMixer"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.6, 0, 0 )
+script = ExtResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="LabMixer/Terminal3"]
+mesh = SubResource( 35 )
+material/0 = SubResource( 36 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LabMixer/Terminal3"]
+shape = SubResource( 37 )
+
+[node name="Terminal4" type="StaticBody" parent="LabMixer"]
+transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.05, -0.678578, 0.471355, 0 )
+script = ExtResource( 16 )
+
+[node name="MeshInstance" type="MeshInstance" parent="LabMixer/Terminal4"]
+mesh = SubResource( 38 )
+material/0 = SubResource( 39 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LabMixer/Terminal4"]
+shape = SubResource( 40 )
+
+[node name="Tubo1" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4387, 1.28786, -16.9902 )
+visible = false
+
+[node name="Decoy1" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1751, 0.269181, -14.7363 )
+script = ExtResource( 54 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Decoy1"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 41 )
+material/0 = SubResource( 42 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Decoy1"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+shape = SubResource( 43 )
+
+[node name="Decoy2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1157, 0.376288, -16.4405 )
+script = ExtResource( 56 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Decoy2"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 44 )
+material/0 = SubResource( 45 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Decoy2"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+shape = SubResource( 46 )
+
+[node name="Item2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4481, 0.265963, -17.9568 )
+script = ExtResource( 51 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Item2"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 47 )
+material/0 = SubResource( 48 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Item2"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.05, 0, 0, 0 )
+shape = SubResource( 49 )
+
+[node name="Item3" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1514, 0.31074, -17.8003 )
+script = ExtResource( 55 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Item3"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 50 )
+material/0 = SubResource( 51 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Item3"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+shape = SubResource( 52 )
+
+[node name="Linterna" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 16.8851, 1.08147, 23.1445 )
+mass = 0.00102041
+gravity_scale = 0.0
+script = ExtResource( 58 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Linterna"]
+transform = Transform( 0.045, 0, 0, 0, 0.16, 0, 0, 0, 0.045, 0, 0.0419121, -4.76837e-07 )
+mesh = SubResource( 57 )
+material/0 = SubResource( 58 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Linterna"]
+transform = Transform( 0.045, 0, 0, 0, 0.16, 0, 0, 0, 0.045, 0, 0.042, 0 )
+shape = SubResource( 59 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Linterna"]
+transform = Transform( 0.04, 0, 0, 0, 0.01, 0, 0, 0, 0.04, 0, -0.190197, 0 )
+mesh = SubResource( 60 )
+material/0 = SubResource( 61 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="Linterna"]
+transform = Transform( 0.05, 0, 0, 0, 0.04, 0, 0, 0, 0.05, 0, -0.159613, 0 )
+mesh = SubResource( 56 )
+material/0 = SubResource( 51 )
+
+[node name="Oil" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6398, 0.307428, -18.0076 )
+script = ExtResource( 57 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Oil"]
+transform = Transform( 0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 53 )
+material/0 = SubResource( 54 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Oil"]
+transform = Transform( 0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.1, 0, 0, 0 )
+shape = SubResource( 55 )
+
+[node name="PapelesPiezasMaquina" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.4677, 0.80453, 18.8473 )
 
 [connection signal="timeout" from="Beginning/Timer" to="Beginning" method="_on_Timer_timeout"]

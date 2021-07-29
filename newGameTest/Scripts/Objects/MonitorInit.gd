@@ -24,6 +24,7 @@ func beginexp():
 	$Particulas/Particles3.show()
 
 func error1():
+	DataManager.player_stop()
 	$Particulas/Particles.show()
 	$WarningLight.show()
 	$WarningLight2.show()
@@ -33,6 +34,7 @@ func error1():
 
 func error2():
 	$Particulas/Particles2.show()
+	$Particulas/Particles6.show()
 	AudioManager.fade(6)
 	$WarningSound.play()
 	## aqui sonido warning

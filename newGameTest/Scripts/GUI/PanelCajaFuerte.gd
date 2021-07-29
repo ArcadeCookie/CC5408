@@ -2,7 +2,6 @@ extends Control
 
 onready var Codigo
 onready var Displayer := $DisplayText
-onready var Indicator := $PasswordThingy/AnimationPlayer
 var correcto = "091322"
 
 # Called when the node enters the scene tree for the first time.
@@ -58,8 +57,11 @@ func _on_Enter_pressed():
 			# sonido exito aca
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			AudioManager.play_FX("res://Resources/Sounds/CorrectPassword.wav")
-			DataManager.call_unique_HUD("res://Scenes/GUI/CajaFuerteAbierta.tscn")
+			var world = get_parent()
+			world = world.get_parent()
 			DataManager.remove_unique_HUD(self)
+			world.get_node("Navigation/NavigationMeshInstance/World/Spatial/CajaFuertePuerta")._openSafe()
+			#DataManager.remove_unique_HUD(self)
 		else:
 			# sonido de fallo aca
 			AudioManager.play_FX("res://Resources/Sounds/IncorrectPassword.wav")

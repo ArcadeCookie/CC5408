@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:percent_visible")
@@ -67,7 +67,7 @@ __meta__ = {
 
 [node name="Anim" type="AnimationPlayer" parent="Texto"]
 anims/items = SubResource( 3 )
-anims/wait = SubResource( 5 )
+anims/wait = SubResource( 4 )
 
-[connection signal="animation_finished" from="Texto/Anim" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="Texto/Anim" to="." method="_on_Anim_animation_finished"]
+[connection signal="animation_finished" from="Texto/Anim" to="." method="_on_AnimationPlayer_animation_finished"]

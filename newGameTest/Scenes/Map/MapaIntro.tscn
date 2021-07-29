@@ -1,26 +1,24 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scenes/Map/Zonas/LabCentral.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Zonas/Casino.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Map/Zonas/LabEste.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Map/Zonas/Oficinas.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Map/Zonas/LabOeste.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Map/Zonas/MaquinaLab.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Entities/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Map/Zonas/Recepcion.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Map/Decoracion/Gabinete.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Effects/MachineParticles.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Map/Decoracion/PuertaSingle.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Objects/Card.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Map/Decoracion/Luz.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scenes/Map/Decoracion/Escritorio.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scenes/Map/Decoracion/Estanteria.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scripts/Objects/MonitorInit.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/Objects/MonitorBody.gd" type="Script" id=14]
 [ext_resource path="res://Scenes/Map/Decoracion/OfficeDecoration.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Scenes/Objects/MonitorIntro.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Resources/Sounds/warning.wav" type="AudioStream" id=16]
 [ext_resource path="res://Scenes/Map/Decoracion/MarcoPuerta.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scenes/Map/Decoracion/PuertaSingleOpened.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Scenes/Map/Decoracion/Oficina/MonitorPC.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/GUI/IntroMonitor.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Map/Decoracion/LabCentral/PuertasLabCentral.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Scenes/Map/Decoracion/LabCentral/BarandasMaquina.tscn" type="PackedScene" id=21]
 
 [sub_resource type="Environment" id=1]
 background_energy = 0.0
@@ -36,12 +34,128 @@ albedo_color = Color( 0.619608, 0.619608, 0.619608, 1 )
 [sub_resource type="ConvexPolygonShape" id=4]
 points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
+[sub_resource type="BoxShape" id=5]
+
+[sub_resource type="CylinderShape" id=6]
+
+[sub_resource type="BoxShape" id=7]
+
+[sub_resource type="BoxShape" id=8]
+
+[sub_resource type="CubeMesh" id=9]
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 0, 1, 0, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=11]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="Animation" id=12]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("WarningLight:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WarningLight3:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WarningLight4:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("WarningLight2:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("WarningLight2:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WarningLight4:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WarningLight3:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("WarningLight:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
 [node name="Spatial" type="Spatial"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
-
-[node name="MaquinaLab" parent="." instance=ExtResource( 6 )]
 
 [node name="LabEste" parent="." instance=ExtResource( 3 )]
 
@@ -72,12 +186,6 @@ material/0 = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Decoracion/PanelPuertaOficina/Terminal"]
 shape = SubResource( 4 )
-
-[node name="Escritorio" parent="Decoracion" instance=ExtResource( 13 )]
-
-[node name="Estanteria" parent="Decoracion" instance=ExtResource( 14 )]
-
-[node name="Gabinete" parent="Decoracion" instance=ExtResource( 9 )]
 
 [node name="Luz" parent="Decoracion" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8917, 2.974, 24.0212 )
@@ -122,13 +230,110 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.907,
 [node name="PuertaPequeñaAbierta" parent="Decoracion" instance=ExtResource( 18 )]
 transform = Transform( -0.996195, 0, -0.0871556, 0, 1, 0, 0.0871556, 0, -0.996195, 19.455, 0, 20.964 )
 
-[node name="MonitorPC" parent="Decoracion" instance=ExtResource( 19 )]
-
 [node name="PuertasLabCentral" parent="Decoracion" instance=ExtResource( 20 )]
 
-[node name="BarandasMaquina" parent="Decoracion" instance=ExtResource( 21 )]
+[node name="StaticBody" type="StaticBody" parent="Decoracion"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3446, 1.18264, 24.897 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Decoracion/StaticBody"]
+transform = Transform( 0.03, 0, 0, 0, 0.38, 0, 0, 0, 0.5, -0.915646, -0.800872, -6.29425e-05 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Decoracion/StaticBody"]
+transform = Transform( 0.03, 0, 0, 0, 0.38, 0, 0, 0, 0.5, 0.919594, -0.800872, -6.29425e-05 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Decoracion/StaticBody"]
+transform = Transform( 0.94, 0, 0, 0, 0.02, 0, 0, 0, 0.505, 0.00214577, -0.403399, 0.0089283 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Decoracion/StaticBody"]
+transform = Transform( 0.07, 0, 0, 0, 0.1, 0, 0, 0, 0.07, 0.667589, -0.281895, -0.267103 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Decoracion/StaticBody"]
+transform = Transform( 0.22, 0, 0, 0, 0.14, 0, 0, 0, 0.47, 0.659761, -0.573898, -0.0028019 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Decoracion/StaticBody"]
+transform = Transform( 0.88, 0, 0, 0, 0.17, 0, 0, 0, 0.02, 0.00213623, -0.591427, -0.495333 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Decoracion/StaticBody"]
+transform = Transform( 0.21836, 0, 0.0268113, 0, 0.05, 0, -0.0268113, 0, 0.21836, 0.50717, -0.573898, 1.77676 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Decoracion/StaticBody"]
+transform = Transform( 0.217859, 0, 0.00835039, 0, 0.2, 0, -0.0306181, 0, 0.0594161, 0.50717, -0.137699, 2.07223 )
+shape = SubResource( 5 )
+
+[node name="StaticBody2" type="StaticBody" parent="Decoracion"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.28, 22.1317, 1.15053, 20.8764 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Decoracion/StaticBody2"]
+shape = SubResource( 7 )
+
+[node name="StaticBody3" type="StaticBody" parent="Decoracion"]
+transform = Transform( 0.28, 0, 0, 0, 0.48, 0, 0, 0, 1.4, 16.8208, 0.552174, 23.7801 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Decoracion/StaticBody3"]
+shape = SubResource( 8 )
 
 [node name="Card2" parent="." instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 20.7061, 0.897409, 25.1916 )
 
-[node name="Monitor" parent="." instance=ExtResource( 16 )]
+[node name="Monitor" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0417203, 0.894901, -11.4903 )
+script = ExtResource( 13 )
+
+[node name="Terminal" type="StaticBody" parent="Monitor"]
+transform = Transform( 0.781177, 0, -0.00704039, 0, 0.7, 0, 0.774444, 0, 0.00710161, -1.24971, 0.883841, 0.175253 )
+script = ExtResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Monitor/Terminal"]
+visible = false
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Monitor/Terminal"]
+shape = SubResource( 11 )
+
+[node name="Screen" parent="Monitor" instance=ExtResource( 19 )]
+transform = Transform( -0.541755, 0, 0.691538, 0, 0.73, 0, -0.518654, 0, -0.72234, -1.31525, 0.879877, 0.172122 )
+
+[node name="LightAnim" type="AnimationPlayer" parent="Monitor"]
+anims/intermittence_in = SubResource( 12 )
+anims/intermittence_out = SubResource( 13 )
+
+[node name="WarningLight" type="OmniLight" parent="Monitor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.183304, 5.6381, 10.8623 )
+visible = false
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 15.0
+
+[node name="WarningLight2" type="OmniLight" parent="Monitor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2105, 5.6381, -3.2287 )
+visible = false
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 15.0
+
+[node name="WarningLight3" type="OmniLight" parent="Monitor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06528, 5.6381, 4.25434 )
+visible = false
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 15.0
+
+[node name="WarningLight4" type="OmniLight" parent="Monitor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.18972, 5.6381, 3.64334 )
+visible = false
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 15.0
+
+[node name="Particulas" parent="Monitor" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0417203, 5.94991, 5.30476 )
+
+[node name="WarningSound" type="AudioStreamPlayer3D" parent="Monitor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0176822, 1.8724, 2.15395 )
+stream = ExtResource( 16 )
+
+[connection signal="animation_finished" from="Monitor/LightAnim" to="Monitor" method="_on_LightAnim_animation_finished"]

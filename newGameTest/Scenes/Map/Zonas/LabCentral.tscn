@@ -99,7 +99,6 @@ shape = SubResource( 1 )
 
 [node name="MaquinaLab" parent="Spatial" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.72354 )
-visible = false
 material/0 = SubResource( 2 )
 material/1 = SubResource( 3 )
 material/2 = SubResource( 4 )

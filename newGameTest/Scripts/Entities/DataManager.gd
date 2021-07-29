@@ -73,13 +73,13 @@ func change_map() -> void:
 	State.Current_Dimension = new_dimension
 	
 	# DONT FORGET TO CHANGE FOR NEW MAPs, CUZ ITS KINDA HARCODED
-	Game.change_scene("res://Scenes/Demo/DemoMap" + new_dimension + ".tscn")
+	Game.change_scene("res://Scenes/Map/Dimension" + new_dimension + ".tscn")
 
 
 func change_to_specific_map(scene_id):
 	get_tree().call_group("object", "on_change_map")
 	State.Current_Dimension = scene_id
-	Game.change_scene("res://Scenes/Demo/DemoMap" + scene_id + ".tscn")
+	Game.change_scene("res://Scenes/Map/Dimension" + scene_id + ".tscn")
 
 
 func call_HUD(scene):
@@ -125,8 +125,8 @@ func update_stamina(val, maximum, going_up):
 	Game.update_stamina(val, maximum, going_up)
 
 
-func changeObjective(objective):
-	Game.changeObjective(objective)
+func changeObjective(objective,boolean):
+	Game.changeObjective(objective,boolean)
 
 func showObjective():
 	Game.showObjective()
@@ -155,3 +155,5 @@ func init_enemies():
 	var enemies_sripts = State["Enemies"][State["Current_Dimension"]]
 	Game.init_enemies(enemies_sripts)
 	
+func load_intro_map():
+	Game.load_intro_map()

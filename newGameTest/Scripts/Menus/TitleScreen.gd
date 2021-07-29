@@ -11,6 +11,7 @@ func _ready():
 #
 func _on_NewGameButton_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	DataManager.load_intro_map()
 	DataManager.call_HUD("res://Scenes/Map/NewGameIntro.tscn")
 	DataManager.remove_HUD(self)
 

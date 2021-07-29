@@ -18,9 +18,9 @@ onready var world = $Navigation/NavigationMeshInstance/World
 
 func _ready():
 	fade.connect("faded", self, "on_faded")
-	current_world = load("res://Scenes/Map/Dimension1.tscn").instance()
+	#current_world = load("res://Scenes/Map/MapaIntro.tscn").instance()
 	#current_world = load("res://Scenes/Demo/DemoMap1.tscn").instance()
-	world.add_child(current_world)
+	#world.add_child(current_world)
 	set_process(false)
 	ResourceQueue.start()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -29,6 +29,7 @@ func _ready():
 
 func change_scene(scene):
 	loading_world = scene
+	print(loading_world)
 	loading = true
 	fade.fade_in()
 
@@ -49,7 +50,7 @@ func _process(delta: float) -> void:
 		world.add_child(current_world)
 		loading = false
 		# linea nueva
-		DataManager.removeScenes()
+		#DataManager.removeScenes()
 		fade.fade_out()
 		set_process(false)
 
@@ -118,9 +119,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		stamina_bar.visible = false
 		showing_stamina = false
 
-func changeObjective(objective):
+func changeObjective(objective, boolean):
 	$CanvasLayer/Objective/Text.text = objective
-	showObjective()
+	if boolean:
+		showObjective()
 	
 func showObjective():
 	$CanvasLayer/Objective/Text/ObjectiveAnim.play("display")
@@ -164,3 +166,10 @@ func init_enemies(scripts):
 		enemy._ready()
 		enemy.init()
 		print(enemy.interest_nodes)
+
+func load_intro_map():
+	#loading_world = "res://Scenes/Map/MapaIntro.tscn"
+	loading_world = "res://Scenes/Map/Dimension1.tscn"
+	loading = true
+	ResourceQueue.queue_resource(loading_world)
+	set_process(true)
